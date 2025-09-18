@@ -23,7 +23,7 @@ class AdminMiddleware
 
 
         if(Auth::user()->role !== 'Admin') {
-            return redirect()->route('dasboard')->withErrors('Error.', 'Anda Bukan Admin');
+            return redirect()->route('dashboard')->withErrors('Error.', 'Anda Bukan Admin');
         }
         return $next($request);
     }

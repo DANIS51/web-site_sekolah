@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     //
     protected $primaryKey = 'id_user';
@@ -20,6 +20,11 @@ class User extends Model
         'password',
 
     ];
+
+    public function getAuthIdentifierName()
+    {
+        return 'id_user';
+    }
 
     public function beritas()
     {
@@ -43,7 +48,7 @@ class User extends Model
 
     public function NcekOperator()
     {
-        return $this->role === 'Operator';
+        return $this->role === 'operator';
     }
 
     

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class AuthController extends \App\Http\Controllers\Controller
 {
     //
   public function showLoginForm()
@@ -20,7 +20,7 @@ class AuthController extends Controller
   public function login(Request $request)
   {
     $login = $request->validate([
-      'usernmae' => 'required|string',
+      'username' => 'required|string',
       'password' => 'required|string|min:6',
     ]
     );
@@ -29,13 +29,13 @@ class AuthController extends Controller
     if (Auth::user()->role == 'admin') {
       return redirect()->route('admin.dashboard');
     } else {
-      return redirect()->route('Operator.dashboard')->with('success', 'Login success sebagai Operator');
+      return redirect()->route('operator.dashboard')->with('success', 'Login success sebagai Operator');
     }
 
   }
   return back()->withErrors([
-    'usernmae' => 'Username Atau Password Salah',
-  ])->onlyInput('usernmae');
+    'username' => 'username Atau Password Salah',
+  ])->onlyInput('username');
   }
 
   public function logout(Request $request)
