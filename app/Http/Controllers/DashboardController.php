@@ -42,7 +42,7 @@ class DashboardController extends Controller
         return view('dashboard.profile', compact('user'));
     }
 
-    public function editProfile(Request $request){
+    public function updateProfile(Request $request){
         $user = Auth::user();
         $validasi = $request->validate([
             'username' => 'required|string|max:255|unique:users,username,'.$user->id_user . ',id_user',
@@ -65,7 +65,7 @@ class DashboardController extends Controller
 
         $user->password = bcrypt($validasi['password']);
         $user->save();
-        return redirect()->route('dashboard.profile')->with('success', 'Password Berhasil diupdate');
+        return redirect()->route('profile')->with('success', 'Password Berhasil diupdate');
     }
 
 }

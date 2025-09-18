@@ -20,8 +20,8 @@ class OperatorMiddleware
             return redirect()->route('login')->withErrors('Error.', 'Silahkan Logikan Terlebih Dahulu');
         }
 
-        if (Auth::user()->role !== 'Operator') {
-            return redirect()->route('dasboard')->withErrors('Error.', 'Anda Bukan Operator');
+        if (strtolower(Auth::user()->role) !== 'operator') {
+            return redirect()->route('dashboard')->withErrors('Error.', 'Anda Bukan Operator');
         }
         return $next($request);
     }

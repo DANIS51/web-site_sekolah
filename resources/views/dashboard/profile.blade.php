@@ -1,11 +1,13 @@
-.<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Sistem Sekolah</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
- </head>
+</head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -31,7 +33,7 @@
                         @if(session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
-                        
+
                         @if($errors->any())
                             <div class="alert alert-danger">
                                 <ul class="mb-0">
@@ -49,7 +51,7 @@
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username"
-                                       value="{{ old('username', $user->username) }}" required>
+                                    value="{{ old('username', $user->username) }}" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update Username</button>
@@ -65,7 +67,7 @@
                             <div class="mb-3">
                                 <label for="current_password" class="form-label">Password Saat Ini</label>
                                 <input type="password" class="form-control" id="current_password"
-                                       name="current_password" required>
+                                    name="current_password" required>
                             </div>
 
                             <div class="mb-3">
@@ -77,7 +79,7 @@
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label">Konfirmasi Password Baru</label>
                                 <input type="password" class="form-control" id="password_confirmation"
-                                       name="password_confirmation" required>
+                                    name="password_confirmation" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update Password</button>
@@ -88,9 +90,9 @@
                         <div class="mt-3">
                             <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke Dashboard</a>
                         </div>
-                        
+
                         <hr>
-                        
+
                         <h6>Informasi Akun:</h6>
                         <ul>
                             <li>Role: <strong>{{ $user->role }}</strong></li>
@@ -102,4 +104,5 @@
         </div>
     </div>
 </body>
+
 </html>
