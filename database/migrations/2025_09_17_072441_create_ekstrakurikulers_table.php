@@ -10,10 +10,11 @@ return new class extends Migration
     {
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_ekskul');
-            $table->string('nama_ekskul', 40);
-            $table->string('pembina', 40);
-            $table->string('jadwal_latihan', 40);
+            $table->string('nama', 100);
+            $table->string('jadwal', 100);
+            $table->string('pelatih', 100);
             $table->text('deskripsi');
+            $table->date('tanggal');
             $table->string('gambar', 100)->nullable();
             $table->timestamps();
         });

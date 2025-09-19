@@ -6,7 +6,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">Data Ekstrakurikuler</h5>
-        <a href="#" class="btn btn-primary btn-sm">
+        <a href="{{ route('admin.ekstrakurikulera.create') }}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus me-1"></i> Tambah Ekstrakurikuler
         </a>
     </div>
@@ -39,7 +39,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Ekskul</th>
+                        <th> Ekskul</th>
                         <th>Pembina</th>
                         <th>Jadwal Latihan</th>
                         <th>Deskripsi</th>
@@ -50,10 +50,18 @@
                     @foreach($ekstrakurikulera as $index => $ekskul)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $ekskul->nama_ekskul }}</td>
-                        <td>{{ $ekskul->pembina }}</td>
-                        <td>{{ $ekskul->jadwal_latihan }}</td>
+                        <td>{{ $ekskul->nama}}</td>
+                        <td>{{ $ekskul->pelatih }}</td>
+                        <td>{{ $ekskul->jadwal }}</td>
                         <td>{{ $ekskul->deskripsi }}</td>
+                        <td>
+                            @if ($ekskul->gambar)
+                                <img src="{{ asset('storage/' . $ekskul->gambar) }}" alt="Gambar Ekskul" width="100">
+                                
+                            @else
+                                Tidak ada gambar
+                            @endif
+                        </td>
                         <td>
                             <a href="#" class="btn btn-warning btn-sm" title="Edit">
                                 <i class="bi bi-pencil-square"></i>

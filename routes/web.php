@@ -124,6 +124,8 @@ Route::middleware('auth')->group(function () {
         | Routes untuk mengelola ekstrakurikuler.
         */
         Route::get('/ekstrakurikulera', [EkstrakurikulerController::class, 'ekstrakurikulera'])->name('ekstrakurikulera');
+        Route::get('/ekstrakurikulera/create', [EkstrakurikulerController::class, 'createEkstrakurikulera'])->name('ekstrakurikulera.create');
+        Route::post('/ekstrakurikulera', [EkstrakurikulerController::class, 'StoreEskul'])->name('ekstrakurikulera.store');
     });
 
     /*

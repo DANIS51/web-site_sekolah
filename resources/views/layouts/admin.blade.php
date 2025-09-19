@@ -40,17 +40,19 @@
             background-color: rgba(255,255,255,.1);
         }
         /* Toggle button styles */
-        #sidebarToggle {
+        #sidebarToggleLabel {
             display: none;
             position: fixed;
             top: 10px;
             left: 10px;
             z-index: 1050;
             background-color: #0d6efd;
-            border: none;
             color: white;
             padding: 8px 12px;
             border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            user-select: none;
         }
         @media (max-width: 768px) {
             .sidebar {
@@ -62,14 +64,22 @@
             .content {
                 margin-left: 0;
             }
-            #sidebarToggle {
+            #sidebarToggleLabel {
                 display: block;
+            }
+            /* Checkbox hack: jika dicentang, tampilkan sidebar */
+            #sidebarToggle:checked ~ .sidebar {
+                transform: translateX(0);
+            }
+            #sidebarToggle:checked ~ .content {
+                margin-left: 250px;
             }
         }
     </style>
 </head>
 <body>
-    <button id="sidebarToggle">☰</button>
+    <input type="checkbox" id="sidebarToggle" style="display: none;">
+    <label for="sidebarToggle" id="sidebarToggleLabel">☰</label>
     <div class="sidebar bg-primary text-white">
         <div class="p-3">
             <h5>Sistem Sekolah - Admin</h5>
@@ -127,13 +137,6 @@
     </div>
 
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script>
-        document.getElementById('sidebarToggle').addEventListener('click', function () {
-            const sidebar = document.querySelector('.sidebar');
-            const content = document.querySelector('.content');
-            sidebar.classList.toggle('show');
-            content.classList.toggle('expanded');
-        });
-    </script>
+     
 </body>
 </html>
