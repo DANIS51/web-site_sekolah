@@ -52,13 +52,13 @@
                         <td>{{ ucfirst($user->role) }}</td>
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id_user) }}" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="fas fa-edit"></i>
+                                <i class="bi bi-pencil-square"></i>
                             </a>
                             <form action="{{ route('admin.users.delete', $user->id_user) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>

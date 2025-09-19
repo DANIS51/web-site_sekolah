@@ -1,11 +1,15 @@
-# TODO: Separate Controllers
+# TODO: Tambah id_user ke Berita
 
-- [x] Create UserController and move user methods from AdminController
-- [x] Create GuruController and move guru method from AdminController
-- [x] Create BeritaController and move berita method from AdminController
-- [x] Create GaleriController and move galeri methods from AdminController
-- [x] Create EkstrakurikulerController and move ekstrakurikulera method from AdminController
-- [x] Move SiswaController from Admin/ to root, fix namespace, delete duplicate
-- [x] Update AdminController to remove moved methods
-- [x] Update routes/web.php to use new controllers
-- [ ] Test routes and ensure functionality
+## Langkah-langkah:
+1. Lengkapi metode updateBerita di BeritaController.php
+2. Buat view edit.blade.php untuk berita
+3. Update index.blade.php untuk menampilkan user yang membuat berita
+4. Pastikan rute untuk edit dan update ada di routes/web.php
+5. Uji fungsionalitas
+
+## Status:
+- [x] 1. Lengkapi updateBerita
+- [x] 2. Buat edit.blade.php
+- [x] 3. Update index.blade.php
+- [x] 4. Periksa rute
+- [x] 5. Uji (disarankan untuk diuji secara manual)

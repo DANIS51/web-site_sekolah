@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
+ @extends('layouts.admin')
+@section('title', 'Edit Profile')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Sistem Sekolah</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="#">Sistem Sekolah</a>
-            <div class="navbar-nav ms-auto">
-                <a href="{{ route('dashboard') }}" class="btn btn-outline-light me-2">Dashboard</a>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-light">Logout</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+@section('content')
+   
 
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -44,7 +26,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('profile.update') }}">
+                        <form method="POST" action="{{ route('admin.profile.update') }}">
                             @csrf
                             @method('PUT')
 
@@ -60,7 +42,7 @@
                         <hr>
 
                         <h5>Ubah Password</h5>
-                        <form method="POST" action="{{ route('profile.password') }}">
+                        <form method="POST" action="{{ route('admin.profile.password') }}">
                             @csrf
                             @method('PUT')
 
@@ -103,6 +85,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+@endsection

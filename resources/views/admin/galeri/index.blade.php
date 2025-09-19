@@ -72,14 +72,14 @@
                             @endif
                         </td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="fas fa-edit"></i>
+                            <a href="{{ route('admin.galeri.edit', $galeri->id_galeri) }}" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i>
                             </a>
-                            <form action="#" method="POST" class="d-inline">
+                            <form action="{{ route('admin.galeri.destroy', $galeri->id_galeri) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>

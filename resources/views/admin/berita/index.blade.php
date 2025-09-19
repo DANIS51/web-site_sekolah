@@ -6,11 +6,17 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">Data Berita</h5>
-        <a href="#" class="btn btn-primary btn-sm">
+        <a href="{{ route('admin.berita.create') }}" class="btn btn-primary btn-sm">
             <i class="fas fa-plus me-1"></i> Tambah Berita
         </a>
     </div>
     <div class="card-body">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="d-flex align-items-center">
@@ -41,6 +47,9 @@
                         <th>No</th>
                         <th>Judul</th>
                         <th>Tanggal</th>
+                        <th>Gambar</th>
+                         <th>Dibuat Oleh</th>
+                         <th>Dibuat Pada</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -51,14 +60,23 @@
                         <td>{{ $berita->judul }}</td>
                         <td>{{ $berita->tanggal }}</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="fas fa-edit"></i>
+                            @if($berita->gambar)
+                                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar Berita" width="100" height="60" class="img-thumbnail">
+                            @else
+                                Tidak ada gambar
+                            @endif
+                        </td>
+                        <td>{{ $berita->user ? $berita->user->name : 'Unknown' }}</td>
+                         <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
+                        <td>
+                            <a href="{{ route('admin.berita.edit', $berita->id_berita) }}" class="btn btn-warning btn-sm" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
                             </a>
-                            <form action="#" method="POST" class="d-inline">
+                            <form action="{{ route('admin.berita.destroy', $berita->id_berita) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </form>
                         </td>
