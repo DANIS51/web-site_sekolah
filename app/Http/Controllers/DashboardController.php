@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -45,12 +46,26 @@ class DashboardController extends Controller
     public function updateProfile(Request $request){
         $user = Auth::user();
         $validasi = $request->validate([
-            'username' => 'required|string|max:255|unique:users,username,'.$user->id_user . ',id_user',
+            'username' => 'nullable|string|max:255|unique:users,username,'.$user->id_user . ',id_user',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user->username = $validasi['username'];
+        if ($request->has('username') && !empty($request->username)) {
+            $user->username = $validasi['username'];
+        }
+
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
+            if ($user->foto && Storage::exists('public/' . $user->foto)) {
+                Storage::delete('public/' . $user->foto);
+            }
+            // Simpan foto baru
+            $path = $request->file('foto')->store('profile_photos', 'public');
+            $user->foto = $path;
+        }
+
         $user->save();
-        return redirect()->route('profile')->with('success', 'Username Berhasil diupdate');
+        return redirect()->route('admin.profile')->with('success', 'Profile Berhasil diupdate');
     }
     public function editPassword(){
         $user = Auth::user();

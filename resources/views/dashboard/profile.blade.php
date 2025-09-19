@@ -26,6 +26,25 @@
                             </div>
                         @endif
 
+                        <div class="mb-4 text-center">
+                            <h6>Foto Profile</h6>
+                            @if($user->foto)
+                                <img src="{{ asset('storage/' . $user->foto) }}" alt="Foto Profile" class="rounded-circle mb-3" width="100" height="100">
+                            @else
+                                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                                    <i class="bi bi-person-circle" style="font-size: 50px;"></i>
+                                </div>
+                            @endif
+                            <form method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="mb-3">
+                                    <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Foto</button>
+                            </form>
+                        </div>
+
                         <form method="POST" action="{{ route('admin.profile.update') }}">
                             @csrf
                             @method('PUT')
@@ -33,7 +52,7 @@
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username"
-                                    value="{{ old('username', $user->username) }}" required>
+                                    value="{{ old('username', $user->username) }}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update Username</button>

@@ -4,9 +4,9 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
         <h5 class="card-title mb-0">Data Berita</h5>
-        <a href="{{ route('admin.berita.create') }}" class="btn btn-primary btn-sm">
+        <a href="{{ route('admin.berita.create') }}" class="btn btn-primary btn-sm mt-2 mt-md-0">
             <i class="fas fa-plus me-1"></i> Tambah Berita
         </a>
     </div>
@@ -18,8 +18,8 @@
             </div>
         @endif
         <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="d-flex align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="d-flex align-items-center flex-wrap">
                     <span class="me-2">Show</span>
                     <select class="form-select form-select-sm w-auto" id="entries-select">
                         <option value="10">10</option>
@@ -30,7 +30,7 @@
                     <span class="ms-2">entries</span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <div class="d-flex justify-content-end">
                     <div class="input-group input-group-sm w-auto">
                         <span class="input-group-text">Search:</span>
@@ -48,8 +48,8 @@
                         <th>Judul</th>
                         <th>Tanggal</th>
                         <th>Gambar</th>
-                         <th>Dibuat Oleh</th>
-                         <th>Dibuat Pada</th>
+                        <th>Dibuat Oleh</th>
+                        <th>Dibuat Pada</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -67,7 +67,7 @@
                             @endif
                         </td>
                         <td>{{ $berita->user ? $berita->user->name : 'Unknown' }}</td>
-                         <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
+                        <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
                         <td>
                             <a href="{{ route('admin.berita.edit', $berita->id_berita) }}" class="btn btn-warning btn-sm" title="Edit">
                                 <i class="bi bi-pencil-square"></i>
@@ -86,7 +86,7 @@
             </table>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-3">
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
             <div>Showing 1 to {{ $beritas->count() }} of {{ $beritas->count() }} entries</div>
             <nav>
                 <ul class="pagination mb-0">

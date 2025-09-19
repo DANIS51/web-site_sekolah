@@ -123,10 +123,14 @@
             </ul>
             <hr>
             <div class="mt-3">
-                <a href="{{ route('admin.profile') }}" class="btn btn-outline-light btn-sm w-100 mb-2">Profile</a>
-                <form action="{{ route('logout') }}" method="POST">
+                <a href="{{ route('admin.profile') }}" class="nav-link text-white d-flex align-items-center mb-2">
+                    <i class="bi bi-person-circle me-2"></i> Profile
+                </a>
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-outline-light btn-sm w-100">Logout</button>
+                    <button type="submit" class="nav-link text-white d-flex align-items-center border-0 bg-transparent p-0">
+                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                    </button>
                 </form>
             </div>
         </div>

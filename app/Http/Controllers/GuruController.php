@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -80,6 +81,11 @@ class GuruController extends Controller
         $data = $validated;
 
         if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
+            if ($guru->foto && Storage::exists('public/' . $guru->foto)) {
+                Storage::delete('public/' . $guru->foto);
+            }
+            // Simpan foto baru
             $data['foto'] = $request->file('foto')->store('guru_fotos', 'public');
         }
 

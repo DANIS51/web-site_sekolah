@@ -1,5 +1,8 @@
-- [x] Jelaskan apakah sidebar bisa tanpa JavaScript dalam bahasa Indonesia
-- [x] Berikan contoh modifikasi kode menggunakan CSS saja (checkbox hack)
-- [x] Jelaskan kelebihan dan kekurangan
-- [ ] Modifikasi file admin.blade.php sebagai contoh
-- [ ] Verifikasi hasil
+# TODO List - Perbaikan Update Foto
+
+- [x] Perbaiki method updateGuru di GuruController.php
+  - Tambahkan penghapusan file foto lama sebelum menyimpan foto baru
+- [x] Perbaiki method updateProfile di DashboardController.php
+  - Ganti DB::table update foto dengan assignment ke model dan save()
+- [ ] Uji coba update foto guru dan profile untuk memastikan error teratasi
+- [ ] Review dan testing keseluruhan fitur update foto

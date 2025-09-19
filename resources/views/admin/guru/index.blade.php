@@ -11,16 +11,16 @@
     @endif
 
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
             <h5 class="card-title mb-0">Data Guru</h5>
-            <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm mt-2 mt-md-0">
                 <i class="fas fa-plus me-1"></i> Tambah Guru
             </a>
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-md-6">
-                    <form method="GET" action="{{ route('admin.guru') }}" class="d-flex align-items-center">
+                <div class="col-12 col-md-6">
+                    <form method="GET" action="{{ route('admin.guru') }}" class="d-flex align-items-center flex-wrap">
                         <span class="me-2">Show</span>
                         <select class="form-select form-select-sm w-auto" name="per_page" onchange="this.form.submit()">
                             <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
@@ -34,7 +34,7 @@
                         @endif
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <form method="GET" action="{{ route('admin.guru') }}" class="d-flex justify-content-end">
                         <div class="input-group input-group-sm w-auto">
                             <span class="input-group-text">Search:</span>
@@ -97,7 +97,7 @@
                 </table>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
                 <div>Showing {{ $gurus->firstItem() }} to {{ $gurus->lastItem() }} of {{ $gurus->total() }} entries</div>
                 {{ $gurus->appends(request()->query())->links() }}
             </div>
