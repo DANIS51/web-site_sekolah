@@ -14,10 +14,21 @@ class SiswaController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $siswa = Siswa::orderBy('nama_siswa', 'asc')->get();
-        return view('admin.siswa.siswa', compact('siswa'));
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = Siswa::query();
+
+        if ($search) {
+            $query->where('nama_siswa', 'like', '%' . $search . '%')
+                ->orWhere('nism', 'like', '%' . $search . '%');
+        }
+
+        $siswa = $query->orderBy('nama_siswa')->paginate($perPage)->withQueryString();
+
+        return view('admin.siswa.siswa', compact('siswa', 'search'));
     }
 
 

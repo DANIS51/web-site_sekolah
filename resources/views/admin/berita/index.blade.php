@@ -19,24 +19,25 @@
         @endif
         <div class="row mb-3">
             <div class="col-12 col-md-6">
-                <div class="d-flex align-items-center flex-wrap">
-                    <span class="me-2">Show</span>
-                    <select class="form-select form-select-sm w-auto" id="entries-select">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="ms-2">entries</span>
-                </div>
+                <form method="GET" action="{{ route('admin.berita') }}" class="d-flex align-items-center flex-wrap">
+                    
+                    @if($search)
+                        <input type="hidden" name="search" value="{{ $search }}">
+                    @endif
+                </form>
             </div>
             <div class="col-12 col-md-6">
-                <div class="d-flex justify-content-end">
+                <form method="GET" action="{{ route('admin.berita') }}" class="d-flex justify-content-end">
                     <div class="input-group input-group-sm w-auto">
-                        <span class="input-group-text">Search:</span>
-                        <input type="text" class="form-control" id="search-input" placeholder="Cari...">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            placeholder="Cari...">
+                        <button type="submit" class="btn btn-outline-secondary">Cari</button>
                     </div>
-                </div>
+                    @if(request('per_page'))
+                        <input type="hidden" name="per_page" value="{{ request('per_page') }}">
+                    @endif
+                </form>
             </div>
         </div>
 
@@ -48,53 +49,46 @@
                         <th>Judul</th>
                         <th>Tanggal</th>
                         <th>Gambar</th>
-                        <th>Dibuat Oleh</th>
                         <th>Dibuat Pada</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($beritas as $index => $berita)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $berita->judul }}</td>
-                        <td>{{ $berita->tanggal }}</td>
-                        <td>
-                            @if($berita->gambar)
-                                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar Berita" width="100" height="60" class="img-thumbnail">
-                            @else
-                                Tidak ada gambar
-                            @endif
-                        </td>
-                        <td>{{ $berita->user ? $berita->user->name : 'Unknown' }}</td>
-                        <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
-                        <td>
-                            <a href="{{ route('admin.berita.edit', $berita->id_berita) }}" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <form action="{{ route('admin.berita.destroy', $berita->id_berita) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $beritas->firstItem() + $index }}</td>
+                            <td>{{ $berita->judul }}</td>
+                            <td>{{ $berita->tanggal }}</td>
+                            <td>
+                                @if($berita->gambar)
+                                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar Berita" width="100" height="60" class="img-thumbnail">
+                                @else
+                                    Tidak ada gambar
+                                @endif
+                            </td>
+                            <td>{{ $berita->user ? $berita->user->name : 'Unknown' }}</td>
+                            <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
+                            <td>
+                                <a href="{{ route('admin.berita.edit', $berita->id_berita) }}" class="btn btn-warning btn-sm" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form action="{{ route('admin.berita.destroy', $berita->id_berita) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
         <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
-            <div>Showing 1 to {{ $beritas->count() }} of {{ $beritas->count() }} entries</div>
-            <nav>
-                <ul class="pagination mb-0">
-                    <li class="page-item disabled"><span class="page-link">Previous</span></li>
-                    <li class="page-item active"><span class="page-link">1</span></li>
-                    <li class="page-item disabled"><span class="page-link">Next</span></li>
-                </ul>
-            </nav>
+            <div>Menampilkan {{ $beritas->firstItem() }} sampai {{ $beritas->lastItem() }} dari {{ $beritas->total() }} entri</div>
+            {{ $beritas->appends(request()->query())->links() }}
         </div>
     </div>
 </div>

@@ -14,10 +14,22 @@ class GaleriController extends Controller
         $this->middleware('admin');
     }
 
-    public function galeri()
+    public function galeri(Request $request)
     {
-        $galeris = Galeri::all();
-        return view('admin.galeri.index', compact('galeris'));
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = Galeri::query();
+
+        if ($search) {
+            $query->where('judul', 'like', '%' . $search . '%')
+                ->orWhere('keterangan', 'like', '%' . $search . '%')
+                ->orWhere('kategori', 'like', '%' . $search . '%');
+        }
+
+        $galeris = $query->orderBy('tanggal', 'desc')->paginate($perPage)->withQueryString();
+
+        return view('admin.galeri.index', compact('galeris', 'search'));
     }
 
     public function createGaleri()

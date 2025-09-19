@@ -12,25 +12,15 @@
     </div>
     <div class="card-body">
         <div class="row mb-3">
-            <div class="col-md-6">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">Show</span>
-                    <select class="form-select form-select-sm w-auto" id="entries-select">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    <span class="ms-2">entries</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="d-flex justify-content-end">
+            <div class="col-12">
+                <form method="GET" action="{{ route('admin.users') }}" class="d-flex justify-content-end">
                     <div class="input-group input-group-sm w-auto">
-                        <span class="input-group-text">Search:</span>
-                        <input type="text" class="form-control" id="search-input" placeholder="Cari...">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            placeholder="Cari...">
+                        <button type="submit" class="btn btn-outline-secondary">Cari</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -46,37 +36,31 @@
                 </thead>
                 <tbody>
                     @foreach($users as $index => $user)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ ucfirst($user->role) }}</td>
-                        <td>
-                            <a href="{{ route('admin.users.edit', $user->id_user) }}" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <form action="{{ route('admin.users.delete', $user->id_user) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $users->firstItem() + $index }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ ucfirst($user->role) }}</td>
+                            <td>
+                                <a href="{{ route('admin.users.edit', $user->id_user) }}" class="btn btn-warning btn-sm" title="Edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form action="{{ route('admin.users.delete', $user->id_user) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <div>Showing 1 to {{ $users->count() }} of {{ $users->count() }} entries</div>
-            <nav>
-                <ul class="pagination mb-0">
-                    <li class="page-item disabled"><span class="page-link">Previous</span></li>
-                    <li class="page-item active"><span class="page-link">1</span></li>
-                    <li class="page-item disabled"><span class="page-link">Next</span></li>
-                </ul>
-            </nav>
+        <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
+            <div>Menampilkan {{ $users->firstItem() }} sampai {{ $users->lastItem() }} dari {{ $users->total() }} entri</div>
+            {{ $users->appends(request()->query())->links() }}
         </div>
     </div>
 </div>

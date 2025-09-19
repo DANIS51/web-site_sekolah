@@ -14,10 +14,21 @@ class BeritaController extends Controller
         $this->middleware('admin');
     }
 
-    public function berita()
+    public function berita(Request $request)
     {
-        $beritas = Berita::with('user')->get();
-        return view('admin.berita.index', compact('beritas'));
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = Berita::with('user');
+
+        if ($search) {
+            $query->where('judul', 'like', '%' . $search . '%')
+                ->orWhere('isi', 'like', '%' . $search . '%');
+        }
+
+        $beritas = $query->orderBy('tanggal', 'desc')->paginate($perPage)->withQueryString();
+
+        return view('admin.berita.index', compact('beritas', 'search'));
     }
     public function createBerita()
     {

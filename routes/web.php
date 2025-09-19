@@ -126,6 +126,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/ekstrakurikulera', [EkstrakurikulerController::class, 'ekstrakurikulera'])->name('ekstrakurikulera');
         Route::get('/ekstrakurikulera/create', [EkstrakurikulerController::class, 'createEkstrakurikulera'])->name('ekstrakurikulera.create');
         Route::post('/ekstrakurikulera', [EkstrakurikulerController::class, 'StoreEskul'])->name('ekstrakurikulera.store');
+        Route::get('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'editEkstrakurikulera'])->name('ekstrakurikulera.edit');
+        Route::put('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'updateEkstrakurikulera'])->name('ekstrakurikulera.update');
+        Route::delete('/ekstrakurikulera/{id}', [EkstrakurikulerController::class, 'destroyEkstrakurikulera'])->name('ekstrakurikulera.destroy');
     });
 
     /*

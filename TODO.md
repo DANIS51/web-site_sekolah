@@ -1,8 +1,12 @@
-# TODO List - Perbaikan Update Foto
 
-- [x] Perbaiki method updateGuru di GuruController.php
-  - Tambahkan penghapusan file foto lama sebelum menyimpan foto baru
-- [x] Perbaiki method updateProfile di DashboardController.php
-  - Ganti DB::table update foto dengan assignment ke model dan save()
-- [ ] Uji coba update foto guru dan profile untuk memastikan error teratasi
-- [ ] Review dan testing keseluruhan fitur update foto
+- [x] Add editEkstrakurikulera, updateEkstrakurikulera, destroyEkstrakurikulera methods to EkstrakurikulerController
+- [x] Add routes for ekstrakurikulera edit, update, destroy in web.php
+- [x] Create resources/views/admin/ekstrakurikulera/edit.blade.php
+- [x] Fix resources/views/admin/ekstrakurikulera/index.blade.php (links and table structure)
+- [x] Create resources/views/admin/users/edit.blade.php
+- [x] Implement search and pagination for SiswaController and view
+- [x] Implement search and pagination for EkstrakurikulerController and view
+- [x] Implement search and pagination for GaleriController and view
+- [x] Implement search and pagination for BeritaController and view
+- [x] Implement search and pagination for UserController and view
+- [x] Implement search and pagination for GuruController and view

@@ -14,10 +14,20 @@ class UserController extends Controller
         $this->middleware('admin');
     }
 
-    public function users()
+    public function users(Request $request)
     {
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = User::query();
+
+        if ($search) {
+            $query->where('username', 'like', '%' . $search . '%');
+        }
+
+        $users = $query->orderBy('username')->paginate($perPage)->withQueryString();
+
+        return view('admin.users.index', compact('users', 'search'));
     }
 
     public function createUser()

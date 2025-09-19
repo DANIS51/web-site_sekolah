@@ -18,36 +18,18 @@
             </a>
         </div>
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-12 col-md-6">
-                    <form method="GET" action="{{ route('admin.guru') }}" class="d-flex align-items-center flex-wrap">
-                        <span class="me-2">Show</span>
-                        <select class="form-select form-select-sm w-auto" name="per_page" onchange="this.form.submit()">
-                            <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
-                            <option value="25" {{ request('per_page', 10) == 25 ? 'selected' : '' }}>25</option>
-                            <option value="50" {{ request('per_page', 10) == 50 ? 'selected' : '' }}>50</option>
-                            <option value="100" {{ request('per_page', 10) == 100 ? 'selected' : '' }}>100</option>
-                        </select>
-                        <span class="ms-2">entries</span>
-                        @if($search)
-                            <input type="hidden" name="search" value="{{ $search }}">
-                        @endif
-                    </form>
-                </div>
-                <div class="col-12 col-md-6">
-                    <form method="GET" action="{{ route('admin.guru') }}" class="d-flex justify-content-end">
-                        <div class="input-group input-group-sm w-auto">
-                            <span class="input-group-text">Search:</span>
-                            <input type="text" class="form-control" name="search" value="{{ $search }}"
-                                placeholder="Cari...">
-                            <button type="submit" class="btn btn-outline-secondary">Cari</button>
-                        </div>
-                        @if(request('per_page'))
-                            <input type="hidden" name="per_page" value="{{ request('per_page') }}">
-                        @endif
-                    </form>
-                </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                <form method="GET" action="{{ route('admin.guru') }}" class="d-flex justify-content-end">
+                    <div class="input-group input-group-sm w-auto">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            placeholder="Cari...">
+                        <button type="submit" class="btn btn-outline-secondary">Cari</button>
+                    </div>
+                </form>
             </div>
+        </div>
 
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="guru-table">
@@ -70,7 +52,7 @@
                                         <img src="{{ asset('storage/' . $guru->foto) }}" alt="Foto Guru" width="50" height="50"
                                             class="rounded">
                                     @else
-                                        <span class="text-muted">No Photo</span>
+                                        <span class="text-muted">Tidak Ada Foto</span>
                                     @endif
                                 </td>
                                 <td>{{ $guru->nama }}</td>
@@ -85,7 +67,7 @@
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                        <button type="submit" class="btn btn-danger btn-sm" title="Hapus"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             <i class="bi bi-trash"></i>
                                         </button>
@@ -98,7 +80,7 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
-                <div>Showing {{ $gurus->firstItem() }} to {{ $gurus->lastItem() }} of {{ $gurus->total() }} entries</div>
+                <div>Menampilkan {{ $gurus->firstItem() }} sampai {{ $gurus->lastItem() }} dari {{ $gurus->total() }} entri</div>
                 {{ $gurus->appends(request()->query())->links() }}
             </div>
         </div>
