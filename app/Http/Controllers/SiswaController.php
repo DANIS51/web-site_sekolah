@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
@@ -14,21 +13,21 @@ class SiswaController extends Controller
         $this->middleware('admin');
     }
 
-    
+
     public function index()
     {
         $siswa = Siswa::orderBy('nama_siswa', 'asc')->get();
         return view('admin.siswa.siswa', compact('siswa'));
     }
 
-    
+
     public function create()
     {
         return view('admin.siswa.create');
     }
 
- 
-    
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -44,14 +43,14 @@ class SiswaController extends Controller
                          ->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
-    
+
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
         return view('admin.siswa.edit', compact('siswa'));
     }
 
-     
+
     public function update(Request $request, $id)
     {
         $siswa = Siswa::findOrFail($id);
@@ -69,7 +68,7 @@ class SiswaController extends Controller
                          ->with('success', 'Data siswa berhasil diupdate.');
     }
 
-    
+
     public function destroy($id)
     {
         $siswa = Siswa::findOrFail($id);

@@ -3,9 +3,6 @@
 @section('title', 'Data User')
 
 @section('content')
-@php
-    $user = auth()->user();
-@endphp
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">Data User</h5>

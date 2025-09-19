@@ -6,7 +6,12 @@ use App\Http\Controllers\DashboardController as AdminDashboardController;
 use App\Http\Controllers\DashboardController as OperatorDashboardController;
 use App\Http\Controllers\DashboardController as UserDashboardController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\EkstrakurikulerController;
 use Illuminate\Support\Facades\Auth;
 
 // ==========================
@@ -38,12 +43,12 @@ Route::middleware('auth')->group(function () {
         Route::put('/profile/password', [UserDashboardController::class, 'editPassword'])->name('profile.password');
 
         // Manajemen Users
-        Route::get('/users', [AdminController::class, 'users'])->name('users');
-        Route::get('/users/create', [AdminController::class, 'createUser'])->name('users.create');
-        Route::post('/users', [AdminController::class, 'storeUser'])->name('users.store');
-        Route::get('/users/{id}/edit', [AdminController::class, 'editUser'])->name('users.edit');
-        Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('users.update');
-        Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('users.delete');
+        Route::get('/users', [UserController::class, 'users'])->name('users');
+        Route::get('/users/create', [UserController::class, 'createUser'])->name('users.create');
+        Route::post('/users', [UserController::class, 'storeUser'])->name('users.store');
+        Route::get('/users/{id}/edit', [UserController::class, 'editUser'])->name('users.edit');
+        Route::put('/users/{id}', [UserController::class, 'updateUser'])->name('users.update');
+        Route::delete('/users/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
         // Manajemen Siswa
         Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
@@ -54,12 +59,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
         // Placeholder routes for other sections
-        Route::get('/guru', [AdminController::class, 'guru'])->name('guru');
-        Route::get('/berita', [AdminController::class, 'berita'])->name('berita');
-        Route::get('/galeri', [AdminController::class, 'galeri'])->name('galeri');
-        Route::get('/galeri/create', [AdminController::class, 'createGaleri'])->name('galeri.create');
-        Route::post('/galeri', [AdminController::class, 'storeGaleri'])->name('galeri.store');
-        Route::get('/ekstrakurikulera', [AdminController::class, 'ekstrakurikulera'])->name('ekstrakurikulera');
+        Route::get('/guru', [GuruController::class, 'guru'])->name('guru');
+        Route::get('/berita', [BeritaController::class, 'berita'])->name('berita');
+        Route::get('/galeri', [GaleriController::class, 'galeri'])->name('galeri');
+        Route::get('/galeri/create', [GaleriController::class, 'createGaleri'])->name('galeri.create');
+        Route::post('/galeri', [GaleriController::class, 'storeGaleri'])->name('galeri.store');
+        Route::get('/ekstrakurikulera', [EkstrakurikulerController::class, 'ekstrakurikulera'])->name('ekstrakurikulera');
     });
 
     // ==========================
