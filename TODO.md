@@ -1,12 +1,18 @@
+# Bootstrap Styling Improvements - Clean & Professional
 
-- [x] Add editEkstrakurikulera, updateEkstrakurikulera, destroyEkstrakurikulera methods to EkstrakurikulerController
-- [x] Add routes for ekstrakurikulera edit, update, destroy in web.php
-- [x] Create resources/views/admin/ekstrakurikulera/edit.blade.php
-- [x] Fix resources/views/admin/ekstrakurikulera/index.blade.php (links and table structure)
-- [x] Create resources/views/admin/users/edit.blade.php
-- [x] Implement search and pagination for SiswaController and view
-- [x] Implement search and pagination for EkstrakurikulerController and view
-- [x] Implement search and pagination for GaleriController and view
-- [x] Implement search and pagination for BeritaController and view
-- [x] Implement search and pagination for UserController and view
-- [x] Implement search and pagination for GuruController and view
+## Plan Implementation:
+- [ ] Update admin layout with Bootstrap styling
+- [ ] Improve dashboard with clean card design
+- [ ] Style index pages (siswa, guru, berita, etc.)
+- [ ] Style create/edit forms
+- [ ] Update CSS for consistent styling
+- [ ] Test responsive design
+
+## Files to Update:
+- resources/views/layouts/admin.blade.php
+- resources/views/admin/dashboard.blade.php
+- resources/views/admin/siswa/siswa.blade.php
+- resources/views/admin/siswa/create.blade.php
+- resources/views/admin/siswa/edit.blade.php
+- resources/css/app.css
+- Plus other admin pages as needed

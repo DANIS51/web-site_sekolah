@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Edit Profil Guru')
+@section('title', 'Edit Profil')
 
 @section('content')
     <div class="container mt-4">
@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Profil Guru</h5>
+                        <h5 class="card-title">Edit Profil</h5>
                     </div>
                     <div class="card-body">
                         @if(session('success'))
@@ -39,15 +39,15 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="name" class="col-sm-4 col-form-label">Nama</label>
+                                        <label for="username" class="col-sm-4 col-form-label">Username</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}">
+                                            <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $user->username) }}">
                                         </div>
                                     </div>
                                     <div class="mb-3 row align-items-center">
-                                        <label for="email" class="col-sm-4 col-form-label">Alamat Email</label>
+                                        <label for="role" class="col-sm-4 col-form-label">Role</label>
                                         <div class="col-sm-8">
-                                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}">
+                                            <input type="text" class="form-control" id="role" name="role" value="{{ ucfirst($user->role) }}" readonly>
                                         </div>
                                     </div>
                                     <div class="mb-3 row align-items-center">

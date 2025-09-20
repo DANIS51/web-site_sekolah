@@ -49,7 +49,7 @@
                         <th>Judul</th>
                         <th>Tanggal</th>
                         <th>Gambar</th>
-                        <th>Dibuat Pada</th>
+                        <th>Id_user</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -66,7 +66,7 @@
                                     Tidak ada gambar
                                 @endif
                             </td>
-                            <td>{{ $berita->user ? $berita->user->name : 'Unknown' }}</td>
+                            <td>{{ $berita->user ? $berita->user->username : 'Unknown' }}</td>
                             <td>{{ $berita->created_at->format('d/m/Y H:i') }}</td>
                             <td>
                                 <a href="{{ route('admin.berita.edit', $berita->id_berita) }}" class="btn btn-warning btn-sm" title="Edit">
