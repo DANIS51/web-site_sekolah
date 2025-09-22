@@ -12,6 +12,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\ProfilSekolahController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -161,11 +162,26 @@ Route::middleware('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+| Routes untuk tampilan publik yang dapat diakses tanpa autentikasi.
+*/
+Route::get('/', [PublicController::class, 'index'])->name('public.index');
+Route::get('/berita', [PublicController::class, 'berita'])->name('public.berita');
+Route::get('/berita/{id}', [PublicController::class, 'showBerita'])->name('public.berita.show');
+Route::get('/galeri', [PublicController::class, 'galeri'])->name('public.galeri');
+Route::get('/guru', [PublicController::class, 'guru'])->name('public.guru');
+Route::get('/siswa', [PublicController::class, 'siswa'])->name('public.siswa');
+Route::get('/ekstrakurikuler', [PublicController::class, 'ekstrakurikuler'])->name('public.ekstrakurikuler');
+Route::get('/profil-sekolah', [PublicController::class, 'profilSekolah'])->name('public.profil-sekolah');
+
+/*
+|--------------------------------------------------------------------------
 | Redirect Root
 |--------------------------------------------------------------------------
 | Mengarahkan akses root '/' ke halaman dashboard sesuai role pengguna.
 */
-Route::redirect('/', '/dashboard');
+Route::redirect('/dashboard', '/dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {

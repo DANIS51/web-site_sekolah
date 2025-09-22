@@ -1,0 +1,55 @@
+@extends('layouts.public')
+
+@section('title', 'Guru - Website Sekolah')
+
+@section('content')
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">
+                <i class="fas fa-chalkboard-teacher me-2"></i>
+                Data Guru
+            </h1>
+            <p class="hero-subtitle">Daftar tenaga pendidik dan kependidikan di sekolah</p>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="py-5">
+        <div class="container">
+            @if($guru->count() > 0)
+                <div class="row">
+                    @foreach($guru as $guruItem)
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="person-card">
+                            @if($guruItem->foto)
+                                <img src="{{ asset('storage/' . $guruItem->foto) }}" alt="{{ $guruItem->nama }}" class="person-image">
+                            @else
+                                <div class="person-image d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                                    <i class="fas fa-user fa-2x text-white"></i>
+                                </div>
+                            @endif
+                            <h6 class="person-name">{{ $guruItem->nama }}</h6>
+                            <p class="text-muted mb-1">{{ $guruItem->jabatan }}</p>
+                            @if($guruItem->mapel)
+                                <small class="text-info">{{ $guruItem->mapel }}</small>
+                            @endif
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $guru->links() }}
+                </div>
+            @else
+                <div class="section-card text-center">
+                    <i class="fas fa-chalkboard-teacher fa-3x text-muted mb-3"></i>
+                    <h4>Belum ada data guru</h4>
+                    <p class="text-muted">Data guru akan segera ditambahkan.</p>
+                </div>
+            @endif
+        </div>
+    </section>
+@endsection
