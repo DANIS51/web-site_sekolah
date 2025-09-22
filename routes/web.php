@@ -11,6 +11,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\EkstrakurikulerController;
+use App\Http\Controllers\ProfilSekolahController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -129,6 +130,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'editEkstrakurikulera'])->name('ekstrakurikulera.edit');
         Route::put('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'updateEkstrakurikulera'])->name('ekstrakurikulera.update');
         Route::delete('/ekstrakurikulera/{id}', [EkstrakurikulerController::class, 'destroyEkstrakurikulera'])->name('ekstrakurikulera.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Profil Sekolah
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola profil sekolah.
+        */
+        Route::get('/profil_sekolah', [ProfilSekolahController::class, 'index'])->name('profil_sekolah.index');
+        Route::get('/profil_sekolah/create', [ProfilSekolahController::class, 'create'])->name('profil_sekolah.create');
+        Route::post('/profil_sekolah', [ProfilSekolahController::class, 'store'])->name('profil_sekolah.store');
+        Route::get('/profil_sekolah/{id}/edit', [ProfilSekolahController::class, 'edit'])->name('profil_sekolah.edit');
+        Route::put('/profil_sekolah/{id}', [ProfilSekolahController::class, 'update'])->name('profil_sekolah.update');
+        Route::delete('/profil_sekolah/{id}', [ProfilSekolahController::class, 'destroy'])->name('profil_sekolah.destroy');
     });
 
     /*

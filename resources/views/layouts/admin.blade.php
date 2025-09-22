@@ -118,7 +118,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.ekstrakurikulera') }}">
-                        <i class="bi bi-trophy me-2"></i> Ekstrakurikulera
+                        <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('admin.profil_sekolah.index') }}">
+                        <i class="bi bi-building me-2"></i> Profil Sekolah
                     </a>
                 </li>
             </ul>
