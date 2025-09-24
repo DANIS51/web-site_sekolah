@@ -22,12 +22,12 @@ class GuruController extends Controller
         $query = Guru::query();
 
         if ($search) {
-            $query->where('nama', 'like', '%' . $search . '%')
+            $query->where('nama_guru', 'like', '%' . $search . '%')
                 ->orWhere('nip', 'like', '%' . $search . '%')
                 ->orWhere('mapel', 'like', '%' . $search . '%');
         }
 
-        $gurus = $query->orderBy('nama')->paginate($perPage)->withQueryString();
+        $gurus = $query->orderBy('nama_guru')->paginate($perPage)->withQueryString();
 
         return view('admin.guru.index', compact('gurus', 'search'));
     }
@@ -38,12 +38,12 @@ class GuruController extends Controller
     public function storeGuru(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:20|unique:gurus,nip',
+            'nama_guru' => 'required|string|max:100',
+            'nip' => 'required|string|max:20|unique:db_profil_sekolah_guru,nip',
             'alamat' => 'required|string',
             'mapel' => 'required|string|max:50',
-            'email' => 'required|email|unique:gurus,email',
-            'telepon' => 'required|string|max:15|unique:gurus,telepon',
+            'email' => 'required|email|unique:db_profil_sekolah_guru,email',
+            'telepon' => 'required|string|max:15|unique:db_profil_sekolah_guru,telepon',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -69,12 +69,12 @@ class GuruController extends Controller
         $guru = Guru::findOrFail($id);
 
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:20|unique:gurus,nip,' . $id . ',id_guru',
+            'nama_guru' => 'required|string|max:100',
+            'nip' => 'required|string|max:20|unique:db_profil_sekolah_guru,nip,' . $id . ',id_guru',
             'alamat' => 'required|string',
             'mapel' => 'required|string|max:50',
-            'email' => 'required|email|unique:gurus,email,' . $id . ',id_guru',
-            'telepon' => 'required|string|max:15|unique:gurus,telepon,' . $id . ',id_guru',
+            'email' => 'required|email|unique:db_profil_sekolah_guru,email,' . $id . ',id_guru',
+            'telepon' => 'required|string|max:15|unique:db_profil_sekolah_guru,telepon,' . $id . ',id_guru',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

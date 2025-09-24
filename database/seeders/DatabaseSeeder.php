@@ -23,5 +23,13 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        User::create([
+            'username' => 'operator',
+            'password' => Hash::make('danis123'),
+            'role' => 'operator',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

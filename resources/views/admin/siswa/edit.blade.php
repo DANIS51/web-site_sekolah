@@ -13,9 +13,9 @@
             @method('PUT')
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="nism" class="form-label">NISM</label>
-                    <input type="text" class="form-control" id="nism" name="nism" value="{{ old('nism', $siswa->nism) }}" required maxlength="10">
-                    @error('nism')
+                    <label for="nisn" class="form-label">NISN</label>
+                    <input type="text" class="form-control" id="nisn" name="nisn" value="{{ old('nisn', $siswa->nisn) }}" required maxlength="10">
+                    @error('nisn')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -32,7 +32,7 @@
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                     <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
                         <option value="">Pilih Jenis Kelamin</option>
-                        <option value="Laki-Laki" {{ old('jenis_kelamin', $siswa->jenis_kelamin) == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                        <option value="Laki-laki" {{ old('jenis_kelamin', $siswa->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                         <option value="Perempuan" {{ old('jenis_kelamin', $siswa->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                     </select>
                     @error('jenis_kelamin')

@@ -41,9 +41,9 @@ Route::middleware('auth')->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Routes Admin
+    | Routes Admin & Operator
     |--------------------------------------------------------------------------
-    | Bagian ini mengatur route khusus untuk pengguna dengan role admin.
+    | Bagian ini mengatur route untuk pengguna dengan role admin atau operator.
     */
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         // Dashboard admin
@@ -76,9 +76,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
         Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
         Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
-        Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
-        Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
-        Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+        Route::get('/siswa/{id_siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+        Route::put('/siswa/{id_siswa}', [SiswaController::class, 'update'])->name('siswa.update');
+        Route::delete('/siswa/{id_siswa}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
         /*
         |--------------------------------------------------------------------------
@@ -150,11 +150,82 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     | Routes Operator
     |--------------------------------------------------------------------------
-    | Bagian ini mengatur route khusus untuk pengguna dengan role operator.
+    | Bagian ini mengatur route untuk pengguna dengan role admin atau operator.
     */
     Route::middleware('operator')->prefix('operator')->name('operator.')->group(function () {
-        // Dashboard operator
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // Dashboard operator - menggunakan unified dashboard
+        // Route::get('/dashboard', [App\Http\Controllers\Operator\OperatorController::class, 'dashboard'])->name('dashboard');
+
+        // Profile operator
+        Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+        Route::put('/profile', [DashboardController::class, 'updateProfile'])->name('profile.update');
+        Route::get('/profile/password', [DashboardController::class, 'editPassword'])->name('profile.password');
+        Route::put('/profile/password', [DashboardController::class, 'updatePassword'])->name('profile.password.update');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Siswa
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola data siswa.
+        */
+        Route::get('/siswa', [App\Http\Controllers\Operator\SiswaController::class, 'index'])->name('siswa.index');
+        Route::get('/siswa/create', [App\Http\Controllers\Operator\SiswaController::class, 'create'])->name('siswa.create');
+        Route::post('/siswa', [App\Http\Controllers\Operator\SiswaController::class, 'store'])->name('siswa.store');
+        Route::get('/siswa/{id_siswa}/edit', [App\Http\Controllers\Operator\SiswaController::class, 'edit'])->name('siswa.edit');
+        Route::put('/siswa/{id_siswa}', [App\Http\Controllers\Operator\SiswaController::class, 'update'])->name('siswa.update');
+        Route::delete('/siswa/{id_siswa}', [App\Http\Controllers\Operator\SiswaController::class, 'destroy'])->name('siswa.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Berita
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola berita sekolah.
+        */
+        Route::get('/berita', [App\Http\Controllers\Operator\BeritaController::class, 'index'])->name('berita.index');
+        Route::get('/berita/create', [App\Http\Controllers\Operator\BeritaController::class, 'create'])->name('berita.create');
+        Route::post('/berita', [App\Http\Controllers\Operator\BeritaController::class, 'store'])->name('berita.store');
+        Route::get('/berita/{id}/edit', [App\Http\Controllers\Operator\BeritaController::class, 'edit'])->name('berita.edit');
+        Route::put('/berita/{id}', [App\Http\Controllers\Operator\BeritaController::class, 'update'])->name('berita.update');
+        Route::delete('/berita/{id}', [App\Http\Controllers\Operator\BeritaController::class, 'destroy'])->name('berita.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Galeri
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola galeri sekolah.
+        */
+        Route::get('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'index'])->name('galeri.index');
+        Route::get('/galeri/create', [App\Http\Controllers\Operator\GaleriController::class, 'create'])->name('galeri.create');
+        Route::post('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'store'])->name('galeri.store');
+        Route::get('/galeri/{id}/edit', [App\Http\Controllers\Operator\GaleriController::class, 'edit'])->name('galeri.edit');
+        Route::put('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'update'])->name('galeri.update');
+        Route::delete('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Ekstrakurikuler
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola ekstrakurikuler.
+        */
+        Route::get('/ekstrakurikulera', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'index'])->name('ekstrakurikulera.index');
+        Route::get('/ekstrakurikulera/create', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'create'])->name('ekstrakurikulera.create');
+        Route::post('/ekstrakurikulera', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'store'])->name('ekstrakurikulera.store');
+        Route::get('/ekstrakurikulera/{id}/edit', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'edit'])->name('ekstrakurikulera.edit');
+        Route::put('/ekstrakurikulera/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'update'])->name('ekstrakurikulera.update');
+        Route::delete('/ekstrakurikulera/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'destroy'])->name('ekstrakurikulera.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Manajemen Profil Sekolah
+        |--------------------------------------------------------------------------
+        | Routes untuk mengelola profil sekolah.
+        */
+        Route::get('/profil_sekolah', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'index'])->name('profil_sekolah.index');
+        Route::get('/profil_sekolah/create', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'create'])->name('profil_sekolah.create');
+        Route::post('/profil_sekolah', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'store'])->name('profil_sekolah.store');
+        Route::get('/profil_sekolah/{id}/edit', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'edit'])->name('profil_sekolah.edit');
+        Route::put('/profil_sekolah/{id}', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'update'])->name('profil_sekolah.update');
+        Route::delete('/profil_sekolah/{id}', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'destroy'])->name('profil_sekolah.destroy');
     });
 });
 
@@ -184,14 +255,5 @@ Route::get('/profil-sekolah', [PublicController::class, 'profilSekolah'])->name(
 Route::redirect('/dashboard', '/dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        $user = Auth::user();
-        if (strtolower($user->role) == 'admin') {
-            return redirect()->route('admin.dashboard');
-        } elseif (strtolower($user->role) == 'operator') {
-            return redirect()->route('operator.dashboard');
-        } else {
-            abort(403, 'Unauthorized');
-        }
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });

@@ -17,11 +17,11 @@ class OperatorMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::check()) {
-            return redirect()->route('login')->withErrors('Error.', 'Silahkan Logikan Terlebih Dahulu');
+            return redirect()->route('login')->withErrors('Error.', 'Silahkan Login Terlebih Dahulu');
         }
 
-        if (strtolower(Auth::user()->role) !== 'operator') {
-            return redirect()->route('dashboard')->withErrors('Error.', 'Anda Bukan Operator');
+        if (strtolower(Auth::user()->role) !== 'admin' && strtolower(Auth::user()->role) !== 'operator') {
+            return redirect()->route('dashboard')->withErrors('Error.', 'Anda Tidak Memiliki Akses');
         }
         return $next($request);
     }

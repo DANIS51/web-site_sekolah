@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('galeris', function (Blueprint $table) {
+        Schema::create('db_profil_sekolah_galeri', function (Blueprint $table) {
             $table->id('id_galeri');
             $table->string('judul',50);
             $table->text('keterangan');
             $table->string('file',100);
-            $table->enum('kategori',['foto','video']);
+            $table->enum('kategori',['Foto','Video']);
             $table->date('tanggal');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('galeris');
+        Schema::dropIfExists('db_profil_sekolah_galeri');
     }
 };

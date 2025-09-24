@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class profil_sekolah extends Model
+class ProfilSekolah extends Model
 {
-    protected $table = 'profil_sekolah';
+    protected $table = 'db_profil_sekolah_profil_sekolah';
 
     protected $primaryKey = 'id_profil';
 

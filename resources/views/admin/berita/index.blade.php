@@ -49,7 +49,8 @@
                         <th>Judul</th>
                         <th>Tanggal</th>
                         <th>Gambar</th>
-                        <th>Id_user</th>
+                        <th>Penulis</th>
+                        <th>Dibuat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

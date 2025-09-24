@@ -55,7 +55,7 @@
                                         <span class="text-muted">Tidak Ada Foto</span>
                                     @endif
                                 </td>
-                                <td>{{ $guru->nama }}</td>
+                                <td>{{ $guru->nama_guru }}</td>
                                 <td>{{ $guru->nip }}</td>
                                 <td>{{ $guru->mapel }}</td>
                                 <td>

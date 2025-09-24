@@ -7,8 +7,8 @@ use App\Models\Berita;
 use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\Galeri;
-use App\Models\ekstrakurikuler;
-use App\Models\profil_sekolah;
+use App\Models\Ekstrakurikuler;
+use App\Models\ProfilSekolah;
 
 class PublicController extends Controller
 {
@@ -22,8 +22,8 @@ class PublicController extends Controller
         $totalGuru = Guru::count();
         $totalSiswa = Siswa::count();
         $totalGaleri = Galeri::count();
-        $totalEkstrakurikuler = ekstrakurikuler::count();
-        $profilSekolah = profil_sekolah::first();
+        $totalEkstrakurikuler = Ekstrakurikuler::count();
+        $profilSekolah = ProfilSekolah::first();
         return view('public.index', compact(
             'latestBerita',
             'totalGuru',

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
-use App\Models\ekstrakurikuler;
+use App\Models\Ekstrakurikuler;
 use App\Models\Galeri;
 use App\Models\Guru;
 use App\Models\Siswa;
@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -20,22 +21,19 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-         
+
         $data = [
             'user' => $user,
             'siswa_count' => Siswa::count(),
             'guru_count' => Guru::count(),
             'berita_count' => Berita::count(),
             'galeri_count' => Galeri::count(),
-            'ekstrakurikuler_count' => DB::table('ekstrakurikuler')->count(),
+            'ekstrakurikuler_count' => Ekstrakurikuler::count(),
             'user_count' => User::count(),
         ];
 
-        if(strtolower($user->role) == 'admin') {
-            return view('admin.dashboard', $data);
-        } else {
-            return view('operator.dashboard', $data);
-        }
+        // Gunakan layout terpadu untuk kedua role
+        return view('unified.dashboard', $data);
     }
 
     public function profile(){
@@ -46,12 +44,14 @@ class DashboardController extends Controller
     public function updateProfile(Request $request){
         $user = Auth::user();
         $validasi = $request->validate([
-            'username' => 'nullable|string|max:255|unique:users,username,'.$user->id_user . ',id_user',
+            'username' => 'nullable|string|max:255|unique:db_profil_sekolah_user,username,'.$user->id_user . ',id_user',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $updateData = [];
+
         if ($request->has('username') && !empty($request->username)) {
-            $user->username = $validasi['username'];
+            $updateData['username'] = $validasi['username'];
         }
 
         if ($request->hasFile('foto')) {
@@ -61,16 +61,24 @@ class DashboardController extends Controller
             }
             // Simpan foto baru
             $path = $request->file('foto')->store('profile_photos', 'public');
-            $user->foto = $path;
+            $updateData['foto'] = $path;
         }
 
-        $user->save();
-        return redirect()->route('admin.profile')->with('success', 'Profile Berhasil diupdate');
+        if (!empty($updateData)) {
+            DB::table('users')->where('id_user', $user->id_user)->update($updateData);
+        }
+
+        return redirect()->route('profile')->with('success', 'Profile Berhasil diupdate');
     }
     public function editPassword(){
         $user = Auth::user();
+        return view('dashboard.edit-password', compact('user'));
+    }
 
-        $validasi = request()->validate([
+    public function updatePassword(Request $request){
+        $user = Auth::user();
+
+        $validasi = $request->validate([
             'current_password' => 'required|string|current_password',
             'password' => 'required|string|min:6|confirmed|different:current_password',
         ],[
@@ -78,8 +86,10 @@ class DashboardController extends Controller
             'password.different' => 'Password baru tidak boleh sama dengan password lama',
         ]);
 
-        $user->password = bcrypt($validasi['password']);
-        $user->save();
+        DB::table('users')
+            ->where('id_user', $user->id_user)
+            ->update(['password' => bcrypt($validasi['password'])]);
+
         return redirect()->route('profile')->with('success', 'Password Berhasil diupdate');
     }
 

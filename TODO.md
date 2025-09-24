@@ -1,13 +1,8 @@
-# Perubahan Tema Warna - Biru Tua & Hitam (Tanpa Gradien)
-
-## Progress
-- [ ] Update `resources/css/purple-theme.css` - Hilangkan gradien, ganti ke biru tua/hitam
-- [ ] Update `resources/views/layouts/public.blade.php` - Ubah CSS variables dan gradien
-- [ ] Update `resources/css/app.css` - Pastikan konsistensi warna
-- [ ] Test tampilan di browser
-
-## Detail Perubahan
-- Hilangkan semua `linear-gradient` dari CSS
-- Ganti warna ungu/pink dengan biru tua (#1e3a8a, #1e40af, #3b82f6)
-- Gunakan warna hitam (#000000, #1f2937) untuk elemen tertentu
-- Pastikan konsistensi warna di seluruh aplikasi
+- [x] Update admin controller: change 'nama' to 'nama_ekskul' in validation, create, and search
+- [x] Update operator controller: change 'nama_ekstrakurikuler' to 'nama_ekskul' in validation
+- [x] Update admin create view: change name="nama" to name="nama_ekskul", old('nama') to old('nama_ekskul')
+- [x] Update admin edit view: change name="nama" to name="nama_ekskul", old('nama', $ekstrakurikuler->nama) to old('nama_ekskul', $ekstrakurikuler->nama_ekskul)
+- [x] Update operator create view: change name="nama" to name="nama_ekskul", old('nama') to old('nama_ekskul')
+- [x] Update operator edit view: change name="nama" to name="nama_ekskul", old('nama', $ekstrakurikuler->nama) to old('nama_ekskul', $ekstrakurikuler->nama_ekskul)
+- [x] Update operator index view: change $item->nama_eskul to $item->nama_ekskul
+- [x] Update admin index view: change $ekskul->nama to $ekskul->nama_ekskul

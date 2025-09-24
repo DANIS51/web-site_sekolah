@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\profil_sekolah;
+use App\Models\ProfilSekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +19,7 @@ class ProfilSekolahController extends Controller
         $search = $request->input('search');
         $perPage = $request->input('per_page', 10);
 
-        $query = profil_sekolah::query();
+        $query = ProfilSekolah::query();
 
         if ($search) {
             $query->where('nama_sekolah', 'like', '%' . $search . '%')
@@ -44,7 +44,7 @@ class ProfilSekolahController extends Controller
             'kepala_sekolah' => 'required|string|max:40',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'npsn' => 'required|string|max:10|unique:profil_sekolah,npsn',
+            'npsn' => 'required|string|max:10|unique:db_profil_sekolah_profil_sekolah,npsn',
             'alamat' => 'required|string',
             'kontak' => 'required|string|max:15',
             'visi_misi' => 'required|string',
@@ -64,27 +64,27 @@ class ProfilSekolahController extends Controller
             $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');
         }
 
-        profil_sekolah::create($data);
+        ProfilSekolah::create($data);
 
         return redirect()->route('admin.profil_sekolah.index')->with('success', 'Profil sekolah berhasil ditambahkan.');
     }
 
     public function edit($id)
     {
-        $profil = profil_sekolah::findOrFail($id);
+        $profil = ProfilSekolah::findOrFail($id);
         return view('admin.profil_sekolah.edit', compact('profil'));
     }
 
     public function update(Request $request, $id)
     {
-        $profil = profil_sekolah::findOrFail($id);
+        $profil = ProfilSekolah::findOrFail($id);
 
         $validated = $request->validate([
             'nama_sekolah' => 'required|string|max:40',
             'kepala_sekolah' => 'required|string|max:40',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'npsn' => 'required|string|max:10|unique:profil_sekolah,npsn,' . $id . ',id_profil',
+            'npsn' => 'required|string|max:10|unique:db_profil_sekolah_profil_sekolah,npsn,' . $id . ',id_profil',
             'alamat' => 'required|string',
             'kontak' => 'required|string|max:15',
             'visi_misi' => 'required|string',
@@ -121,7 +121,7 @@ class ProfilSekolahController extends Controller
 
     public function destroy($id)
     {
-        $profil = profil_sekolah::findOrFail($id);
+        $profil = ProfilSekolah::findOrFail($id);
         $profil->delete();
 
         return redirect()->route('admin.profil_sekolah.index')->with('success', 'Profil sekolah berhasil dihapus.');

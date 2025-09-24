@@ -41,7 +41,7 @@
                     @foreach($ekstrakurikulera as $index => $ekskul)
                         <tr>
                             <td>{{ $ekstrakurikulera->firstItem() + $index }}</td>
-                            <td>{{ $ekskul->nama}}</td>
+                            <td>{{ $ekskul->nama_ekskul}}</td>
                             <td>{{ $ekskul->pelatih }}</td>
                             <td>{{ $ekskul->jadwal }}</td>
                             <td>{{ $ekskul->deskripsi }}</td>

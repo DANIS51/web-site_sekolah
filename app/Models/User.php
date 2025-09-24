@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    //
     protected $primaryKey = 'id_user';
-    protected $table = 'users';
+    protected $table = 'db_profil_sekolah_user';
 
     protected $fillable = [
         'username',
@@ -19,7 +20,6 @@ class User extends Authenticatable
 
     protected $hidden = [
         'password',
-
     ];
 
     public function getAuthIdentifierName()
@@ -52,5 +52,30 @@ class User extends Authenticatable
         return $this->role === 'operator';
     }
 
-    
+    /**
+     * Get the full URL for foto
+     */
+    public function getFotoUrlAttribute()
+    {
+        return $this->foto ? asset('storage/' . $this->foto) : null;
+    }
+
+    /**
+     * Delete associated files when model is deleted
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            if ($user->foto && Storage::exists('public/' . $user->foto)) {
+                Storage::delete('public/' . $user->foto);
+            }
+        });
+    }
+
+    public function save(array $options = [])
+    {
+        return parent::save($options);
+    }
 }

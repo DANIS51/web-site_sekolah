@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ekstrakurikuler;
+use App\Models\Ekstrakurikuler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,16 +19,16 @@ class EkstrakurikulerController extends Controller
         $search = $request->input('search');
         $perPage = $request->input('per_page', 10);
 
-        $query = ekstrakurikuler::query();
+        $query = Ekstrakurikuler::query();
 
         if ($search) {
-            $query->where('nama', 'like', '%' . $search . '%')
-                ->orWhere('pelatih', 'like', '%' . $search . '%')
-                ->orWhere('jadwal', 'like', '%' . $search . '%')
+            $query->where('nama_ekskul', 'like', '%' . $search . '%')
+                ->orWhere('pembina', 'like', '%' . $search . '%')
+                ->orWhere('jadwal_latihan', 'like', '%' . $search . '%')
                 ->orWhere('deskripsi', 'like', '%' . $search . '%');
         }
 
-        $ekstrakurikulera = $query->orderBy('nama')->paginate($perPage)->withQueryString();
+        $ekstrakurikulera = $query->orderBy('nama_ekskul')->paginate($perPage)->withQueryString();
 
         return view('admin.ekstrakurikulera.index', compact('ekstrakurikulera', 'search'));
     }
@@ -39,10 +39,10 @@ class EkstrakurikulerController extends Controller
 
     public function StoreEskul(Request $request){
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_ekskul' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'jadwal' => 'required|string|max:100',
-            'pelatih' => 'required|string|max:100',
+            'jadwal_latihan' => 'required|string|max:100',
+            'pembina' => 'required|string|max:100',
             'tanggal' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -50,11 +50,11 @@ class EkstrakurikulerController extends Controller
         if ($request->hasFile('gambar')) {
             $filePath = $request->file('gambar')->store('ekstrakurikulera', 'public');
         }
-        ekstrakurikuler::create([
-            'nama' => $validated['nama'],
+        Ekstrakurikuler::create([
+            'nama_ekskul' => $validated['nama_ekskul'],
             'deskripsi' => $validated['deskripsi'],
-            'jadwal' => $validated['jadwal'],
-            'pelatih' => $validated['pelatih'],
+            'jadwal_latihan' => $validated['jadwal_latihan'],
+            'pembina' => $validated['pembina'],
             'tanggal' => $validated['tanggal'],
             'gambar' => $filePath,
         ]);
@@ -63,19 +63,19 @@ class EkstrakurikulerController extends Controller
 
     public function editEkstrakurikulera($id)
     {
-        $ekstrakurikuler = ekstrakurikuler::findOrFail($id);
+        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
         return view('admin.ekstrakurikulera.edit', compact('ekstrakurikuler'));
     }
 
     public function updateEkstrakurikulera(Request $request, $id)
     {
-        $ekstrakurikuler = ekstrakurikuler::findOrFail($id);
+        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_ekskul' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'jadwal' => 'required|string|max:100',
-            'pelatih' => 'required|string|max:100',
+            'jadwal_latihan' => 'required|string|max:100',
+            'pembina' => 'required|string|max:100',
             'tanggal' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -98,7 +98,7 @@ class EkstrakurikulerController extends Controller
 
     public function destroyEkstrakurikulera($id)
     {
-        $ekstrakurikuler = ekstrakurikuler::findOrFail($id);
+        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
         // Hapus gambar jika ada
         if ($ekstrakurikuler->gambar && Storage::exists('public/' . $ekstrakurikuler->gambar)) {

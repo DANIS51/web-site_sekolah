@@ -29,7 +29,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>NISM</th>
+                        <th>NISN</th>
                         <th>Nama Siswa</th>
                         <th>Jenis Kelamin</th>
                         <th>Tahun Masuk</th>
@@ -40,7 +40,7 @@
                     @foreach($siswa as $index => $item)
                         <tr>
                             <td>{{ $siswa->firstItem() + $index }}</td>
-                            <td>{{ $item->nism }}</td>
+                            <td>{{ $item->nisn }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
                             <td>{{ $item->tahun_masuk }}</td>

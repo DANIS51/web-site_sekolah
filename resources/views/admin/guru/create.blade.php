@@ -11,9 +11,9 @@
         <form action="{{ route('admin.guru.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="nama" class="form-label">Nama Guru</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}" required>
-                @error('nama')
+                <label for="nama_guru" class="form-label">Nama Guru</label>
+                <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama_guru" name="nama_guru" value="{{ old('nama_guru') }}" required>
+                @error('nama_guru')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

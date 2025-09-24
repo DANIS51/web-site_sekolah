@@ -10,7 +10,7 @@ class SiswaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin'); // Sekarang menerima admin dan operator
     }
 
 
@@ -23,7 +23,7 @@ class SiswaController extends Controller
 
         if ($search) {
             $query->where('nama_siswa', 'like', '%' . $search . '%')
-                ->orWhere('nism', 'like', '%' . $search . '%');
+                ->orWhere('nisn', 'like', '%' . $search . '%');
         }
 
         $siswa = $query->orderBy('nama_siswa')->paginate($perPage)->withQueryString();
@@ -42,9 +42,9 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nism' => 'required|string|max:10|unique:siswas,nism',
+            'nisn' => 'required|string|max:10|unique:db_profil_sekolah_siswa,nisn',
             'nama_siswa' => 'required|string|max:40',
-            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'tahun_masuk' => 'required|digits:4',
         ]);
 
@@ -55,21 +55,21 @@ class SiswaController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($id_siswa)
     {
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail($id_siswa);
         return view('admin.siswa.edit', compact('siswa'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_siswa)
     {
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail($id_siswa);
 
         $validated = $request->validate([
-            'nism' => 'required|string|max:10|unique:siswas,nism,' . $id . ',id_siswa',
+            'nisn' => 'required|string|max:10|unique:db_profil_sekolah_siswa,nisn,' . $id_siswa . ',id_siswa',
             'nama_siswa' => 'required|string|max:40',
-            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'tahun_masuk' => 'required|digits:4',
         ]);
 
@@ -80,9 +80,9 @@ class SiswaController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy($id_siswa)
     {
-        $siswa = Siswa::findOrFail($id);
+        $siswa = Siswa::findOrFail($id_siswa);
         $siswa->delete();
 
         return redirect()->route('admin.siswa.index')

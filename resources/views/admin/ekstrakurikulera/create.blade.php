@@ -9,13 +9,13 @@
             <form action="{{ route('admin.ekstrakurikulera.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="nama">Ekstrakurikuler</label>
-                        <input type="text" name="nama" id="nama" class="form-control" value="{{ old('nama') }}">
-                        @error('nama')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nama_ekskul">Ekstrakurikuler</label>
+                            <input type="text" name="nama_ekskul" id="nama_ekskul" class="form-control" value="{{ old('nama_ekskul') }}">
+                            @error('nama_ekskul')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">

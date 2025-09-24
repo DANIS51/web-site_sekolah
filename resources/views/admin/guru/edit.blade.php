@@ -40,10 +40,10 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3 row align-items-center">
-                                    <label for="nama" class="col-sm-4 col-form-label">Nama Guru</label>
+                                    <label for="nama_guru" class="col-sm-4 col-form-label">Nama Guru</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama', $guru->nama) }}" required>
-                                        @error('nama')
+                                        <input type="text" class="form-control @error('nama_guru') is-invalid @enderror" id="nama_guru" name="nama_guru" value="{{ old('nama_guru', $guru->nama_guru) }}" required>
+                                        @error('nama_guru')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
