@@ -58,31 +58,61 @@
             font-size: 18px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+        #sidebarToggle:checked ~ .sidebar {
+            transform: translateX(0);
+        }
+        #sidebarToggle:checked + #sidebarToggleLabel {
+            display: none;
+        }
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
             }
-            .sidebar.show {
-                transform: translateX(0);
-            }
             .content {
                 margin-left: 0;
+                padding: 15px;
             }
             #sidebarToggleLabel {
                 display: block;
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .sidebar .nav-link {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .content {
+                padding: 10px;
+            }
+            .sidebar .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            #sidebarToggleLabel {
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
     <input type="checkbox" id="sidebarToggle" style="display: none;">
-    <label for="sidebarToggle" id="sidebarToggleLabel">☰</label>
+    <label for="sidebarToggle" id="sidebarToggleLabel" aria-label="Toggle Sidebar">☰</label>
 
     <div class="sidebar bg-primary text-white">
         <div class="p-3">
-            <div class="d-flex align-items-center mb-3">
-                <i class="bi bi-mortarboard fs-4 me-2"></i>
-                <h5 class="mb-0">Sistem Sekolah</h5>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-mortarboard fs-4 me-2"></i>
+                    <h5 class="mb-0">Sistem Sekolah</h5>
+                </div>
+                <button class="btn btn-link text-white d-md-none p-0" onclick="document.getElementById('sidebarToggle').checked = false;" aria-label="Close Sidebar">
+                    <i class="bi bi-x-lg fs-4"></i>
+                </button>
             </div>
             <hr class="my-3">
             <ul class="nav flex-column">
@@ -92,37 +122,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.users*')) active @endif" href="{{ route('admin.users') }}">
-                        <i class="bi bi-people me-2"></i> Users
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.siswa*')) active @endif" href="{{ route('admin.siswa.index') }}">
                         <i class="bi bi-person me-2"></i> Siswa
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.guru') }}">
-                        <i class="bi bi-person-badge me-2"></i> Guru
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.berita') }}">
+                    <a class="nav-link @if(request()->routeIs('admin.berita*')) active @endif" href="{{ route('admin.berita') }}">
                         <i class="bi bi-newspaper me-2"></i> Berita
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.galeri') }}">
+                    <a class="nav-link @if(request()->routeIs('admin.galeri*')) active @endif" href="{{ route('admin.galeri') }}">
                         <i class="bi bi-images me-2"></i> Galeri
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.ekstrakurikulera') }}">
+                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikulera*')) active @endif" href="{{ route('admin.ekstrakurikulera') }}">
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ route('admin.profil_sekolah.index') }}">
+                    <a class="nav-link @if(request()->routeIs('admin.profil_sekolah*')) active @endif" href="{{ route('admin.profil_sekolah.index') }}">
                         <i class="bi bi-building me-2"></i> Profil Sekolah
                     </a>
                 </li>
@@ -134,7 +154,7 @@
                 </a>
                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="nav-link text-white d-flex align-items-center border-0 bg-transparent p-0">
+                    <button type="submit" class="nav-link text-white d-flex align-items-center border-0 bg-transparent p-0" onclick="return confirm('Apakah Anda yakin ingin logout?')">
                         <i class="bi bi-box-arrow-right me-2"></i> Logout
                     </button>
                 </form>
@@ -147,5 +167,6 @@
     </div>
 
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+   
 </body>
 </html>

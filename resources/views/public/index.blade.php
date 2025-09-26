@@ -97,7 +97,7 @@
                     <div class="col-md-4 mb-4">
                         <div class="news-card">
                             @if($beritaItem->gambar)
-                                <img src="{{ asset('storage/' . $beritaItem->gambar) }}" alt="{{ $beritaItem->judul }}" class="news-image">
+                                <img src="{{ asset('storage/' . $beritaItem->gambar) }}" alt="{{ $beritaItem->judul }}" class="news-image img-fluid">
                             @endif
                             <div class="news-content">
                                 <h5 class="news-title">{{ Str::limit($beritaItem->judul, 50) }}</h5>

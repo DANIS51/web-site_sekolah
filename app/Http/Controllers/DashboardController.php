@@ -21,19 +21,30 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
+        if (strtolower($user->role) == 'admin') {
+            $data = [
+                'user' => $user,
+                'siswa_count' => Siswa::count(),
+                'guru_count' => Guru::count(),
+                'berita_count' => Berita::count(),
+                'galeri_count' => Galeri::count(),
+                'ekstrakurikuler_count' => Ekstrakurikuler::count(),
+                'user_count' => User::count(),
+            ];
 
-        $data = [
-            'user' => $user,
-            'siswa_count' => Siswa::count(),
-            'guru_count' => Guru::count(),
-            'berita_count' => Berita::count(),
-            'galeri_count' => Galeri::count(),
-            'ekstrakurikuler_count' => Ekstrakurikuler::count(),
-            'user_count' => User::count(),
-        ];
+            return view('admin.dashboard', $data);
+        } else {
+            $data = [
+                'user' => $user,
+                'totalSiswa' => Siswa::count(),
+                'totalBerita' => Berita::count(),
+                'totalGaleri' => Galeri::count(),
+                'totalEkstrakurikuler' => Ekstrakurikuler::count(),
+                'totalProfilSekolah' => \App\Models\ProfilSekolah::count(),
+            ];
 
-        // Gunakan layout terpadu untuk kedua role
-        return view('unified.dashboard', $data);
+            return view('operator.dashboard', $data);
+        }
     }
 
     public function profile(){

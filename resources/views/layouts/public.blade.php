@@ -237,6 +237,51 @@
             .stats-counter {
                 margin: 5px;
             }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .hero-section {
+                padding: 40px 0;
+            }
+
+            .news-card, .gallery-item {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-card {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .stats-counter {
+                padding: 15px;
+                margin: 3px;
+            }
+
+            .stats-number {
+                font-size: 1.5rem;
+            }
+
+            .btn-custom {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 30px 0;
+            }
         }
     </style>
 </head>
