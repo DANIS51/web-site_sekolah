@@ -64,7 +64,7 @@
                                         <td>{{ $profils->firstItem() + $index }}</td>
                                         <td>
                                             @if($profil->logo)
-                                                <img src="{{ asset('storage/' . $profil->logo) }}" alt="Logo Sekolah" class="rounded" style="max-width: 60px; max-height: 60px;">
+                                                <img src="{{ asset('storage/' . $profil->logo) }}" alt="Logo Sekolah" class="img-fluid rounded" style="max-width: 60px; max-height: 60px;">
                                             @else
                                                 <span class="text-muted">Tidak ada logo</span>
                                             @endif

@@ -22,11 +22,21 @@
                     @foreach($galeri as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div class="gallery-item">
-                            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="gallery-image">
+                            @if($item->kategori == 'Foto')
+                                <img src="{{ $item->fileUrl }}" alt="{{ $item->judul }}" class="gallery-image img-fluid">
+                            @else
+                                <video class="gallery-image img-fluid" controls>
+                                    <source src="{{ $item->fileUrl }}" type="video/mp4">
+                                    Browser tidak mendukung video.
+                                </video>
+                            @endif
                             <div class="gallery-overlay">
                                 <div class="gallery-info">
                                     <h6 class="text-white">{{ $item->judul }}</h6>
-                                    <p class="text-white-50">{{ $item->created_at->format('d M Y') }}</p>
+                                    <p class="text-white-50">
+                                        <span class="badge bg-primary me-1">{{ ucfirst($item->kategori) }}</span>
+                                        {{ $item->tanggal->format('d M Y') }}
+                                    </p>
                                 </div>
                             </div>
                         </div>

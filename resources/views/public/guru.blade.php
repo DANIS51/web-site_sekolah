@@ -23,7 +23,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div class="person-card">
                             @if($guruItem->foto)
-                                <img src="{{ asset('storage/' . $guruItem->foto) }}" alt="{{ $guruItem->nama }}" class="person-image">
+                                <img src="{{ asset('storage/' . $guruItem->foto) }}" alt="{{ $guruItem->nama }}" class="person-image img-fluid">
                             @else
                                 <div class="person-image d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
                                     <i class="fas fa-user fa-2x text-white"></i>

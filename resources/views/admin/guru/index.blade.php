@@ -49,8 +49,7 @@
                                 <td>{{ $gurus->firstItem() + $index }}</td>
                                 <td>
                                     @if($guru->foto)
-                                        <img src="{{ asset('storage/' . $guru->foto) }}" alt="Foto Guru" width="50" height="50"
-                                            class="rounded">
+                                        <img src="{{ asset('storage/' . $guru->foto) }}" alt="Foto Guru" class="img-fluid rounded" style="max-width: 50px; max-height: 50px;">
                                     @else
                                         <span class="text-muted">Tidak Ada Foto</span>
                                     @endif

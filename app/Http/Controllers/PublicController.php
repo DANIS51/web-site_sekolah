@@ -59,7 +59,7 @@ class PublicController extends Controller
      */
     public function galeri()
     {
-        $galeri = Galeri::latest()->paginate(12);
+        $galeri = Galeri::orderBy('tanggal', 'desc')->paginate(12);
 
         return view('public.galeri', compact('galeri'));
     }
@@ -99,7 +99,7 @@ class PublicController extends Controller
      */
     public function profilSekolah()
     {
-        $profilSekolah = profil_sekolah::first();
+        $profilSekolah = ProfilSekolah::first();
 
         if (!$profilSekolah) {
             return redirect()->route('public.index')->with('error', 'Profil sekolah belum tersedia.');

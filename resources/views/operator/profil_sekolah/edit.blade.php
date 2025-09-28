@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Edit Profil Sekolah</h2>
                 <a href="{{ route('operator.profil_sekolah.index') }}" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Profil
+                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Profil Sekolah
                 </a>
             </div>
         </div>
@@ -27,54 +27,146 @@
     @endif
 
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Profil Sekolah</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('operator.profil_sekolah.update', $profilSekolah->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('operator.profil_sekolah.update', $profil->id_profil) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
-                        <div class="mb-3">
-                            <label for="judul" class="form-label">Judul Profil <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('judul') is-invalid @enderror"
-                                   id="judul" name="judul" value="{{ old('judul', $profilSekolah->judul) }}" required>
-                            @error('judul')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="konten" class="form-label">Konten Profil <span class="text-danger">*</span></label>
-                            <textarea class="form-control @error('konten') is-invalid @enderror"
-                                      id="konten" name="konten" rows="10" required>{{ old('konten', $profilSekolah->konten) }}</textarea>
-                            @error('konten')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">Tulis informasi profil sekolah dengan lengkap</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar Profil</label>
-                            <input type="file" class="form-control @error('gambar') is-invalid @enderror"
-                                   id="gambar" name="gambar" accept="image/*">
-                            @error('gambar')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">Format: JPG, PNG, JPEG, GIF. Maksimal 2MB. Kosongkan jika tidak ingin mengubah gambar</div>
-                            @if($profilSekolah->gambar)
-                                <div class="mt-2">
-                                    <label class="form-label">Gambar Saat Ini:</label><br>
-                                    <img src="{{ asset('storage/' . $profilSekolah->gambar) }}" alt="Gambar Profil" width="200" height="150" class="rounded">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nama_sekolah" class="form-label">Nama Sekolah <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('nama_sekolah') is-invalid @enderror"
+                                           id="nama_sekolah" name="nama_sekolah" value="{{ old('nama_sekolah', $profil->nama_sekolah) }}" required>
+                                    @error('nama_sekolah')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                            @endif
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="kepala_sekolah" class="form-label">Kepala Sekolah <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('kepala_sekolah') is-invalid @enderror"
+                                           id="kepala_sekolah" name="kepala_sekolah" value="{{ old('kepala_sekolah', $profil->kepala_sekolah) }}" required>
+                                    @error('kepala_sekolah')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="npsn" class="form-label">NPSN <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('npsn') is-invalid @enderror"
+                                           id="npsn" name="npsn" value="{{ old('npsn', $profil->npsn) }}" required>
+                                    @error('npsn')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="kontak" class="form-label">Kontak <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('kontak') is-invalid @enderror"
+                                           id="kontak" name="kontak" value="{{ old('kontak', $profil->kontak) }}" required placeholder="Contoh: 081234567890">
+                                    @error('kontak')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="tahun_berdiri" class="form-label">Tahun Berdiri <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control @error('tahun_berdiri') is-invalid @enderror"
+                                           id="tahun_berdiri" name="tahun_berdiri" value="{{ old('tahun_berdiri', $profil->tahun_berdiri) }}"
+                                           min="1900" max="{{ date('Y') }}" required>
+                                    @error('tahun_berdiri')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="logo" class="form-label">Logo Sekolah</label>
+                                    <input type="file" class="form-control @error('logo') is-invalid @enderror"
+                                           id="logo" name="logo" accept="image/*">
+                                    @error('logo')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">Format: JPEG, PNG, JPG, GIF. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah logo</div>
+                                    @if($profil->logo)
+                                        <div class="mt-2">
+                                            <label class="form-label">Logo Saat Ini:</label>
+                                            <div class="border rounded p-2 bg-light">
+                                                <img src="{{ asset('storage/' . $profil->logo) }}" alt="Logo Sekolah" class="img-thumbnail" style="max-width: 150px;">
+                                                <p class="mb-0 mt-2"><small class="text-muted">{{ basename($profil->logo) }}</small></p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label">Foto Sekolah</label>
+                                    <input type="file" class="form-control @error('foto') is-invalid @enderror"
+                                           id="foto" name="foto" accept="image/*">
+                                    @error('foto')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">Format: JPEG, PNG, JPG, GIF. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah foto</div>
+                                    @if($profil->foto)
+                                        <div class="mt-2">
+                                            <label class="form-label">Foto Saat Ini:</label>
+                                            <div class="border rounded p-2 bg-light">
+                                                <img src="{{ asset('storage/' . $profil->foto) }}" alt="Foto Sekolah" class="img-thumbnail" style="max-width: 150px;">
+                                                <p class="mb-0 mt-2"><small class="text-muted">{{ basename($profil->foto) }}</small></p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('alamat') is-invalid @enderror"
+                                      id="alamat" name="alamat" rows="3" required>{{ old('alamat', $profil->alamat) }}</textarea>
+                            @error('alamat')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="visi_misi" class="form-label">Visi & Misi <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('visi_misi') is-invalid @enderror"
+                                      id="visi_misi" name="visi_misi" rows="4" required>{{ old('visi_misi', $profil->visi_misi) }}</textarea>
+                            @error('visi_misi')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label">Deskripsi Sekolah <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('deskripsi') is-invalid @enderror"
+                                      id="deskripsi" name="deskripsi" rows="4" required>{{ old('deskripsi', $profil->deskripsi) }}</textarea>
+                            @error('deskripsi')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-check-circle me-2"></i> Simpan Perubahan
+                                <i class="bi bi-check-circle me-2"></i> Update Profil Sekolah
                             </button>
                             <a href="{{ route('operator.profil_sekolah.index') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal

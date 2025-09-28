@@ -1,4 +1,4 @@
-@extends('layouts.public')
+ @extends('layouts.public')
 
 @section('title', 'Ekstrakurikuler - Website Sekolah')
 
@@ -39,6 +39,9 @@
                                     @endif
                                     @if($item->jadwal)
                                         <p><strong>Jadwal:</strong> {{ $item->jadwal }}</p>
+                                    @endif
+                                    @if($item->tanggal)
+                                        <p><strong>Tanggal Mulai:</strong> {{ \Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</p>
                                     @endif
                                     @if($item->tempat)
                                         <p><strong>Tempat:</strong> {{ $item->tempat }}</p>

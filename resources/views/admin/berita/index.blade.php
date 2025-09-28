@@ -66,7 +66,7 @@
                                         <td>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d F Y') }}</td>
                                         <td>
                                             @if($berita->gambar)
-                                                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar Berita" width="80" height="60" class="rounded">
+                                                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar Berita" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                             @else
                                                 <span class="text-muted">Tidak ada gambar</span>
                                             @endif

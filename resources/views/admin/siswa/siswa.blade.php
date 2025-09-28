@@ -71,7 +71,7 @@
                                         <td>{{ $item->tahun_masuk }}</td>
                                         <td>
                                             @if($item->foto)
-                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Siswa" width="50" height="50" class="rounded">
+                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Siswa" class="img-fluid rounded" style="max-width: 50px; max-height: 50px;">
                                             @else
                                                 <span class="text-muted">Tidak ada foto</span>
                                             @endif

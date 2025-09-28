@@ -28,11 +28,11 @@
                             <div class="news-content">
                                 <h5 class="news-title">{{ $beritaItem->judul }}</h5>
                                 <p class="news-meta">
-                                    <i class="fas fa-user me-1"></i> {{ $beritaItem->user->name }} |
+                                    <i class="fas fa-user me-1"></i> {{ $beritaItem->user->username }} |
                                     <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
                                 </p>
                                 <p>{{ Str::limit(strip_tags($beritaItem->isi), 150) }}</p>
-                                <a href="{{ route('public.berita.show', $beritaItem->id) }}" class="btn btn-custom btn-sm">
+                                <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}" class="btn btn-custom btn-sm">
                                     Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
                                 </a>
                             </div>

@@ -11,7 +11,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Berita::all();
+        $berita = Berita::with('user')->get();
         return view('operator.berita.index', compact('berita'));
     }
 

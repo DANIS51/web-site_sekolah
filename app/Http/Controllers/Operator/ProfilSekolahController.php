@@ -3,16 +3,33 @@
 namespace App\Http\Controllers\Operator;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\ProfilSekolah;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProfilSekolahController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        $profilSekolah = ProfilSekolah::all();
-        return view('operator.profil_sekolah.index', compact('profilSekolah'));
+        $this->middleware('operator');
+    }
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = ProfilSekolah::query();
+
+        if ($search) {
+            $query->where('nama_sekolah', 'like', '%' . $search . '%')
+                ->orWhere('kepala_sekolah', 'like', '%' . $search . '%')
+                ->orWhere('npsn', 'like', '%' . $search . '%');
+        }
+
+        $profils = $query->orderBy('nama_sekolah')->paginate($perPage)->withQueryString();
+
+        return view('operator.profil_sekolah.index', compact('profils', 'search'));
     }
 
     public function create()
@@ -22,25 +39,29 @@ class ProfilSekolahController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_sekolah' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'telepon' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'deskripsi' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $validated = $request->validate([
+            'nama_sekolah' => 'required|string|max:40',
+            'kepala_sekolah' => 'required|string|max:40',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'npsn' => 'required|string|max:10|unique:db_profil_sekolah_profil_sekolah,npsn',
+            'alamat' => 'required|string',
+            'kontak' => 'required|string|max:15',
+            'visi_misi' => 'required|string',
+            'tahun_berdiri' => 'required|integer|min:1900|max:' . date('Y'),
+            'deskripsi' => 'required|string',
         ]);
 
-        $data = $request->all();
+        $data = $validated;
 
-        if ($request->hasFile('logo')) {
-            $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');
-        }
-
+        // Handle foto upload
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('profil_sekolah_fotos', 'public');
+        }
+
+        // Handle logo upload
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');
         }
 
         ProfilSekolah::create($data);
@@ -50,58 +71,58 @@ class ProfilSekolahController extends Controller
 
     public function edit($id)
     {
-        $profilSekolah = ProfilSekolah::findOrFail($id);
-        return view('operator.profil_sekolah.edit', compact('profilSekolah'));
+        $profil = ProfilSekolah::findOrFail($id);
+        return view('operator.profil_sekolah.edit', compact('profil'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_sekolah' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'telepon' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'deskripsi' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        $profil = ProfilSekolah::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama_sekolah' => 'required|string|max:40',
+            'kepala_sekolah' => 'required|string|max:40',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'npsn' => 'required|string|max:10|unique:db_profil_sekolah_profil_sekolah,npsn,' . $id . ',id_profil',
+            'alamat' => 'required|string',
+            'kontak' => 'required|string|max:15',
+            'visi_misi' => 'required|string',
+            'tahun_berdiri' => 'required|integer|min:1900|max:' . date('Y'),
+            'deskripsi' => 'required|string',
         ]);
 
-        $profilSekolah = ProfilSekolah::findOrFail($id);
-        $data = $request->all();
+        $data = $validated;
 
-        if ($request->hasFile('logo')) {
-            if ($profilSekolah->logo) {
-                Storage::disk('public')->delete($profilSekolah->logo);
-            }
-            $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');
-        }
-
+        // Handle foto upload
         if ($request->hasFile('foto')) {
-            if ($profilSekolah->foto) {
-                Storage::disk('public')->delete($profilSekolah->foto);
+            // Delete old foto if exists
+            if ($profil->foto && Storage::exists('public/' . $profil->foto)) {
+                Storage::delete('public/' . $profil->foto);
             }
+            // Store new foto
             $data['foto'] = $request->file('foto')->store('profil_sekolah_fotos', 'public');
         }
 
-        $profilSekolah->update($data);
+        // Handle logo upload
+        if ($request->hasFile('logo')) {
+            // Delete old logo if exists
+            if ($profil->logo && Storage::exists('public/' . $profil->logo)) {
+                Storage::delete('public/' . $profil->logo);
+            }
+            // Store new logo
+            $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');
+        }
 
-        return redirect()->route('operator.profil_sekolah.index')->with('success', 'Profil sekolah berhasil diperbarui.');
+        $profil->update($data);
+
+        return redirect()->route('operator.profil_sekolah.index')->with('success', 'Profil sekolah berhasil diupdate.');
     }
 
     public function destroy($id)
     {
-        $profilSekolah = ProfilSekolah::findOrFail($id);
-
-        if ($profilSekolah->logo) {
-            Storage::disk('public')->delete($profilSekolah->logo);
-        }
-
-        if ($profilSekolah->foto) {
-            Storage::disk('public')->delete($profilSekolah->foto);
-        }
-
-        $profilSekolah->delete();
+        $profil = ProfilSekolah::findOrFail($id);
+        $profil->delete();
 
         return redirect()->route('operator.profil_sekolah.index')->with('success', 'Profil sekolah berhasil dihapus.');
     }

@@ -37,6 +37,7 @@
                                         <th>Nama Ekstrakurikuler</th>
                                         <th>Jadwal Latihan</th>
                                         <th>Pembina</th>
+                                        <th>Tanggal</th>
                                         <th>Deskripsi</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
@@ -49,11 +50,11 @@
                                             <td>{{ $item->nama_ekskul}}</td>
                                             <td>{{ $item->jadwal_latihan }}</td>
                                             <td>{{ $item->pembina }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</td>
                                             <td>{{ Str::limit(strip_tags($item->deskripsi), 50) }}</td>
                                             <td>
                                                 @if($item->gambar)
-                                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Ekstrakurikuler"
-                                                        width="60" height="60" class="rounded">
+                                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Ekstrakurikuler" class="img-fluid rounded" style="max-width: 60px; max-height: 60px;">
                                                 @else
                                                     <span class="text-muted">Tidak ada gambar</span>
                                                 @endif

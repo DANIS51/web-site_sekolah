@@ -53,6 +53,7 @@
                                     <th>Nama Ekskul</th>
                                     <th>Pembina</th>
                                     <th>Jadwal Latihan</th>
+                                    <th>Tanggal</th>
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
                                     <th>Aksi</th>
@@ -69,10 +70,11 @@
                                         <td>
                                             <span class="badge bg-info">{{ $ekskul->jadwal }}</span>
                                         </td>
+                                        <td>{{ \Carbon\Carbon::parse($ekskul->tanggal)->format('d F Y') }}</td>
                                         <td>{{ Str::limit($ekskul->deskripsi, 50) }}</td>
                                         <td>
                                             @if ($ekskul->gambar)
-                                                <img src="{{ asset('storage/' . $ekskul->gambar) }}" alt="Gambar Ekskul" class="rounded" style="max-width: 80px; max-height: 60px;">
+                                                <img src="{{ asset('storage/' . $ekskul->gambar) }}" alt="Gambar Ekskul" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                             @else
                                                 <span class="text-muted">Tidak ada gambar</span>
                                             @endif

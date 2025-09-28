@@ -23,7 +23,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div class="person-card">
                             @if($siswaItem->foto)
-                                <img src="{{ asset('storage/' . $siswaItem->foto) }}" alt="{{ $siswaItem->nama }}" class="person-image">
+                                <img src="{{ asset('storage/' . $siswaItem->foto) }}" alt="{{ $siswaItem->nama }}" class="person-image img-fluid">
                             @else
                                 <div class="person-image d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, var(--success-color), var(--info-color));">
                                     <i class="fas fa-user-graduate fa-2x text-white"></i>

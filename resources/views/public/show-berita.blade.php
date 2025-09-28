@@ -8,7 +8,7 @@
         <div class="container">
             <h1 class="hero-title">{{ $berita->judul }}</h1>
             <p class="hero-subtitle">
-                <i class="fas fa-user me-1"></i> {{ $berita->user->name }} |
+                <i class="fas fa-user me-1"></i> {{ $berita->user->username }} |
                 <i class="fas fa-calendar me-1"></i> {{ $berita->created_at->format('d F Y') }}
             </p>
         </div>
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h6><i class="fas fa-user me-2"></i>Penulis</h6>
-                            <p>{{ $berita->user->name }}</p>
+                            <p>{{ $berita->user->username }}</p>
                         </div>
                         <div class="col-md-6">
                             <h6><i class="fas fa-calendar me-2"></i>Tanggal</h6>

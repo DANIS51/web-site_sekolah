@@ -36,33 +36,64 @@
                     <form action="{{ route('operator.galeri.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="mb-3">
-                            <label for="judul" class="form-label">Judul Gambar <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('judul') is-invalid @enderror"
-                                   id="judul" name="judul" value="{{ old('judul') }}" required>
-                            @error('judul')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label">Judul Galeri <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('judul') is-invalid @enderror"
+                                           id="judul" name="judul" value="{{ old('judul') }}" required maxlength="50">
+                                    @error('judul')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="kategori" class="form-label">Kategori <span class="text-danger">*</span></label>
+                                    <select class="form-select @error('kategori') is-invalid @enderror"
+                                            id="kategori" name="kategori" required>
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="Foto" {{ old('kategori') == 'Foto' ? 'selected' : '' }}>Foto</option>
+                                        <option value="Video" {{ old('kategori') == 'Video' ? 'selected' : '' }}>Video</option>
+                                    </select>
+                                    @error('kategori')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="file" class="form-label">File Media <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control @error('file') is-invalid @enderror"
+                                           id="file" name="file" required accept="image/*,video/*">
+                                    @error('file')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 2MB</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tanggal" class="form-label">Tanggal Upload <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
+                                           id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
+                                    @error('tanggal')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control @error('deskripsi') is-invalid @enderror"
-                                      id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
-                            @error('deskripsi')
+                            <label for="keterangan" class="form-label">Keterangan <span class="text-danger">*</span></label>
+                            <textarea class="form-control @error('keterangan') is-invalid @enderror"
+                                      id="keterangan" name="keterangan" rows="4" required>{{ old('keterangan') }}</textarea>
+                            @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <div class="form-text">Berikan deskripsi singkat tentang gambar ini</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="gambar" class="form-label">Gambar <span class="text-danger">*</span></label>
-                            <input type="file" class="form-control @error('gambar') is-invalid @enderror"
-                                   id="gambar" name="gambar" accept="image/*" required>
-                            @error('gambar')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">Format: JPG, PNG, JPEG, GIF. Maksimal 2MB. Resolusi yang disarankan: 800x600px</div>
                         </div>
 
                         <div class="mb-3">
@@ -73,7 +104,7 @@
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-check-circle me-2"></i> Simpan Gambar
+                                <i class="bi bi-check-circle me-2"></i> Simpan Galeri
                             </button>
                             <a href="{{ route('operator.galeri.index') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal
@@ -87,11 +118,11 @@
 </div>
 
 <script>
-    document.getElementById('gambar').addEventListener('change', function(e) {
+    document.getElementById('file').addEventListener('change', function(e) {
         const file = e.target.files[0];
         const preview = document.getElementById('preview-image');
 
-        if (file) {
+        if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 preview.src = e.target.result;

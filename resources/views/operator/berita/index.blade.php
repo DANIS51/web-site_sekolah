@@ -37,6 +37,7 @@
                                     <th>Judul</th>
                                     <th>Konten</th>
                                     <th>Gambar</th>
+                                    <th>Penulis</th>
                                     <th>Tanggal Publikasi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -49,11 +50,12 @@
                                         <td>{{ Str::limit(strip_tags($item->isi), 100) }}</td>
                                         <td>
                                             @if($item->gambar)
-                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Berita" width="80" height="60" class="rounded">
+                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Berita" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                             @else
                                                 <span class="text-muted">Tidak ada gambar</span>
                                             @endif
                                         </td>
+                                        <td>{{ $item->user ? $item->user->username : 'Unknown' }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
@@ -72,7 +74,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">Belum ada data berita</td>
+                                        <td colspan="7" class="text-center">Belum ada data berita</td>
                                     </tr>
                                 @endforelse
                             </tbody>

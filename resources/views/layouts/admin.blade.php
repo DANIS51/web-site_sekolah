@@ -121,6 +121,11 @@
                         <i class="bi bi-house-door me-2"></i> Dashboard
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link @if(request()->routeIs('admin.siswa*')) active @endif" href="{{ route('admin.users') }}">
+                        <i class="bi bi-person me-2"></i> Users
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.siswa*')) active @endif" href="{{ route('admin.siswa.index') }}">
                         <i class="bi bi-person me-2"></i> Siswa

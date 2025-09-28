@@ -11,7 +11,7 @@ class GaleriController extends Controller
 {
     public function index()
     {
-        $galeri = Galeri::all();
+        $galeri = Galeri::orderBy('tanggal', 'desc')->get();
         return view('operator.galeri.index', compact('galeri'));
     }
 
@@ -23,15 +23,22 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'judul' => 'required|string|max:50',
+            'keterangan' => 'required|string',
+            'file' => 'required|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:2048',
+            'kategori' => 'required|in:Foto,Video',
+            'tanggal' => 'required|date',
         ]);
 
-        $data = $request->all();
+        $data = [
+            'judul' => $request->judul,
+            'keterangan' => $request->keterangan,
+            'kategori' => $request->kategori,
+            'tanggal' => $request->tanggal,
+        ];
 
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('galeri_gambars', 'public');
+        if ($request->hasFile('file')) {
+            $data['file'] = $request->file('file')->store('galeri', 'public');
         }
 
         Galeri::create($data);
@@ -48,19 +55,26 @@ class GaleriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'judul' => 'required|string|max:50',
+            'keterangan' => 'required|string',
+            'file' => 'nullable|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:2048',
+            'kategori' => 'required|in:Foto,Video',
+            'tanggal' => 'required|date',
         ]);
 
         $galeri = Galeri::findOrFail($id);
-        $data = $request->all();
+        $data = [
+            'judul' => $request->judul,
+            'keterangan' => $request->keterangan,
+            'kategori' => $request->kategori,
+            'tanggal' => $request->tanggal,
+        ];
 
-        if ($request->hasFile('gambar')) {
-            if ($galeri->gambar) {
-                Storage::disk('public')->delete($galeri->gambar);
+        if ($request->hasFile('file')) {
+            if ($galeri->file) {
+                Storage::disk('public')->delete($galeri->file);
             }
-            $data['gambar'] = $request->file('gambar')->store('galeri_gambars', 'public');
+            $data['file'] = $request->file('file')->store('galeri', 'public');
         }
 
         $galeri->update($data);
@@ -72,8 +86,8 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::findOrFail($id);
 
-        if ($galeri->gambar) {
-            Storage::disk('public')->delete($galeri->gambar);
+        if ($galeri->file) {
+            Storage::disk('public')->delete($galeri->file);
         }
 
         $galeri->delete();

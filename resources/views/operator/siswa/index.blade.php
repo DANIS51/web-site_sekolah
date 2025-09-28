@@ -37,6 +37,7 @@
                                     <th>NISN</th>
                                     <th>Nama Siswa</th>
                                     <th>Jenis Kelamin</th>
+                                    <th>Alamat</th>
                                     <th>Tahun Masuk</th>
                                     <th>Foto</th>
                                     <th>Aksi</th>
@@ -55,24 +56,25 @@
                                                 <span class="badge bg-danger">Perempuan</span>
                                             @endif
                                         </td>
+                                        <td>{{$item->alamat}}</td>
                                         <td>{{ $item->tahun_masuk }}</td>
                                         <td>
                                             @if($item->foto)
-                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Siswa" width="50" height="50" class="rounded">
+                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Siswa" class="img-fluid rounded" style="max-width: 50px; max-height: 50px;">
                                             @else
                                                 <span class="text-muted">Tidak ada foto</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <a href="{{ route('operator.siswa.edit', $item->id_siswa) }}" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pencil-square"></i> Edit
+                                            <div class="btn-group " role="group">
+                                                <a href="{{ route('operator.siswa.edit', $item->id_siswa) }}" class="btn btn-warning btn-sm me-2">
+                                                    <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
                                                 <form action="{{ route('operator.siswa.destroy', $item->id_siswa) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="bi bi-trash"></i> Hapus
+                                                        <i class="bi bi-trash me-2"></i> Hapus
                                                     </button>
                                                 </form>
                                             </div>

@@ -66,7 +66,7 @@
                                         <td>{{ \Carbon\Carbon::parse($galeri->tanggal)->format('d F Y') }}</td>
                                         <td>
                                             @if($galeri->kategori === 'foto')
-                                                <img src="{{ asset('storage/' . $galeri->file) }}" alt="{{ $galeri->judul }}" class="rounded" style="max-width: 80px; max-height: 60px;">
+                                                <img src="{{ asset('storage/' . $galeri->file) }}" alt="{{ $galeri->judul }}" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                             @elseif($galeri->kategori === 'video')
                                                 <video width="80" height="60" controls class="rounded">
                                                     <source src="{{ asset('storage/' . $galeri->file) }}" type="video/mp4">
