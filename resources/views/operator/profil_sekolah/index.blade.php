@@ -79,14 +79,14 @@
                                         <td>{{ $profil->kontak }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('operator.profil_sekolah.edit', $profil->id_profil) }}" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                <a href="{{ route('operator.profil_sekolah.edit', $profil->id_profil) }}" class="btn btn-warning btn-sm me-2">
+                                                    <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
                                                 <form action="{{ route('operator.profil_sekolah.destroy', $profil->id_profil) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus profil sekolah ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="bi bi-trash"></i> Hapus
+                                                        <i class="bi bi-trash me-2"></i> Hapus
                                                     </button>
                                                 </form>
                                             </div>

@@ -78,14 +78,14 @@
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('admin.siswa.edit', $item->id_siswa) }}" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                <a href="{{ route('admin.siswa.edit', $item->id_siswa) }}" class="btn btn-warning btn-sm me-2">
+                                                    <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
                                                 <form action="{{ route('admin.siswa.destroy', $item->id_siswa) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="bi bi-trash"></i> Hapus
+                                                        <i class="bi bi-trash me-2"></i> Hapus
                                                     </button>
                                                 </form>
                                             </div>

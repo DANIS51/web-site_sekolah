@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="hero-title">
                 <i class="fas fa-info-circle me-2"></i>
                 Profil Sekolah
@@ -16,7 +16,7 @@
 
     <!-- School Profile Section -->
     <section class="py-5">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             @if($profilSekolah)
                 <div class="section-card">
                     <div class="row">

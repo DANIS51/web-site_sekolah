@@ -36,7 +36,7 @@ class BeritaController extends Controller
     }
     public function storeBerita(Request $request){
         $validated = $request->validate([
-            'judul' => 'required|string|max:100',
+            'judul' => 'required|string|max:255',
             'isi' => 'required|string',
             'tanggal' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -68,11 +68,11 @@ class BeritaController extends Controller
         $berita = Berita::findOrFail($id);
 
         $validated = $request->validate([
-            'judul' => 'required|string|max:100',
+            'judul' => 'required|string|max:255',
             'isi' => 'required|string',
             'tanggal' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            
+
         ]);
 
         $berita->update([

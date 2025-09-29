@@ -81,14 +81,14 @@
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('admin.ekstrakurikulera.edit', $ekskul->id_ekskul) }}" class="btn btn-warning btn-sm">
-                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                <a href="{{ route('admin.ekstrakurikulera.edit', $ekskul->id_ekskul) }}" class="btn btn-warning btn-sm me-2">
+                                                    <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
                                                 <form action="{{ route('admin.ekstrakurikulera.destroy', $ekskul->id_ekskul) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="bi bi-trash"></i> Hapus
+                                                        <i class="bi bi-trash me-2"></i> Hapus
                                                     </button>
                                                 </form>
                                             </div>

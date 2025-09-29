@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="hero-title">{{ $berita->judul }}</h1>
             <p class="hero-subtitle">
                 <i class="fas fa-user me-1"></i> {{ $berita->user->username }} |
@@ -13,10 +13,10 @@
             </p>
         </div>
     </section>
-
+    
     <!-- News Detail Section -->
     <section class="py-5">
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="section-card">
                 @if($berita->gambar)
                     <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid mb-4 rounded">

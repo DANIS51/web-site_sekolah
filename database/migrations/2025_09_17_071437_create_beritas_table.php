@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('db_profil_sekolah_berita', function (Blueprint $table) {
             $table->id('id_berita');
-            $table->string('judul',50);
+            $table->string('judul',255);
             $table->text('isi');
             $table->date('tanggal' );
             $table->string('gambar',100)->nullable();

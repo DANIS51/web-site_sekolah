@@ -101,10 +101,6 @@ class PublicController extends Controller
     {
         $profilSekolah = ProfilSekolah::first();
 
-        if (!$profilSekolah) {
-            return redirect()->route('public.index')->with('error', 'Profil sekolah belum tersedia.');
-        }
-
         return view('public.profil-sekolah', compact('profilSekolah'));
     }
 }
