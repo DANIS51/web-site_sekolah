@@ -1,8 +1,7 @@
-- [x] Change grid columns from col-lg-3 col-md-4 col-sm-6 to col-lg-4 col-md-6 mb-4
-- [x] Replace gallery-item with news-card class
-- [x] Change img class to news-image
-- [x] Change video class to news-image
-- [x] Remove gallery-overlay div
-- [x] Add news-content div with title and meta
-- [x] Remove custom style block
-- [x] Add description display in news-content
+# TODO: Update Tampilan Guru Publik
+
+## Langkah-langkah:
+- [x] Edit resources/views/public/guru.blade.php untuk memperbarui struktur kartu guru: foto bulat, hapus alamat, nama bersih, dan mapel sebagai subtitle.
+- [ ] Verifikasi perubahan dengan menjalankan server dan melihat halaman /guru.
+- [x] Update TODO.md untuk menandai selesai.
+- [ ] Jika perlu, uji dengan browser_action untuk screenshot konfirmasi.

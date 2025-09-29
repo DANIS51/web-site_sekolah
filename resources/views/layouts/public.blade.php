@@ -293,7 +293,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="{{ route('public.index') }}">
-                <i class="fas fa-school me-2"></i>
+                <i class="me-2"></i>
                 Website Sekolah
             </a>
 
@@ -305,37 +305,37 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.index') }}">
-                            <i class="fas fa-home me-1"></i> Beranda
+                            <i class="me-1"></i> Beranda
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.berita') }}">
-                            <i class="fas fa-newspaper me-1"></i> Berita
+                            <i class=" me-1"></i> Berita
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.galeri') }}">
-                            <i class="fas fa-images me-1"></i> Galeri
+                            <i class="me-1"></i> Galeri
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.guru') }}">
-                            <i class="fas fa-chalkboard-teacher me-1"></i> Guru
+                            <i class=" me-1"></i> Guru
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.siswa') }}">
-                            <i class="fas fa-users me-1"></i> Siswa
+                            <i class="me-1"></i> Siswa
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.ekstrakurikuler') }}">
-                            <i class="fas fa-trophy me-1"></i> Ekstrakurikuler
+                            <i class=" me-1"></i> Ekstrakurikuler
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('public.profil-sekolah') }}">
-                            <i class="fas fa-info-circle me-1"></i> Profil Sekolah
+                            <i class=" me-1"></i> Profil Sekolah
                         </a>
                     </li>
                 </ul>

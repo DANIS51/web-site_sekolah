@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section text-center text-white d-flex align-items-center" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/storage/logo/smpn.jpg'); background-size: cover; background-position: center; min-height: 70vh;">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container" >
             <h1 class="fw-bold mb-3">Selamat Datang di Website Sekolah</h1>
             <p class="lead">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
         </div>

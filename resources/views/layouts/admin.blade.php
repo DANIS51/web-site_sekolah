@@ -122,8 +122,13 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.siswa*')) active @endif" href="{{ route('admin.users') }}">
-                        <i class="bi bi-person me-2"></i> Users
+                    <a class="nav-link @if(request()->routeIs('admin.users*')) active @endif" href="{{ route('admin.users') }}">
+                        <i class="bi bi-person-badge me-2"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(request()->routeIs('admin.guru*')) active @endif" href="{{ route('admin.guru') }}">
+                        <i class="bi bi-person-square me-2"></i> Guru
                     </a>
                 </li>
                 <li class="nav-item">

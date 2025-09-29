@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
             <h1 class="hero-title">
                 <i class="fas fa-info-circle me-2"></i>
                 Profil Sekolah
