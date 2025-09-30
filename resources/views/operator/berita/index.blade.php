@@ -59,10 +59,10 @@
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{ route('operator.berita.edit', $item->id_berita) }}" class="btn btn-warning btn-sm me-2">
+                                                <a href="{{ route('operator.berita.edit', Crypt::encrypt($item->id_berita)) }}" class="btn btn-warning btn-sm me-2">
                                                     <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
-                                                <form action="{{ route('operator.berita.destroy', $item->id_berita) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
+                                                <form action="{{ route('operator.berita.destroy', Crypt::encrypt($item->id_berita)) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">

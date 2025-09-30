@@ -76,10 +76,10 @@ class DashboardController extends Controller
         }
 
         if (!empty($updateData)) {
-            DB::table('users')->where('id_user', $user->id_user)->update($updateData);
+            DB::table('db_profil_sekolah_user')->where('id_user', $user->id_user)->update($updateData);
         }
 
-        return redirect()->route('profile')->with('success', 'Profile Berhasil diupdate');
+        return redirect()->back()->with('success', 'Profile Berhasil diupdate');
     }
     public function editPassword(){
         $user = Auth::user();
@@ -97,11 +97,11 @@ class DashboardController extends Controller
             'password.different' => 'Password baru tidak boleh sama dengan password lama',
         ]);
 
-        DB::table('users')
+        DB::table('db_profil_sekolah_user')
             ->where('id_user', $user->id_user)
             ->update(['password' => bcrypt($validasi['password'])]);
 
-        return redirect()->route('profile')->with('success', 'Password Berhasil diupdate');
+        return redirect()->back()->with('success', 'Password Berhasil diupdate');
     }
 
 }

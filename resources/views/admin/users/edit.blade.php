@@ -8,7 +8,7 @@
         <h5 class="card-title mb-0">Edit User</h5>
     </div>
     <div class="card-body">
-        <form action="{{ route('admin.users.update', $user->id_user) }}" method="POST">
+<form action="{{ route('admin.users.update', Crypt::encrypt($user->id_user)) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -38,7 +38,7 @@
                 <select class="form-select @error('role') is-invalid @enderror" id="role" name="role" required>
                     <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                     <option value="operator" {{ old('role', $user->role) == 'operator' ? 'selected' : '' }}>Operator</option>
-                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+
                 </select>
                 @error('role')
                     <div class="invalid-feedback">{{ $message }}</div>

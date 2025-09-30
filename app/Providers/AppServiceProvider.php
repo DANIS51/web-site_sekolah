@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\ProfilSekolah;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share profil sekolah data with public layout
+        View::composer('layouts.public', function ($view) {
+            $profilSekolah = ProfilSekolah::first();
+            $view->with('profilSekolah', $profilSekolah);
+        });
     }
 }

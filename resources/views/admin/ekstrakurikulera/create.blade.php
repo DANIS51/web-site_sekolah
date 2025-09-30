@@ -62,9 +62,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="jadwal" class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('jadwal') is-invalid @enderror"
-                                           id="jadwal" name="jadwal" value="{{ old('jadwal') }}" required placeholder="Contoh: Senin & Rabu, 15:00-17:00">
+                                    <label for="jadwal_latihan class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('jadwal_latihan') is-invalid @enderror"
+                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan') }}" required placeholder="Contoh: Senin & Rabu, 15:00-17:00">
                                     @error('jadwal')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

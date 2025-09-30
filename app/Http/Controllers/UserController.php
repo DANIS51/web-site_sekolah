@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -54,12 +55,14 @@ class UserController extends Controller
 
     public function editUser($id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
     public function updateUser(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
@@ -82,7 +85,7 @@ class UserController extends Controller
 
     public function deleteUser($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Crypt::decrypt($id));
         $user->delete();
 
         return redirect()->route('admin.users')->with('success', 'User deleted successfully.');

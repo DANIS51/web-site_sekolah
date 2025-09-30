@@ -33,14 +33,14 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Ekstrakurikuler</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('operator.ekstrakurikulera.update', $ekstrakurikuler->id_ekskul) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('operator.ekstrakurikulera.update', Crypt::encrypt($ekstrakurikuler->id_ekskul)) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-3">
                             <label for="nama_ekskul" class="form-label">Nama Ekstrakurikuler <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('nama_ekskul') is-invalid @enderror"
-                                   id="nama_ekskul" name="nama_ekskul" value="{{ old('nama_ekskul', $ekstrakurikuler->nama_ekskul) }}" required>
+                                   id="nama_ekskul" name="nama_ekskul" value="{{ old('nama_ekskul') ?: $ekstrakurikuler->nama_ekskul }}" required>
                             @error('nama_ekskul')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -51,7 +51,7 @@
                                 <div class="mb-3">
                                     <label for="jadwal_latihan" class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('jadwal_latihan') is-invalid @enderror"
-                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan', $ekstrakurikuler->jadwal_latihan) }}" placeholder="Contoh: Senin & Rabu, 14:00-16:00" required>
+                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan') ?: $ekstrakurikuler->jadwal_latihan }}" placeholder="Contoh: Senin & Rabu, 14:00-16:00">
                                     @error('jadwal_latihan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -61,7 +61,7 @@
                                 <div class="mb-3">
                                     <label for="pembina" class="form-label">Pembina <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('pembina') is-invalid @enderror"
-                                           id="pembina" name="pembina" value="{{ old('pembina', $ekstrakurikuler->pembina) }}" required>
+                                           id="pembina" name="pembina" value="{{ old('pembina') ?: $ekstrakurikuler->pembina }}">
                                     @error('pembina')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -72,7 +72,7 @@
                         <div class="mb-3">
                             <label for="tanggal" class="form-label">Tanggal Mulai</label>
                             <input type="date" class="form-control @error('tanggal') is-invalid @enderror"
-                                   id="tanggal" name="tanggal" value="{{ old('tanggal', $ekstrakurikuler->tanggal) }}">
+                                   id="tanggal" name="tanggal" value="{{ old('tanggal') ?: $ekstrakurikuler->tanggal }}">
                             @error('tanggal')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -81,7 +81,7 @@
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi <span class="text-danger">*</span></label>
                             <textarea class="form-control @error('deskripsi') is-invalid @enderror"
-                                      id="deskripsi" name="deskripsi" rows="5" required>{{ old('deskripsi', $ekstrakurikuler->deskripsi) }}</textarea>
+                                      id="deskripsi" name="deskripsi" rows="5" required>{{ old('deskripsi') ?: $ekstrakurikuler->deskripsi }}</textarea>
                             @error('deskripsi')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -96,7 +96,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             <div class="form-text">Format: JPG, PNG, JPEG, GIF. Maksimal 2MB. Kosongkan jika tidak ingin mengubah gambar</div>
-                            @if($ekstrakurikulera->gambar)
+                            @if($ekstrakurikuler->gambar)
                                 <div class="mt-2">
                                     <label class="form-label">Gambar Saat Ini:</label><br>
                                     <img src="{{ asset('storage/' . $ekstrakurikuler->gambar) }}" alt="Gambar Ekstrakurikuler" width="200" height="150" class="rounded">

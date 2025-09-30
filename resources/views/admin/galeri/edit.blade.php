@@ -33,7 +33,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Galeri</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.galeri.update', $galeri->id_galeri) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.galeri.update', Crypt::encrypt($galeri->id_galeri)) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -54,8 +54,8 @@
                                     <select class="form-select @error('kategori') is-invalid @enderror"
                                             id="kategori" name="kategori" required>
                                         <option value="">Pilih Kategori</option>
-                                        <option value="foto" {{ old('kategori', $galeri->kategori) == 'foto' ? 'selected' : '' }}>Foto</option>
-                                        <option value="video" {{ old('kategori', $galeri->kategori) == 'video' ? 'selected' : '' }}>Video</option>
+                                        <option value="Foto" {{ old('kategori', $galeri->kategori) == 'Foto' ? 'selected' : '' }}>Foto</option>
+                                        <option value="Video" {{ old('kategori', $galeri->kategori) == 'Video' ? 'selected' : '' }}>Video</option>
                                     </select>
                                     @error('kategori')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -73,7 +73,7 @@
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 10MB. Biarkan kosong jika tidak ingin mengubah file</div>
+                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 200MB. Biarkan kosong jika tidak ingin mengubah file</div>
                                     @if($galeri->file)
                                         <div class="mt-2">
                                             <label class="form-label">File Saat Ini:</label>

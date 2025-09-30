@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -59,12 +61,14 @@ class BeritaController extends Controller
 
     public function editBerita($id)
     {
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
         return view('admin.berita.edit', compact('berita'));
     }
 
     public function updateBerita(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
 
         $validated = $request->validate([
@@ -75,19 +79,22 @@ class BeritaController extends Controller
 
         ]);
 
-        $berita->update([
-            'judul' => $validated['judul'],
-            'isi' => $validated['isi'],
-            'tanggal' => $validated['tanggal'],
-            'gambar' => $request->hasFile('gambar') ? $request->file('gambar')->store('berita', 'public') : $berita->gambar,
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($berita->gambar && Storage::disk('public')->exists($berita->gambar)) {
+                Storage::disk('public')->delete($berita->gambar);
+            }
+            $validated['gambar'] = $request->file('gambar')->store('berita', 'public');
+        }
 
-        ]);
+        $berita->update($validated);
 
         return redirect()->route('admin.berita')->with('success', 'Berita berhasil diperbarui.');
     }
 
     public function destroyBerita($id)
     {
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
         $berita->delete();
 

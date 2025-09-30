@@ -1,15 +1,15 @@
 @extends('layouts.operator')
 
-@section('title', 'Tambah Gambar Galeri')
+@section('title', 'Tambah Galeri Baru')
 
 @section('content')
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Tambah Gambar Galeri</h2>
-                <a href="{{ route('operator.galeri.index') }}" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Galeri
+                <h2>Tambah Galeri Baru</h2>
+                <a href="{{ route('operator.galeri') }}" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Galeri
                 </a>
             </div>
         </div>
@@ -27,13 +27,13 @@
     @endif
 
     <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div class="card shadow">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Form Tambah Gambar</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Form Tambah Galeri</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('operator.galeri.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('operator.galeri.storeGaleri') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">
@@ -72,7 +72,7 @@
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 2MB</div>
+                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 200MB</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -96,17 +96,11 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <div class="text-center">
-                                <img id="preview-image" src="#" alt="Preview" class="img-fluid rounded" style="max-height: 300px; display: none;">
-                            </div>
-                        </div>
-
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-check-circle me-2"></i> Simpan Galeri
                             </button>
-                            <a href="{{ route('operator.galeri.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('operator.galeri') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal
                             </a>
                         </div>
@@ -116,23 +110,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById('file').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        const preview = document.getElementById('preview-image');
-
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = '#';
-            preview.style.display = 'none';
-        }
-    });
-</script>
 @endsection

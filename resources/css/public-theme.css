@@ -45,279 +45,87 @@ body {
 
 /* --- Hero Section --- */
 .hero-section {
-    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    position: relative;
+    background: url('/storage/smp.png') no-repeat center center/cover;
     color: white;
     padding: 80px 0;
     text-align: center;
-    box-shadow: inset 0 0 100px rgba(37, 99, 235, 0.3);
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
-.hero-title {
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title-ekstra {
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 15px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    display: inline-block;
 }
 
-.hero-subtitle {
+.underline-red {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #dc2626;
+    border-radius: 2px;
+    margin: 10px auto 0 auto;
+}
+
+.hero-subtitle-ekstra {
     font-size: 1.1rem;
     opacity: 0.95;
     max-width: 700px;
     margin: 0 auto 20px auto;
 }
 
-/* --- Bagian Konten (Cards & Titles) --- */
-.section-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
-    padding: 30px;
-    margin-bottom: 30px;
-    transition: all 0.3s ease;
-}
-
-.section-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.12);
-}
-
-.section-title {
-    color: #2563eb;
-    font-weight: 600;
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #2563eb, #60a5fa);
-    margin: 10px auto;
-    border-radius: 2px;
-}
-
-/* --- Stats Counter --- */
-.stats-counter {
-    text-align: center;
-    padding: 25px 15px;
-    background: #ffffff;
-    color: #2563eb;
+/* --- Extracurricular Cards --- */
+.ekstra-card {
+    max-width: 300px;
+    background: transparent;
     border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.05);
-    transition: all 0.3s ease;
-}
-.stats-counter:hover {
-    background-color: #f1f5f9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stats-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: #2563eb;
+.ekstra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
 }
 
-.stats-label {
-    font-size: 0.95rem;
-    opacity: 0.8;
-    color: #64748b;
-}
-
-/* --- News Card --- */
-.news-card {
-    border: 1px solid #e2e8f0;
+.ekstra-card img {
     border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.05);
-    transition: all 0.3s ease;
-    min-height: 400px;
-}
-
-.news-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.1);
-}
-
-.news-content {
-    padding: 20px;
-}
-
-.news-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #2563eb;
-    margin-bottom: 8px;
-}
-
-.news-meta {
-    color: #64748b;
-    font-size: 0.9rem;
-}
-
-/* --- Gallery Item --- */
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.05);
-    transition: all 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.1);
-}
-
-.gallery-image {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-image {
-    transform: scale(1.05);
-}
-
-/* --- Person Card --- */
-.person-card {
-    text-align: center;
-    padding: 25px;
-    background: white;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.05);
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.person-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.1);
-}
-
-.person-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 3px solid #60a5fa;
-}
-
-.person-name {
-    font-weight: 600;
-    color: #2563eb;
-    margin-bottom: 5px;
-}
-
-.person-role {
-    font-size: 0.9rem;
-    color: #64748b;
-}
-
-/* --- Footer --- */
-.footer {
-    background: #1e293b;
-    color: #cbd5e1;
-    padding: 40px 0;
-    margin-top: 60px;
-    border-top: 4px solid #2563eb;
-}
-
-.footer a {
-    color: #93c5fd;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer a:hover {
-    color: white;
-}
-
-/* --- Button --- */
-.btn-custom {
-    background: #2563eb;
-    border: none;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
-}
-
-.btn-custom:hover {
-    background: #60a5fa;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(96, 165, 250, 0.4);
-}
-
-/* --- Quick Access Gradients (Unified to Blue Theme) --- */
-.quick-access-card {
-    background: linear-gradient(135deg, #2563eb, #60a5fa);
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 15px rgba(37, 99, 235, 0.2);
-}
-
-.quick-access-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.3);
 }
 
 /* --- Responsiveness --- */
 @media (max-width: 768px) {
-    .hero-title {
+    .hero-title-ekstra {
         font-size: 2.2rem;
     }
     .hero-section {
         padding: 50px 0;
     }
-    .stats-counter {
-        margin: 5px 0;
-        padding: 20px 10px;
-    }
-    .section-card {
-        padding: 25px;
-    }
-    .quick-access-card {
-        padding: 15px;
+    .ekstra-card {
+        max-width: 100%;
     }
 }
 @media (max-width: 576px) {
-    .hero-title {
+    .hero-title-ekstra {
         font-size: 2rem;
     }
-    .stats-number {
-        font-size: 2rem;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-section {
-    animation: fadeIn 1s ease-out;
 }

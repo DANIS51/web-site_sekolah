@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ekstrakurikuler;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class EkstrakurikulerController extends Controller
 {
@@ -44,6 +45,7 @@ class EkstrakurikulerController extends Controller
 
     public function edit($id)
     {
+        $id = Crypt::decrypt($id);
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
         return view('operator.ekstrakurikulera.edit', compact('ekstrakurikuler'));
     }
@@ -59,6 +61,7 @@ class EkstrakurikulerController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $id = Crypt::decrypt($id);
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
         $data = $request->all();
 
@@ -76,6 +79,7 @@ class EkstrakurikulerController extends Controller
 
     public function destroy($id)
     {
+        $id = Crypt::decrypt($id);
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
         if ($ekstrakurikuler->gambar) {

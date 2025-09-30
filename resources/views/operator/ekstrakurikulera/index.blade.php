@@ -61,11 +61,11 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{ route('operator.ekstrakurikulera.edit', $item->id_ekskul) }}" class="btn btn-warning btn-sm me-2">
+                                                    <a href="{{ route('operator.ekstrakurikulera.edit', Crypt::encrypt($item->id_ekskul)) }}" class="btn btn-warning btn-sm me-2">
                                                         <i class="bi bi-pencil-square me-2"></i> Edit
                                                     </a>
                                                     <form
-                                                        action="{{ route('operator.ekstrakurikulera.destroy', $item->id_ekskul) }}"
+                                                        action="{{ route('operator.ekstrakurikulera.destroy', Crypt::encrypt($item->id_ekskul)) }}"
                                                         method="POST" class="d-inline"
                                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?')">
                                                         @csrf

@@ -15,13 +15,14 @@
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #1e3a8a;
-            --secondary-color: #000000;
-            --success-color: #1f2937;
-            --info-color: #1e40af;
-            --warning-color: #3b82f6;
-            --light-bg: #f8f9fa;
-            --dark-text: #343a40;
+            --primary-color: #2c3e50; /* Elegant dark blue-gray */
+            --secondary-color: #7f8c8d; /* Muted gray */
+            --success-color: #27ae60; /* Soft green */
+            --info-color: #3498db; /* Light blue */
+            --warning-color: #f39c12; /* Warm orange */
+            --light-bg: #ecf0f1; /* Light gray background */
+            --dark-text: #2c3e50; /* Dark text */
+            --accent-color: #e74c3c; /* Red accent for highlights */
         }
 
         body {
@@ -31,7 +32,7 @@
         }
 
         .navbar-custom {
-            background: #1e3a8a;
+            background: var(--primary-color);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
@@ -54,7 +55,7 @@
         }
 
         .hero-section {
-            background: #1e3a8a;
+            background: var(--primary-color);
             color: white;
             padding: 60px 0;
             text-align: center;
@@ -105,7 +106,7 @@
         .stats-counter {
             text-align: center;
             padding: 20px;
-            background: #1e40af;
+            background: var(--info-color);
             color: white;
             border-radius: 10px;
             margin: 10px;
@@ -214,7 +215,7 @@
         }
 
         .btn-custom {
-            background: #1e3a8a;
+            background: var(--primary-color);
             border: none;
             color: white;
             padding: 10px 20px;
@@ -223,7 +224,7 @@
         }
 
         .btn-custom:hover {
-            background: #1e40af;
+            background: var(--secondary-color);
             color: white;
             transform: translateY(-2px);
         }
@@ -292,9 +293,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('public.index') }}">
-                <i class="me-2"></i>
-                Website Sekolah
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('public.index') }}">
+                <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;" class="me-2">
+                
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -358,30 +359,62 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container text-center">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Smpn 2 Sukaratu</h5>
-                    <p>Platform informasi sekolah yang menyediakan data terbaru tentang siswa, guru, berita, dan kegiatan sekolah.</p>
+                <!-- Informasi Sekolah -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="mb-3">{{ $profilSekolah ? $profilSekolah->nama_sekolah : 'SMPN 2 Sukaratu' }}</h5>
+                    <p class="mb-2">{{ $profilSekolah ? Str::limit($profilSekolah->deskripsi, 150) : 'Platform informasi sekolah yang menyediakan data terbaru tentang siswa, guru, berita, dan kegiatan sekolah.' }}</p>
+                    @if($profilSekolah && $profilSekolah->visi_misi)
+                        <p class="mb-2"><strong>Visi:</strong> {{ Str::limit($profilSekolah->visi_misi, 100) }}</p>
+                    @endif
+                    <div class="mt-3">
+                        <h6>Ikuti Kami:</h6>
+                        <a href="#" class="text-warning me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-warning me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-warning me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-warning"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h5>Menu Navigasi</h5>
+
+                <!-- Menu Navigasi -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="mb-3">Menu Navigasi</h5>
                     <div class="row">
                         <div class="col-6">
-                            <a href="{{ route('public.index') }}">Beranda</a><br>
-                            <a href="{{ route('public.berita') }}">Berita</a><br>
-                            <a href="{{ route('public.galeri') }}">Galeri</a>
+                            <a href="{{ route('public.index') }}" class="d-block mb-2">Beranda</a>
+                            <a href="{{ route('public.berita') }}" class="d-block mb-2">Berita</a>
+                            <a href="{{ route('public.galeri') }}" class="d-block mb-2">Galeri</a>
+                            <a href="{{ route('public.guru') }}" class="d-block mb-2">Guru</a>
                         </div>
                         <div class="col-6">
-                            <a href="{{ route('public.guru') }}">Guru</a><br>
-                            <a href="{{ route('public.siswa') }}">Siswa</a><br>
-                            <a href="{{ route('public.profil-sekolah') }}">Profil Sekolah</a>
+                            <a href="{{ route('public.siswa') }}" class="d-block mb-2">Siswa</a>
+                            <a href="{{ route('public.ekstrakurikuler') }}" class="d-block mb-2">Ekstrakurikuler</a>
+                            <a href="{{ route('public.profil-sekolah') }}" class="d-block mb-2">Profil Sekolah</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Kontak -->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h5 class="mb-3">Kontak Kami</h5>
+                    @if($profilSekolah)
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>{{ $profilSekolah->alamat }}</p>
+                        <p class="mb-2"><i class="fas fa-phone me-2"></i>{{ $profilSekolah->kontak }}</p>
+                        <p class="mb-2"><i class="fas fa-envelope me-2"></i>info@{{ strtolower(str_replace(' ', '', $profilSekolah->nama_sekolah)) }}.sch.id</p>
+                        <p class="mb-2"><i class="fas fa-id-card me-2"></i>NPSN: {{ $profilSekolah->npsn }}</p>
+                    @else
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Jl. Sukaratu No. 123, Tasikmalaya</p>
+                        <p class="mb-2"><i class="fas fa-phone me-2"></i>(0265) 123456</p>
+                        <p class="mb-2"><i class="fas fa-envelope me-2"></i>info@smpn2sukaratu.sch.id</p>
+                        <p class="mb-2"><i class="fas fa-id-card me-2"></i>NPSN: 20212345</p>
+                    @endif
+                </div>
             </div>
             <hr class="my-4">
-            <p>&copy; {{ date('Y') }} Website Sekolah. Dibuat dengan <i class="fas fa-heart text-danger"></i> untuk pendidikan.</p>
+            <div class="text-center">
+                <p class="mb-0">&copy; {{ date('Y') }} {{ $profilSekolah ? $profilSekolah->nama_sekolah : 'SMPN 2 Sukaratu' }}. Dibuat dengan <i class="fas fa-heart text-danger"></i> untuk pendidikan.</p>
+            </div>
         </div>
     </footer>
 

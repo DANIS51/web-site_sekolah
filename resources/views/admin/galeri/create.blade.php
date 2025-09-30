@@ -53,8 +53,8 @@
                                     <select class="form-select @error('kategori') is-invalid @enderror"
                                             id="kategori" name="kategori" required>
                                         <option value="">Pilih Kategori</option>
-                                        <option value="foto" {{ old('kategori') == 'foto' ? 'selected' : '' }}>Foto</option>
-                                        <option value="video" {{ old('kategori') == 'video' ? 'selected' : '' }}>Video</option>
+                                        <option value="Foto" {{ old('kategori') == 'Foto' ? 'selected' : '' }}>Foto</option>
+                                        <option value="Video" {{ old('kategori') == 'Video' ? 'selected' : '' }}>Video</option>
                                     </select>
                                     @error('kategori')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -72,7 +72,7 @@
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 10MB</div>
+                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 200MB</div>
                                 </div>
                             </div>
                             <div class="col-md-6">

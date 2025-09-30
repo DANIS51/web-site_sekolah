@@ -4,64 +4,39 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container" >
-            <h1 class="hero-title">
-                <i class="fas fa-trophy me-2"></i>
+    <section class="hero-section hero-ekstrakurikuler">
+        <div class="overlay"></idiv>
+        <div class="container text-center text-white position-relative">
+            <h1 class="hero-title-ekstra">
                 Ekstrakurikuler
+                <span class="underline-red"></span>
             </h1>
-            <p class="hero-subtitle">Kegiatan ekstrakurikuler dan pengembangan diri siswa</p>
+            <p class="hero-subtitle-ekstra">Beragam kegiatan ekstrakurikuler yang dapat diikuti untuk mengembangkan bakat dan minat siswa dalam upaya pengembangan diri siswa.</p>
         </div>
     </section>
 
-    <!-- Extracurricular Section -->
+    <!-- Extracurricular Cards Section -->
     <section class="py-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             @if($ekstrakurikuler->count() > 0)
-                <div class="row">
+                <div class="row justify-content-center">
                     @foreach($ekstrakurikuler as $item)
-                    <div class="col-md-6 mb-4">
-                        <div class="section-card">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    @if($item->gambar)
-                                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_ekstrakurikuler }}" class="img-fluid rounded" style="height: 150px; object-fit: cover;">
-                                    @else
-                                        <div class="d-flex align-items-center justify-content-center" style="height: 150px; background: linear-gradient(135deg, var(--warning-color), var(--info-color)); border-radius: 10px;">
-                                            <i class="fas fa-trophy fa-3x text-white"></i>
-                                        </div>
-                                    @endif
+                    <div class="col-md-4 mb-4 d-flex justify-content-center">
+                        <div class="ekstra-card ">
+                            @if($item->gambar)
+                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_ekstrakurikuler }}" class="img-fluid rounded" style="height: 200px; object-fit: cover;">
+                            @else
+                                <div class="d-flex align-items-center justify-content-center" style="height: 200px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 10px;">
+                                    <i class="fas fa-trophy fa-3x text-white"></i>
                                 </div>
-                                <div class="col-md-8">
-                                    <h4 class="text-primary">{{ $item->nama_ekstrakurikuler }}</h4>
-                                    @if($item->pembimbing)
-                                        <p><strong>Pembimbing:</strong> {{ $item->pembimbing }}</p>
-                                    @endif
-                                    @if($item->jadwal)
-                                        <p><strong>Jadwal:</strong> {{ $item->jadwal }}</p>
-                                    @endif
-                                    @if($item->tanggal)
-                                        <p><strong>Tanggal Mulai:</strong> {{ \Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</p>
-                                    @endif
-                                    @if($item->tempat)
-                                        <p><strong>Tempat:</strong> {{ $item->tempat }}</p>
-                                    @endif
-                                    @if($item->deskripsi)
-                                        <p>{{ Str::limit($item->deskripsi, 150) }}</p>
-                                    @endif
-                                </div>
-                            </div>
+                            @endif
+                            <h5 class="mt-3 fw-bold">{{ $item->nama_ekskul }}</h5>
                         </div>
                     </div>
                     @endforeach
                 </div>
-
-                <!-- Pagination -->
-                <div class="d-flex justify-content-center mt-4">
-                    {{ $ekstrakurikuler->links() }}
-                </div>
             @else
-                <div class="section-card text-center">
+                <div class="text-center">
                     <i class="fas fa-trophy fa-3x text-muted mb-3"></i>
                     <h4>Belum ada kegiatan ekstrakurikuler</h4>
                     <p class="text-muted">Kegiatan ekstrakurikuler akan segera ditambahkan.</p>

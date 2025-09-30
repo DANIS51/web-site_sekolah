@@ -58,11 +58,11 @@
                                 <td>{{ $guru->nip }}</td>
                                 <td>{{ $guru->mapel }}</td>
                                 <td>
-                                    <a href="{{ route('admin.guru.edit', $guru->id_guru) }}" class="btn btn-warning btn-sm"
+                                    <a href="{{ route('admin.guru.edit', Crypt::encrypt($guru->id_guru)) }}" class="btn btn-warning btn-sm"
                                         title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('admin.guru.destroy', $guru->id_guru) }}" method="POST"
+                                    <form action="{{ route('admin.guru.destroy', Crypt::encrypt($guru->id_guru)) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -78,10 +78,7 @@
                 </table>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
-                <div>Menampilkan {{ $gurus->firstItem() }} sampai {{ $gurus->lastItem() }} dari {{ $gurus->total() }} entri</div>
-                {{ $gurus->appends(request()->query())->links() }}
-            </div>
+            
         </div>
     </div>
 @endsection

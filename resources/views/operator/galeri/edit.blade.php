@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Edit Gambar Galeri</h2>
-                <a href="{{ route('operator.galeri.index') }}" class="btn btn-secondary btn-sm">
+                <a href="{{ route('operator.galeri') }}" class="btn btn-secondary btn-sm">
                     <i class="bi bi-arrow-left me-1"></i> Kembali ke Galeri
                 </a>
             </div>
@@ -33,7 +33,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Galeri</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('operator.galeri.update', $galeri->id_galeri) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('operator.galeri.update', Crypt::encrypt($galeri->id_galeri)) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -73,7 +73,7 @@
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 2MB. Kosongkan jika tidak ingin mengubah file</div>
+                                    <div class="form-text">Format: JPG, PNG, JPEG, GIF, MP4, AVI. Maksimal 200MB. Kosongkan jika tidak ingin mengubah file</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -115,7 +115,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-check-circle me-2"></i> Simpan Perubahan
                             </button>
-                            <a href="{{ route('operator.galeri.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('operator.galeri') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal
                             </a>
                         </div>

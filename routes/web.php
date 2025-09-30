@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Auth;
 
+ 
 /*
 |--------------------------------------------------------------------------
 | Routes Autentikasi
@@ -194,12 +195,12 @@ Route::middleware('auth')->group(function () {
         |--------------------------------------------------------------------------
         | Routes untuk mengelola galeri sekolah.
         */
-        Route::get('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'index'])->name('galeri.index');
-        Route::get('/galeri/create', [App\Http\Controllers\Operator\GaleriController::class, 'create'])->name('galeri.create');
-        Route::post('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'store'])->name('galeri.store');
-        Route::get('/galeri/{id}/edit', [App\Http\Controllers\Operator\GaleriController::class, 'edit'])->name('galeri.edit');
-        Route::put('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'update'])->name('galeri.update');
-        Route::delete('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'destroy'])->name('galeri.destroy');
+        Route::get('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'galeri'])->name('galeri');
+        Route::get('/galeri/create', [App\Http\Controllers\Operator\GaleriController::class, 'createGaleri'])->name('galeri.createGaleri');
+        Route::post('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'storeGaleri'])->name('galeri.storeGaleri');
+        Route::get('/galeri/{id}/edit', [App\Http\Controllers\Operator\GaleriController::class, 'editGaleri'])->name('galeri.editGaleri');
+        Route::put('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'updateGaleri'])->name('galeri.updateGaleri');
+        Route::delete('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'destroyGaleri'])->name('galeri.destroyGaleri');
 
         /*
         |--------------------------------------------------------------------------

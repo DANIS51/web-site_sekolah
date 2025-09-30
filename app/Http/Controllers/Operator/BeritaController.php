@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class BeritaController extends Controller
 {
@@ -44,6 +45,7 @@ class BeritaController extends Controller
 
     public function edit($id)
     {
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
         return view('operator.berita.edit', compact('berita'));
     }
@@ -57,6 +59,7 @@ class BeritaController extends Controller
             'tanggal' => 'required|date',
         ]);
 
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
         $data = $request->only(['judul', 'isi', 'tanggal']);
 
@@ -74,6 +77,7 @@ class BeritaController extends Controller
 
     public function destroy($id)
     {
+        $id = Crypt::decrypt($id);
         $berita = Berita::findOrFail($id);
 
         if ($berita->gambar) {

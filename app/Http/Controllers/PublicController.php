@@ -24,13 +24,15 @@ class PublicController extends Controller
         $totalGaleri = Galeri::count();
         $totalEkstrakurikuler = Ekstrakurikuler::count();
         $profilSekolah = ProfilSekolah::first();
+        $latestEkstrakurikuler = Ekstrakurikuler::latest()->take(3)->get();
         return view('public.index', compact(
             'latestBerita',
             'totalGuru',
             'totalSiswa',
             'totalGaleri',
             'totalEkstrakurikuler',
-            'profilSekolah'
+            'profilSekolah',
+            'latestEkstrakurikuler'
         ));
     }
 

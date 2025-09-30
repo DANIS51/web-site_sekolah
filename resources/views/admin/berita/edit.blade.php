@@ -33,7 +33,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Edit Berita</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.berita.update', $berita->id_berita) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.berita.update', Crypt::encrypt($berita->id_berita)) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 

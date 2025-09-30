@@ -26,7 +26,7 @@
                                 <img src="{{ $item->fileUrl }}" alt="{{ $item->judul }}" class="news-image">
                             @else
                                 <video class="news-image" controls>
-                                    <source src="{{ $item->fileUrl }}" type="video/mp4">
+                                    <source src="{{ $item->fileUrl }}" type="{{ $item->mime_type }}">
                                     Browser tidak mendukung video.
                                 </video>
                             @endif

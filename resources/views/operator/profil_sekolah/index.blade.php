@@ -109,10 +109,7 @@
                         </table>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap">
-                        <div>Menampilkan {{ $profils->firstItem() }} sampai {{ $profils->lastItem() }} dari {{ $profils->total() }} entri</div>
-                        {{ $profils->appends(request()->query())->links() }}
-                    </div>
+                    
                 </div>
             </div>
         </div>

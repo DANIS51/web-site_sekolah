@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class GuruController extends Controller
 {
@@ -60,12 +61,14 @@ class GuruController extends Controller
 
     public function editGuru($id)
     {
+        $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
         return view('admin.guru.edit', compact('guru'));
     }
 
     public function updateGuru(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
 
         $validated = $request->validate([
@@ -96,6 +99,7 @@ class GuruController extends Controller
 
     public function destroyGuru($id)
     {
+        $id = Crypt::decrypt($id);
         $guru = Guru::findOrFail($id);
         $guru->delete();
 

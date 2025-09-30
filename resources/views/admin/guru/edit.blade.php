@@ -25,7 +25,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.guru.update', $guru->id_guru) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.guru.update', Crypt::encrypt($guru->id_guru)) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
