@@ -8,7 +8,13 @@
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
+    body{
+      background:url('{{ asset('storage/kelas.jpg') }}') no-repeat center center fixed;
+      background-size: cover;
+    }
     :root {
       --primary-color: #2c3e50;
       /* Elegant dark blue-gray */
@@ -41,7 +47,7 @@
 </head>
 
 <body>
-  <div class="login-wrapper">
+  <div class="login-wrapper" data-aos="zoom-in" data-aos-duration="800">
     <div class="card login-card">
       <div class="card-header text-center">
         <div class="logo mb-2">
@@ -103,6 +109,10 @@
   </div>
 
   <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

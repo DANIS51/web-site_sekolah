@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section hero-ekstrakurikuler">
+    <section class="hero-section hero-ekstrakurikuler" style="background: url('storage/kull.jpg') no-repeat center; background-size:  cover; background-position: center; padding: 200px;  min-height: 70vh;">
         <div class="overlay"></idiv>
         <div class="container text-center text-white position-relative">
             <h1 class="hero-title-ekstra">

@@ -4,10 +4,10 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="background:url('storage/guru.jpeg') no-repeat center; background-size: cover; padding: 200px;">
         <div class="container">
             <h1 class="hero-title">
-                <i class="fas fa-chalkboard-teacher me-2"></i>
+                <i class="fas fa-chalkboard-teacher me-2"></i> 
                 Data Guru
             </h1>
             <p class="hero-subtitle">Daftar tenaga pendidik dan kependidikan di sekolah</p>

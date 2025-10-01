@@ -44,12 +44,12 @@ class User extends Authenticatable
 
     public function NcekAdmin()
     {
-        return $this->role === 'admin';
+        return $this->role === 'Admin';
     }
 
     public function NcekOperator()
     {
-        return $this->role === 'operator';
+        return $this->role === 'Operator';
     }
 
     /**

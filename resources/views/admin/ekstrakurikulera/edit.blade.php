@@ -50,10 +50,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="pelatih" class="form-label">Nama Pembina <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('pelatih') is-invalid @enderror"
-                                           id="pelatih" name="pelatih" value="{{ old('pelatih', $ekstrakurikuler->pelatih) }}" required>
-                                    @error('pelatih')
+                                    <label for="pembina" class="form-label">Nama Pembina <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('pembina') is-invalid @enderror"
+                                           id="pembina" name="pembina" value="{{ old('pembina', $ekstrakurikuler->pembina) }}" required>
+                                    @error('pembina')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -63,10 +63,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="jadwal" class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('jadwal') is-invalid @enderror"
-                                           id="jadwal" name="jadwal" value="{{ old('jadwal', $ekstrakurikuler->jadwal) }}" required placeholder="Contoh: Senin & Rabu, 15:00-17:00">
-                                    @error('jadwal')
+                                    <label for="jadwal_latihan" class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('jadwal_latihan') is-invalid @enderror"
+                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan', $ekstrakurikuler->jadwal_latihan) }}" required placeholder="Contoh: Senin & Rabu, 15:00-17:00">
+                                    @error('jadwal_latihan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class SiswaController extends Controller
 {
@@ -44,12 +45,14 @@ class SiswaController extends Controller
 
     public function edit($id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $siswa = Siswa::findOrFail($id_siswa);
         return view('operator.siswa.edit', compact('siswa'));
     }
 
     public function update(Request $request, $id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $request->validate([
             'nisn' => 'required|string|max:10|unique:db_profil_sekolah_siswa,nisn,' . $id_siswa . ',id_siswa',
             'nama_siswa' => 'required|string|max:40',
@@ -76,6 +79,7 @@ class SiswaController extends Controller
 
     public function destroy($id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $siswa = Siswa::findOrFail($id_siswa);
 
         if ($siswa->foto) {

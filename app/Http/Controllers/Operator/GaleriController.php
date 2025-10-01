@@ -44,7 +44,7 @@ class GaleriController extends Controller
             'judul' => 'required|string|max:50',
             'keterangan' => 'required|string',
             'file' => 'required|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:204800',
-            'kategori' => 'required|in:foto,video',
+            'kategori' => 'required|in:Foto,Video',
             'tanggal' => 'required|date',
         ]);
 

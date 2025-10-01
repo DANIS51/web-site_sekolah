@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container" >
             <h1 class="hero-title">{{ $berita->judul }}</h1>
             <p class="hero-subtitle">
                 <i class="fas fa-user me-1"></i> {{ $berita->user->username }} |

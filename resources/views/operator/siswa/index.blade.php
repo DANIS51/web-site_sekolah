@@ -67,10 +67,10 @@
                                         </td>
                                         <td>
                                             <div class="btn-group " role="group">
-                                                <a href="{{ route('operator.siswa.edit', $item->id_siswa) }}" class="btn btn-warning btn-sm me-2">
+                                                <a href="{{ route('operator.siswa.edit', Crypt::encrypt($item->id_siswa)) }}" class="btn btn-warning btn-sm me-2">
                                                     <i class="bi bi-pencil-square me-2"></i> Edit
                                                 </a>
-                                                <form action="{{ route('operator.siswa.destroy', $item->id_siswa) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">
+                                                <form action="{{ route('operator.siswa.destroy', Crypt::encrypt($item->id_siswa)) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus siswa ini?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">

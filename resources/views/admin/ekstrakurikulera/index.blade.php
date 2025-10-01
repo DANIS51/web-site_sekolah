@@ -55,9 +55,9 @@
                                 <td>
                                     <strong>{{ $ekskul->nama_ekskul }}</strong>
                                 </td>
-                                <td>{{ $ekskul->pelatih }}</td>
+                                <td>{{ $ekskul->pembina }}</td>
                                 <td>
-                                    <span class="badge bg-info">{{ $ekskul->jadwal }}</span>
+                                    <span class="badge bg-info">{{ $ekskul->jadwal_latihan }}</span>
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($ekskul->tanggal)->format('d F Y') }}</td>
                                 <td>{{ Str::limit($ekskul->deskripsi, 50) }}</td>

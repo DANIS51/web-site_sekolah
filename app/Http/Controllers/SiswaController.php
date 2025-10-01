@@ -66,6 +66,7 @@ class SiswaController extends Controller
 
     public function edit($id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $siswa = Siswa::findOrFail($id_siswa);
         return view('admin.siswa.edit', compact('siswa'));
     }
@@ -73,6 +74,7 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $siswa = Siswa::findOrFail($id_siswa);
 
         $validated = $request->validate([
@@ -101,6 +103,7 @@ class SiswaController extends Controller
 
     public function destroy($id_siswa)
     {
+        $id_siswa = Crypt::decrypt($id_siswa);
         $siswa = Siswa::findOrFail($id_siswa);
         $siswa->delete();
 

@@ -51,7 +51,7 @@
                                 <div class="mb-3">
                                     <label for="jadwal_latihan" class="form-label">Jadwal Latihan <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('jadwal_latihan') is-invalid @enderror"
-                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan') ?: $ekstrakurikuler->jadwal_latihan }}" placeholder="Contoh: Senin & Rabu, 14:00-16:00">
+                                           id="jadwal_latihan" name="jadwal_latihan" value="{{ old('jadwal_latihan') ?: $ekstrakurikuler->jadwal_latihan }}" required placeholder="Contoh: Senin & Rabu, 14:00-16:00">
                                     @error('jadwal_latihan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -61,7 +61,7 @@
                                 <div class="mb-3">
                                     <label for="pembina" class="form-label">Pembina <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('pembina') is-invalid @enderror"
-                                           id="pembina" name="pembina" value="{{ old('pembina') ?: $ekstrakurikuler->pembina }}">
+                                           id="pembina" name="pembina" value="{{ old('pembina') ?: $ekstrakurikuler->pembina }}" required>
                                     @error('pembina')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

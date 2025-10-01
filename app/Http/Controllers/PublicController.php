@@ -83,7 +83,7 @@ class PublicController extends Controller
     {
         $siswa = Siswa::latest()->paginate(12);
 
-        return view('public.siswa', compact('siswa'));
+        // return view('public.siswa', compact('siswa'));
     }
 
     /**
