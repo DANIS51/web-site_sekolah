@@ -39,8 +39,13 @@ class Guru extends Model
         parent::boot();
 
         static::deleting(function ($guru) {
+<<<<<<< HEAD
             if ($guru->foto && Storage::disk('public')->exists($guru->foto)) {
                 Storage::disk('public')->delete($guru->foto);
+=======
+            if ($guru->foto && Storage::exists('public/' . $guru->foto)) {
+                Storage::delete('public/' . $guru->foto);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
         });
     }

@@ -226,7 +226,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*')) active @endif" href="{{ route('admin.ekstrakurikuler') }}" style="color: white;">
+=======
+                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikulera*')) active @endif" href="{{ route('admin.ekstrakurikulera') }}" style="color: white;">
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>

@@ -83,7 +83,11 @@ class PublicController extends Controller
     {
         $siswa = Siswa::latest()->paginate(12);
 
+<<<<<<< HEAD
         return view('public.siswa', compact('siswa'));
+=======
+        // return view('public.siswa', compact('siswa'));
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
     }
 
     /**
@@ -91,7 +95,11 @@ class PublicController extends Controller
      */
     public function ekstrakurikuler()
     {
+<<<<<<< HEAD
         $ekstrakurikuler = Ekstrakurikuler::latest()->paginate(12);
+=======
+        $ekstrakurikuler = ekstrakurikuler::latest()->paginate(12);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 
         return view('public.ekstrakurikuler', compact('ekstrakurikuler'));
     }

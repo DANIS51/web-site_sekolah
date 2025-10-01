@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Tema Publik: Modern & Elegan dengan Gradien dan Animasi */
 
 :root {
@@ -25,41 +26,82 @@ body {
 /* --- Animasi Global --- */
 * {
     transition: all 0.3s ease;
+=======
+/* Tema Publik: Sederhana & Elegan dengan Warna Terang Sedikit Gelap */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f9ff; /* Latar belakang terang */
+    color: #1e293b; /* Teks gelap sedikit */
+    line-height: 1.6;
+}
+
+/* --- Warna Utama --- */
+.primary-color {
+    color: #2563eb; /* Biru terang */
+}
+.accent-color {
+    background-color: #60a5fa; /* Aksen biru lebih terang */
+}
+.accent-text {
+    color: #60a5fa;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 /* --- Navigasi --- */
 .navbar-custom {
+<<<<<<< HEAD
     background: var(--gradient-primary);
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     backdrop-filter: blur(10px);
+=======
+    background: #2563eb; /* Biru terang */
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .navbar-brand {
     font-weight: 700;
+<<<<<<< HEAD
     font-size: 1.5rem;
     color: white !important;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+=======
+    font-size: 1.4rem;
+    color: white !important;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     font-weight: 500;
+<<<<<<< HEAD
     padding: 12px 18px !important;
     transition: all 0.3s ease;
     border-radius: 8px;
     margin: 0 2px;
+=======
+    padding: 10px 15px !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .nav-link:hover {
     color: white !important;
+<<<<<<< HEAD
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+=======
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 /* --- Hero Section --- */
 .hero-section {
     position: relative;
+<<<<<<< HEAD
     background: var(--gradient-primary);
     color: white;
     padding: 120px 0 100px;
@@ -69,14 +111,29 @@ body {
 
 .hero-section::before {
     content: '';
+=======
+    background: url('/storage/smp.png') no-repeat center center/cover;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .overlay {
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+<<<<<<< HEAD
     background: url('/storage/sekolah.jpg') no-repeat center center/cover;
     opacity: 0.3;
     z-index: 0;
+=======
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .hero-section .container {
@@ -84,6 +141,7 @@ body {
     z-index: 2;
 }
 
+<<<<<<< HEAD
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
@@ -302,10 +360,55 @@ body {
 
 .fade-in-up {
     animation: fadeInUp 0.8s ease-out;
+=======
+.hero-title-ekstra {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.underline-red {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #dc2626;
+    border-radius: 2px;
+    margin: 10px auto 0 auto;
+}
+
+.hero-subtitle-ekstra {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+/* --- Extracurricular Cards --- */
+.ekstra-card {
+    max-width: 300px;
+    background: transparent;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ekstra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+}
+
+.ekstra-card img {
+    border-radius: 10px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 /* --- Responsiveness --- */
 @media (max-width: 768px) {
+<<<<<<< HEAD
     .hero-title {
         font-size: 2.8rem;
     }
@@ -335,6 +438,20 @@ body {
         font-size: 1.8rem;
     }
     .stats-number {
+=======
+    .hero-title-ekstra {
+        font-size: 2.2rem;
+    }
+    .hero-section {
+        padding: 50px 0;
+    }
+    .ekstra-card {
+        max-width: 100%;
+    }
+}
+@media (max-width: 576px) {
+    .hero-title-ekstra {
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
         font-size: 2rem;
     }
 }

@@ -126,12 +126,21 @@ Route::middleware('auth')->group(function () {
         |--------------------------------------------------------------------------
         | Routes untuk mengelola ekstrakurikuler.
         */
+<<<<<<< HEAD
         Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'ekstrakurikuler'])->name('ekstrakurikuler');
         Route::get('/ekstrakurikuler/create', [EkstrakurikulerController::class, 'createEkstrakurikuler'])->name('ekstrakurikuler.create');
         Route::post('/ekstrakurikuler', [EkstrakurikulerController::class, 'storeEkstrakurikuler'])->name('ekstrakurikuler.store');
         Route::get('/ekstrakurikuler/{id}/edit', [EkstrakurikulerController::class, 'editEkstrakurikuler'])->name('ekstrakurikuler.edit');
         Route::put('/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
         Route::delete('/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'destroyEkstrakurikuler'])->name('ekstrakurikuler.destroy');
+=======
+        Route::get('/ekstrakurikulera', [EkstrakurikulerController::class, 'ekstrakurikulera'])->name('ekstrakurikulera');
+        Route::get('/ekstrakurikulera/create', [EkstrakurikulerController::class, 'createEkstrakurikulera'])->name('ekstrakurikulera.create');
+        Route::post('/ekstrakurikulera', [EkstrakurikulerController::class, 'StoreEskul'])->name('ekstrakurikulera.store');
+        Route::get('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'editEkstrakurikulera'])->name('ekstrakurikulera.edit');
+        Route::put('/ekstrakurikulera/{id}/edit', [EkstrakurikulerController::class, 'updateEkstrakurikulera'])->name('ekstrakurikulera.update');
+        Route::delete('/ekstrakurikulera/{id}', [EkstrakurikulerController::class, 'destroyEkstrakurikulera'])->name('ekstrakurikulera.destroy');
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 
         /*
         |--------------------------------------------------------------------------
@@ -196,11 +205,19 @@ Route::middleware('auth')->group(function () {
         | Routes untuk mengelola galeri sekolah.
         */
         Route::get('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'galeri'])->name('galeri');
+<<<<<<< HEAD
         Route::get('/galeri/create', [App\Http\Controllers\Operator\GaleriController::class, 'createGaleri'])->name('galeri.create');
         Route::post('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'storeGaleri'])->name('galeri.store');
         Route::get('/galeri/{id}/edit', [App\Http\Controllers\Operator\GaleriController::class, 'editGaleri'])->name('galeri.edit');
         Route::put('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'updateGaleri'])->name('galeri.update');
         Route::delete('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'destroyGaleri'])->name('galeri.destroy');
+=======
+        Route::get('/galeri/create', [App\Http\Controllers\Operator\GaleriController::class, 'createGaleri'])->name('galeri.createGaleri');
+        Route::post('/galeri', [App\Http\Controllers\Operator\GaleriController::class, 'storeGaleri'])->name('galeri.storeGaleri');
+        Route::get('/galeri/{id}/edit', [App\Http\Controllers\Operator\GaleriController::class, 'editGaleri'])->name('galeri.editGaleri');
+        Route::put('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'updateGaleri'])->name('galeri.updateGaleri');
+        Route::delete('/galeri/{id}', [App\Http\Controllers\Operator\GaleriController::class, 'destroyGaleri'])->name('galeri.destroyGaleri');
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 
         /*
         |--------------------------------------------------------------------------
@@ -208,12 +225,21 @@ Route::middleware('auth')->group(function () {
         |--------------------------------------------------------------------------
         | Routes untuk mengelola ekstrakurikuler.
         */
+<<<<<<< HEAD
         Route::get('/ekstrakurikuler', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
         Route::get('/ekstrakurikuler/create', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'create'])->name('ekstrakurikuler.create');
         Route::post('/ekstrakurikuler', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'store'])->name('ekstrakurikuler.store');
         Route::get('/ekstrakurikuler/{id}/edit', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'edit'])->name('ekstrakurikuler.edit');
         Route::put('/ekstrakurikuler/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'update'])->name('ekstrakurikuler.update');
         Route::delete('/ekstrakurikuler/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'destroy'])->name('ekstrakurikuler.destroy');
+=======
+        Route::get('/ekstrakurikulera', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'index'])->name('ekstrakurikulera.index');
+        Route::get('/ekstrakurikulera/create', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'create'])->name('ekstrakurikulera.create');
+        Route::post('/ekstrakurikulera', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'store'])->name('ekstrakurikulera.store');
+        Route::get('/ekstrakurikulera/{id}/edit', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'edit'])->name('ekstrakurikulera.edit');
+        Route::put('/ekstrakurikulera/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'update'])->name('ekstrakurikulera.update');
+        Route::delete('/ekstrakurikulera/{id}', [App\Http\Controllers\Operator\EkstrakurikulerController::class, 'destroy'])->name('ekstrakurikulera.destroy');
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 
         /*
         |--------------------------------------------------------------------------

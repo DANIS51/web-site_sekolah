@@ -62,7 +62,11 @@
                     <div class="card-body">
                         <h5 class="card-title">Ekstrakurikuler</h5>
                         <h2>{{ $ekstrakurikuler_count }}</h2>
+<<<<<<< HEAD
                         <a href="{{ $user->role == 'admin' ? route('admin.ekstrakurikuler') : route('operator.ekstrakurikuler.index') }}" class="btn btn-light btn-sm">Kelola Ekstrakurikuler</a>
+=======
+                        <a href="{{ $user->role == 'admin' ? route('admin.ekstrakurikulera') : route('operator.ekstrakurikulera.index') }}" class="btn btn-light btn-sm">Kelola Ekstrakurikuler</a>
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                     </div>
                 </div>
             </div>

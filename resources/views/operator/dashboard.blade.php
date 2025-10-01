@@ -125,7 +125,11 @@
                                 </a>
                             </div>
                             <div class="col-md-3 mb-3">
+<<<<<<< HEAD
                                 <a href="{{ route('operator.ekstrakurikuler.create') }}"
+=======
+                                <a href="{{ route('operator.ekstrakurikulera.create') }}"
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                                     class="btn btn-warning btn-sm btn-block">
                                     <i class="bi bi-trophy me-2"></i>Tambah Ekstrakurikuler
                                 </a>
@@ -154,7 +158,11 @@
                             <a href="{{ route('operator.galeri') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-images me-2"></i> Kelola Galeri
                             </a>
+<<<<<<< HEAD
                             <a href="{{ route('operator.ekstrakurikuler.index') }}"
+=======
+                            <a href="{{ route('operator.ekstrakurikulera.index') }}"
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                                 class="list-group-item list-group-item-action">
                                 <i class="bi bi-trophy me-2"></i> Kelola Ekstrakurikuler
                             </a>

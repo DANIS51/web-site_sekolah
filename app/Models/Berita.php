@@ -45,8 +45,13 @@ class Berita extends Model
         parent::boot();
 
         static::deleting(function ($berita) {
+<<<<<<< HEAD
             if ($berita->gambar && Storage::disk('public')->exists($berita->gambar)) {
                 Storage::disk('public')->delete($berita->gambar);
+=======
+            if ($berita->gambar && Storage::exists('public/' . $berita->gambar)) {
+                Storage::delete('public/' . $berita->gambar);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
         });
     }

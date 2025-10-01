@@ -85,8 +85,13 @@ class GuruController extends Controller
 
         if ($request->hasFile('foto')) {
             // Hapus foto lama jika ada
+<<<<<<< HEAD
             if ($guru->foto && Storage::disk('public')->exists($guru->foto)) {
                 Storage::disk('public')->delete($guru->foto);
+=======
+            if ($guru->foto && Storage::exists('public/' . $guru->foto)) {
+                Storage::delete('public/' . $guru->foto);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
             // Simpan foto baru
             $data['foto'] = $request->file('foto')->store('guru_fotos', 'public');

@@ -39,8 +39,13 @@ class Ekstrakurikuler extends Model
         parent::boot();
 
         static::deleting(function ($ekstrakurikuler) {
+<<<<<<< HEAD
             if ($ekstrakurikuler->gambar && Storage::disk('public')->exists($ekstrakurikuler->gambar)) {
                 Storage::disk('public')->delete($ekstrakurikuler->gambar);
+=======
+            if ($ekstrakurikuler->gambar && Storage::exists('public/' . $ekstrakurikuler->gambar)) {
+                Storage::delete('public/' . $ekstrakurikuler->gambar);
+>>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
         });
     }
