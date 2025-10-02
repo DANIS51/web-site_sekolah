@@ -13,12 +13,12 @@ class EkstrakurikulerController extends Controller
     public function index()
     {
         $ekstrakurikuler = Ekstrakurikuler::all();
-        return view('operator.ekstrakurikulera.index', compact('ekstrakurikuler'));
+        return view('operator.ekstrakurikuler.index', compact('ekstrakurikuler'));
     }
 
     public function create()
     {
-        return view('operator.ekstrakurikulera.create');
+        return view('operator.ekstrakurikuler.create');
     }
 
     public function store(Request $request)
@@ -35,19 +35,19 @@ class EkstrakurikulerController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('ekstrakurikuler_gambars', 'public');
+            $data['gambar'] = $request->file('gambar')->store('ekstrakurikuler', 'public');
         }
 
         Ekstrakurikuler::create($data);
 
-        return redirect()->route('operator.ekstrakurikulera.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan.');
+        return redirect()->route('operator.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan.');
     }
 
     public function edit($id)
     {
         $id = Crypt::decrypt($id);
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
-        return view('operator.ekstrakurikulera.edit', compact('ekstrakurikuler'));
+        return view('operator.ekstrakurikuler.edit', compact('ekstrakurikuler'));
     }
 
     public function update(Request $request, $id)
@@ -69,12 +69,12 @@ class EkstrakurikulerController extends Controller
             if ($ekstrakurikuler->gambar) {
                 Storage::disk('public')->delete($ekstrakurikuler->gambar);
             }
-            $data['gambar'] = $request->file('gambar')->store('ekstrakurikuler_gambars', 'public');
+            $data['gambar'] = $request->file('gambar')->store('ekstrakurikuler', 'public');
         }
 
         $ekstrakurikuler->update($data);
 
-        return redirect()->route('operator.ekstrakurikulera.index')->with('success', 'Ekstrakurikuler berhasil diperbarui.');
+        return redirect()->route('operator.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -88,6 +88,6 @@ class EkstrakurikulerController extends Controller
 
         $ekstrakurikuler->delete();
 
-        return redirect()->route('operator.ekstrakurikulera.index')->with('success', 'Ekstrakurikuler berhasil dihapus.');
+        return redirect()->route('operator.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil dihapus.');
     }
 }

@@ -33,7 +33,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Form Tambah Galeri</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('operator.galeri.storeGaleri') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('operator.galeri.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row">

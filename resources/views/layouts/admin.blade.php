@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    link
     <style>
         :root {
             --primary-color: #2c3e50; /* Elegant dark blue-gray */
@@ -171,11 +170,11 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .search .form-control{
-            
+
             width: 400px !important;
             height: 45px !important;
         }
-        
+
     </style>
 </head>
 <body>
@@ -226,11 +225,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*')) active @endif" href="{{ route('admin.ekstrakurikuler') }}" style="color: white;">
-=======
-                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikulera*')) active @endif" href="{{ route('admin.ekstrakurikulera') }}" style="color: white;">
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>
@@ -260,6 +255,6 @@
     </div>
 
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-   
+
 </body>
 </html>

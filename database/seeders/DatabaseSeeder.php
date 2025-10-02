@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'danis',
             'password' => Hash::make('danis123'),
-            'role' => 'admin',
+            'role' => 'Admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'operator',
             'password' => Hash::make('danis123'),
-            'role' => 'operator',
+            'role' => 'Operator',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

@@ -104,7 +104,7 @@
                                 <div class="mt-2">
                                     <label class="form-label">Gambar Saat Ini:</label>
                                     <div class="border rounded p-2 bg-light">
-                                        <img src="{{ asset('storage/' . $ekstrakurikuler->gambar) }}" alt="Gambar Ekskul" class="img-thumbnail" style="max-width: 200px;">
+                                        <img src="{{ asset($ekstrakurikuler->gambar) }}?t={{ time() }}" alt="Gambar Ekskul" class="img-thumbnail" style="max-width: 200px;">
                                         <p class="mb-0 mt-2"><small class="text-muted">{{ basename($ekstrakurikuler->gambar) }}</small></p>
                                     </div>
                                 </div>

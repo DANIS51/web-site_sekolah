@@ -172,11 +172,7 @@
                         <a href="{{ route('admin.galeri') }}" class="list-group-item list-group-item-action">
                             <i class="bi bi-images me-2"></i> Kelola Galeri
                         </a>
-<<<<<<< HEAD
                         <a href="{{ route('admin.ekstrakurikuler') }}" class="list-group-item list-group-item-action">
-=======
-                        <a href="{{ route('admin.ekstrakurikulera') }}" class="list-group-item list-group-item-action">
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                             <i class="bi bi-trophy me-2"></i> Kelola Ekstrakurikuler
                         </a>
                         <a href="{{ route('admin.users') }}" class="list-group-item list-group-item-action">

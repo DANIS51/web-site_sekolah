@@ -41,13 +41,8 @@ class Siswa extends Model
         parent::boot();
 
         static::deleting(function ($siswa) {
-<<<<<<< HEAD
             if ($siswa->foto && Storage::disk('public')->exists($siswa->foto)) {
                 Storage::disk('public')->delete($siswa->foto);
-=======
-            if ($siswa->foto && Storage::exists('public/' . $siswa->foto)) {
-                Storage::delete('public/' . $siswa->foto);
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
         });
     }

@@ -63,7 +63,8 @@
                                 <td>{{ Str::limit($ekskul->deskripsi, 50) }}</td>
                                 <td>
                                     @if ($ekskul->gambar)
-                                        <img src="{{ asset('storage/' . $ekskul->gambar) }}" alt="Gambar Ekskul" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
+                                        <img src="{{ asset($ekskul->gambar) }}?t={{ time() }}" alt="Gambar Ekskul" class="img-fluid rounded"
+                                            style="max-width: 80px; max-height: 60px;">
                                     @else
                                         <span class="text-muted">Tidak ada gambar</span>
                                     @endif

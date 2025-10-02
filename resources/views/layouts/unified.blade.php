@@ -197,13 +197,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*') || request()->routeIs('operator.ekstrakurikuler*')) active @endif"
                         href="{{ Auth::user()->role == 'admin' ? route('admin.ekstrakurikuler') : route('operator.ekstrakurikuler.index') }}"
-=======
-                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikulera*') || request()->routeIs('operator.ekstrakurikulera*')) active @endif"
-                        href="{{ Auth::user()->role == 'admin' ? route('admin.ekstrakurikulera') : route('operator.ekstrakurikulera.index') }}"
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                         style="color: white;">
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>

@@ -52,19 +52,11 @@ class ProfilSekolah extends Model
         parent::boot();
 
         static::deleting(function ($profil) {
-<<<<<<< HEAD
             if ($profil->foto && Storage::disk('public')->exists($profil->foto)) {
                 Storage::disk('public')->delete($profil->foto);
             }
             if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
                 Storage::disk('public')->delete($profil->logo);
-=======
-            if ($profil->foto && Storage::exists('public/' . $profil->foto)) {
-                Storage::delete('public/' . $profil->foto);
-            }
-            if ($profil->logo && Storage::exists('public/' . $profil->logo)) {
-                Storage::delete('public/' . $profil->logo);
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
         });
     }

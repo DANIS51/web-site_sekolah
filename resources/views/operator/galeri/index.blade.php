@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Data Galeri</h5>
-            <a href="{{ route('operator.galeri.createGaleri') }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('operator.galeri.create') }}" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus me-1"></i> Tambah Galeri
             </a>
         </div>
@@ -55,7 +55,8 @@
                                 <td>{{ \Carbon\Carbon::parse($galeri->tanggal)->format('d F Y') }}</td>
                                 <td>
                                     @if($galeri->kategori === 'foto')
-                                        <img src="{{ asset('storage/' . $galeri->file) }}" alt="{{ $galeri->judul }}" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
+                                        <img src="{{ asset('storage/' . $galeri->file) }}" alt="{{ $galeri->judul }}"
+                                            class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                     @elseif($galeri->kategori === 'video')
                                         <video width="80" height="60" controls class="rounded">
                                             <source src="{{ asset('storage/' . $galeri->file) }}" type="video/mp4">
@@ -66,11 +67,12 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('operator.galeri.editGaleri', Crypt::encrypt($galeri->id_galeri)) }}"
+                                    <a href="{{ route('operator.galeri.edit', Crypt::encrypt($galeri->id_galeri)) }}"
                                         class="btn btn-warning btn-sm" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('operator.galeri.destroyGaleri', Crypt::encrypt($galeri->id_galeri)) }}"
+                                    <form
+                                        action="{{ route('operator.galeri.destroy', Crypt::encrypt($galeri->id_galeri)) }}"
                                         method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

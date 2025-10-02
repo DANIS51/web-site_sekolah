@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-2 col-md-6 mb-4">
+            <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-2 col-md-6 mb-4">
+            <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-2 col-md-6 mb-4">
+            <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-2 col-md-6 mb-4">
+            <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-secondary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -120,16 +120,12 @@
                                 </a>
                             </div>
                             <div class="col-md-3 mb-3">
-                                <a href="{{ route('operator.galeri.createGaleri') }}" class="btn btn-info btn-sm btn-block">
+                                <a href="{{ route('operator.galeri.create') }}" class="btn btn-info btn-sm btn-block">
                                     <i class="bi bi-images me-2"></i>Tambah Galeri
                                 </a>
                             </div>
                             <div class="col-md-3 mb-3">
-<<<<<<< HEAD
                                 <a href="{{ route('operator.ekstrakurikuler.create') }}"
-=======
-                                <a href="{{ route('operator.ekstrakurikulera.create') }}"
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                                     class="btn btn-warning btn-sm btn-block">
                                     <i class="bi bi-trophy me-2"></i>Tambah Ekstrakurikuler
                                 </a>
@@ -158,18 +154,14 @@
                             <a href="{{ route('operator.galeri') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-images me-2"></i> Kelola Galeri
                             </a>
-<<<<<<< HEAD
                             <a href="{{ route('operator.ekstrakurikuler.index') }}"
-=======
-                            <a href="{{ route('operator.ekstrakurikulera.index') }}"
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                                 class="list-group-item list-group-item-action">
                                 <i class="bi bi-trophy me-2"></i> Kelola Ekstrakurikuler
                             </a>
-                            <a href="{{ route('operator.profil_sekolah.index') }}"
-                                class="list-group-item list-group-item-action">
-                                <i class="bi bi-building me-2"></i> Kelola Profil Sekolah
-                            </a>
+                                <a href="{{ route('operator.profil_sekolah.index') }}"
+                                    class="list-group-item list-group-item-action">
+                                    <i class="bi bi-building me-2"></i> Kelola Profil Sekolah
+                                </a>
                         </div>
                     </div>
                 </div>

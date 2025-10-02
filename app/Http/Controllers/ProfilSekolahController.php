@@ -97,13 +97,8 @@ class ProfilSekolahController extends Controller
         // Handle foto upload
         if ($request->hasFile('foto')) {
             // Delete old foto if exists
-<<<<<<< HEAD
             if ($profil->foto && Storage::disk('public')->exists($profil->foto)) {
                 Storage::disk('public')->delete($profil->foto);
-=======
-            if ($profil->foto && Storage::exists('public/' . $profil->foto)) {
-                Storage::delete('public/' . $profil->foto);
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
             // Store new foto
             $data['foto'] = $request->file('foto')->store('profil_sekolah_fotos', 'public');
@@ -112,13 +107,8 @@ class ProfilSekolahController extends Controller
         // Handle logo upload
         if ($request->hasFile('logo')) {
             // Delete old logo if exists
-<<<<<<< HEAD
             if ($profil->logo && Storage::disk('public')->exists($profil->logo)) {
                 Storage::disk('public')->delete($profil->logo);
-=======
-            if ($profil->logo && Storage::exists('public/' . $profil->logo)) {
-                Storage::delete('public/' . $profil->logo);
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
             }
             // Store new logo
             $data['logo'] = $request->file('logo')->store('profil_sekolah_logos', 'public');

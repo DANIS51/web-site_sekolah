@@ -7,6 +7,7 @@
     <title>@yield('title', 'Dashboard Operator - Sistem Sekolah')</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         :root {
@@ -132,6 +133,72 @@
                 font-size: 16px;
             }
         }
+        .card-header {
+            background-color: white;
+            border:none;
+            font-weight: 500;
+            border-radius: 8px;
+            padding: 6px 14px;
+        }
+        .card-header .btn-primary:hover{
+             background: linear-gradient(135deg, #3757d6, #19389e);
+        }
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin-bottom: 0;
+        }
+
+        .table thead{
+            background-color: #f1f3f7;
+        }
+
+        .table thead th{
+            font-size: 16px;
+            font-weight: 600;
+            color:#555;
+            text-transform: uppercase;
+            border: none;
+            padding: 12px ;
+            text-align: center;
+        }
+        .table tbody tr{
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-in-out;
+        }
+        .table tbody tr:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background-color: #f9fbff
+        }
+
+        .table td{
+            padding: 12px;
+            vertical-align: middle;
+            border-top: none;
+        }
+        .btn-danger{
+            background-color: #e74a3b;
+            border:none;
+        }
+        .btn-danger:hover{
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        .table td{
+            text-align: center;
+        }
+        .card{
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .search .form-control{
+
+            width: 400px !important;
+            height: 45px !important;
+        }
     </style>
 </head>
 
@@ -143,8 +210,8 @@
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
-                <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah"
-                        style="height: 40px; width: auto;" class="me-2">
+                    <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;"
+                        class="me-2">
                     <h5 class="mb-0">Sistem Sekolah</h5>
                 </div>
                 <button class="btn btn-link text-white d-md-none p-0"
@@ -179,13 +246,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link @if(request()->routeIs('operator.ekstrakurikuler*')) active @endif"
                         href="{{ route('operator.ekstrakurikuler.index') }}" style="color: white;">
-=======
-                    <a class="nav-link @if(request()->routeIs('operator.ekstrakurikulera*')) active @endif"
-                        href="{{ route('operator.ekstrakurikulera.index') }}" style="color: white;">
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>
