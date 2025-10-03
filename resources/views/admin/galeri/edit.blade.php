@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Edit Galeri</h2>
-                <a href="{{ route('admin.galeri') }}" class="btn btn-secondary btn-sm">
+                <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary btn-sm">
                     <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Galeri
                 </a>
             </div>
@@ -117,7 +117,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-check-circle me-2"></i> Update Galeri
                             </button>
-                            <a href="{{ route('admin.galeri') }}" class="btn btn-secondary">
+                            <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal
                             </a>
                         </div>

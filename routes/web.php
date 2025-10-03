@@ -159,9 +159,12 @@ Route::middleware('auth')->group(function () {
         Route::put('profil_sekolah/{profil_sekolah}', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'update'])->name('profil_sekolah.update');
         Route::delete('profil_sekolah/{profil_sekolah}', [App\Http\Controllers\Operator\ProfilSekolahController::class, 'destroy'])->name('profil_sekolah.destroy');
     });
+
+
+ 
 });
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | Public Routes (No Login Required)
 |--------------------------------------------------------------------------
@@ -176,5 +179,3 @@ Route::get('/ekstra', [EkstrakurikulerPublicController::class, 'index'])->name('
 Route::get('/guru', [PublicController::class, 'guru'])->name('public.guru');
 Route::get('/siswa', [PublicController::class, 'siswa'])->name('public.siswa');
 Route::get('/profil-sekolah', [PublicController::class, 'profilSekolah'])->name('public.profil-sekolah');
-
- 

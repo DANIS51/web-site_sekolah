@@ -60,7 +60,7 @@
                 @enderror
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{ route('admin.guru') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.guru.index') }}" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </div>

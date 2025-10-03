@@ -185,7 +185,7 @@
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;" class="me-2">
+                    <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;" class="me-2">
                     <h5 class="mb-0">Sistem Sekolah</h5>
                 </div>
                 <button class="btn btn-link text-white d-md-none p-0" onclick="document.getElementById('sidebarToggle').checked = false;" aria-label="Close Sidebar">

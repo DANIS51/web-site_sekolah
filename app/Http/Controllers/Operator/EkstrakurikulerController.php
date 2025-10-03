@@ -10,10 +10,22 @@ use Illuminate\Support\Facades\Crypt;
 
 class EkstrakurikulerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $ekstrakurikuler = Ekstrakurikuler::all();
-        return view('operator.ekstrakurikuler.index', compact('ekstrakurikuler'));
+        $search = $request->input('search');
+        $perPage = $request->input('per_page', 10);
+
+        $query = Ekstrakurikuler::query();
+
+        if ($search) {
+            $query->where('nama_ekskul', 'like', '%' . $search . '%')
+                ->orWhere('jadwal_latihan', 'like', '%' . $search . '%')
+                ->orWhere('pembina', 'like', '%' . $search . '%');
+        }
+
+        $ekstrakurikuler = $query->orderBy('nama_ekskul', 'asc')->paginate($perPage)->withQueryString();
+
+        return view('operator.ekstrakurikuler.index', compact('ekstrakurikuler', 'search'));
     }
 
     public function create()

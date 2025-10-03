@@ -57,7 +57,7 @@ class GaleriController extends Controller
             'tanggal' => $validated['tanggal'],
         ]);
 
-        return redirect()->route('admin.galeri')->with('success', 'Galeri berhasil ditambahkan.');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil ditambahkan.');
     }
     
 
@@ -97,7 +97,7 @@ class GaleriController extends Controller
             'file' => $galeri->file,
         ]);
 
-        return redirect()->route('admin.galeri')->with('success', 'Galeri berhasil diperbarui.');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil diperbarui.');
     }
 
     public function destroyGaleri($id)
@@ -111,6 +111,6 @@ class GaleriController extends Controller
 
         $galeri->delete();
 
-        return redirect()->route('admin.galeri')->with('success', 'Galeri berhasil dihapus.');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus.');
     }
 }

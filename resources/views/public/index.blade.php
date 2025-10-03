@@ -3,6 +3,12 @@
 @section('title', 'Beranda - Website Sekolah')
 
 @section('content')
+    <style>
+        body {
+            background: white !important;
+            color: black !important;
+        }
+    </style>
     <!-- Hero Section -->
     <section class="hero-section text-center text-white d-flex align-items-center" 
         style="background: url('{{ asset('storage/sma2.webp') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; ">
@@ -55,7 +61,7 @@
 
     <!-- Profil Sekolah -->
     @if($profilSekolah)
-        <section class="py-2 bg-light">
+        <section class="py-2">
             <div class="container" data-aos="fade-up" data-aos-duration="1000">
                 <div class="card shadow-lg border-0 rounded-4 p-4">
                     <h2 class="section-title text-primary mb-4"><i class="fas fa-school me-2"></i> Profil Sekolah</h2>
@@ -124,7 +130,7 @@
 
     <!-- Ekstrakurikuler Terbaru -->
     @if($latestEkstrakurikuler->count() > 0)
-        <section class="py-2 bg-light">
+        <section class="py-2">
             <div class="container">
                 <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-trophy me-2"></i> Ekstrakurikuler Terbaru</h2>
                 <div class="row">
@@ -163,9 +169,16 @@
                         <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
                             <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
                                 @if($galeri->file)
-                                    <img src="{{ asset('storage/' . $galeri->file) }}"
-                                        class="card-img-top" alt="{{ $galeri->judul }}"
-                                        style="height: 200px; object-fit: cover;">
+                                    @if(str_starts_with($galeri->mime_type, 'video/'))
+                                        <video class="card-img-top" style="height: 200px; object-fit: cover;" controls>
+                                            <source src="{{ asset('storage/' . $galeri->file) }}" type="{{ $galeri->mime_type }}">
+                                            Browser tidak mendukung video.
+                                        </video>
+                                    @else
+                                        <img src="{{ asset('storage/' . $galeri->file) }}"
+                                            class="card-img-top" alt="{{ $galeri->judul }}"
+                                            style="height: 200px; object-fit: cover;">
+                                    @endif
                                 @endif
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="fw-bold">{{ Str::limit($galeri->judul, 50) }}</h5>

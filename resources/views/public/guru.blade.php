@@ -3,6 +3,12 @@
 @section('title', 'Guru - Website Sekolah')
 
 @section('content')
+    <style>
+        body {
+            background: white !important;
+            color: black !important;
+        }
+    </style>
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center justify-content-center text-center text-white"
              style="background:url('{{ asset('storage/guru.jpg') }}') no-repeat center;

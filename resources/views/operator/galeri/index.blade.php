@@ -20,7 +20,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="search col-12">
-                    <form method="GET" action="{{ route('operator.galeri') }}" class="d-flex justify-content-end">
+                    <form method="GET" action="{{ route('operator.galeri.index') }}" class="d-flex justify-content-end">
                         <div class="input-group input-group-sm w-auto">
                             <span class="input-group-text">Cari:</span>
                             <input type="text" class="form-control" name="search" value="{{ $search }}"

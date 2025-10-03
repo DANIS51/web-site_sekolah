@@ -105,7 +105,7 @@
                                 <div class="mb-3 row">
                                     <div class="offset-sm-4 col-sm-8">
                                         <button type="submit" class="btn btn-primary">Perbarui Profil</button>
-                                        <a href="{{ route('admin.guru') }}" class="btn btn-secondary ms-2">Batal</a>
+                                        <a href="{{ route('admin.guru.index') }}" class="btn btn-secondary ms-2">Batal</a>
                                     </div>
                                 </div>
                             </div>

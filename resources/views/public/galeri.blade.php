@@ -3,6 +3,12 @@
 @section('title', 'Galeri - Website Sekolah')
 
 @section('content')
+    <style>
+        body {
+            background: white !important;
+            color: black !important;
+        }
+    </style>
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" 
         style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 

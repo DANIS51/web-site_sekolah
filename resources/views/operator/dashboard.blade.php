@@ -151,7 +151,7 @@
                             <a href="{{ route('operator.berita.index') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-newspaper me-2"></i> Kelola Berita
                             </a>
-                            <a href="{{ route('operator.galeri') }}" class="list-group-item list-group-item-action">
+                            <a href="{{ route('operator.galeri.index') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-images me-2"></i> Kelola Galeri
                             </a>
                             <a href="{{ route('operator.ekstrakurikuler.index') }}"

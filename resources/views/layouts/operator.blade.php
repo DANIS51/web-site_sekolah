@@ -210,7 +210,7 @@
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;"
+                    <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;"
                         class="me-2">
                     <h5 class="mb-0">Sistem Sekolah</h5>
                 </div>
@@ -241,7 +241,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('operator.galeri*')) active @endif"
-                        href="{{ route('operator.galeri') }}" style="color: white;">
+                        href="{{ route('operator.galeri.index') }}" style="color: white;">
                         <i class="bi bi-images me-2"></i> Galeri
                     </a>
                 </li>

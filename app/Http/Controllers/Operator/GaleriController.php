@@ -15,7 +15,7 @@ class GaleriController extends Controller
         $this->middleware('operator');
     }
 
-    public function galeri(Request $request)
+    public function index(Request $request)
     {
         $search = $request->input('search');
         $perPage = $request->input('per_page', 10);
@@ -33,12 +33,12 @@ class GaleriController extends Controller
         return view('operator.galeri.index', compact('galeris', 'search'));
     }
 
-    public function createGaleri()
+    public function create()
     {
         return view('operator.galeri.create');
     }
 
-    public function storeGaleri(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'judul' => 'required|string|max:50',
@@ -61,23 +61,23 @@ class GaleriController extends Controller
         return redirect()->route('operator.galeri')->with('success', 'Galeri berhasil ditambahkan.');
     }
 
-    public function editGaleri($id)
+    public function edit($galeri)
     {
-        $id = Crypt::decrypt($id);
+        $id = Crypt::decrypt($galeri);
         $galeri = Galeri::findOrFail($id);
         return view('operator.galeri.edit', compact('galeri'));
     }
 
-    public function updateGaleri(Request $request, $id)
+    public function update(Request $request, $galeri)
     {
-        $id = Crypt::decrypt($id);
+        $id = Crypt::decrypt($galeri);
         $galeri = Galeri::findOrFail($id);
 
         $validated = $request->validate([
             'judul' => 'required|string|max:50',
             'keterangan' => 'required|string',
             'file' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,mov,avi|max:204800',
-            'kategori' => 'required|in:foto,video',
+            'kategori' => 'required|in:Foto,Video',
             'tanggal' => 'required|date',
         ]);
 
@@ -100,9 +100,9 @@ class GaleriController extends Controller
         return redirect()->route('operator.galeri')->with('success', 'Galeri berhasil diperbarui.');
     }
 
-    public function destroyGaleri($id)
+    public function destroy($galeri)
     {
-        $id = Crypt::decrypt($id);
+        $id = Crypt::decrypt($galeri);
         $galeri = Galeri::findOrFail($id);
 
         if ($galeri->file && Storage::disk('public')->exists($galeri->file)) {
