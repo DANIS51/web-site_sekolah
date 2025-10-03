@@ -4,49 +4,83 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section hero-ekstrakurikuler"
-        style="background: url('storage/kull.jpg') no-repeat center; background-size:  cover; background-position: center; padding: 200px;  min-height: 70vh;">
-        <div class="overlay">
-            </idiv>
-            <div class="container text-center text-white position-relative">
-                <h1 class="hero-title-ekstra">
-                    Ekstrakurikuler
-                    <span class="underline-red"></span>
-                </h1>
-                <p class="hero-subtitle-ekstra">Beragam kegiatan ekstrakurikuler yang dapat diikuti untuk mengembangkan
-                    bakat dan minat siswa dalam upaya pengembangan diri siswa.</p>
-            </div>
+    <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" 
+        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+               url('{{ asset('storage/eskuls.jpg') }}') no-repeat center; 
+               background-size: cover; 
+               min-height: 60vh;">
+        <div class="container position-relative text-white">
+            <h1 class="fw-bold display-5 mb-3 text-shadow">
+                <i class="fas fa-users me-2 text-warning"></i> Ekstrakurikuler
+            </h1>
+            <p class="lead text-shadow">Berbagai kegiatan seru dan bermanfaat bagi siswa</p>
+        </div>
     </section>
 
-    <!-- Extracurricular Cards Section -->
+    <!-- Ekstrakurikuler Section -->
     <section class="py-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             @if($ekstrakurikuler->count() > 0)
-                <div class="row justify-content-center">
+                <div class="row g-4">
                     @foreach($ekstrakurikuler as $item)
-                        <div class="col-md-4 mb-4 d-flex justify-content-center">
-                            <div class="ekstra-card ">
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="card shadow-sm border-0 h-100 w-100 ekstrakurikuler-card">
                                 @if($item->gambar)
-                                    <img src="{{ asset('storage/' . $item->gambar) }}?t={{ time() }}" alt="{{ $item->nama_ekskul }}"
-                                        class="img-fluid rounded" style="height: 200px; object-fit: cover;">
+                                    <img src="{{ asset('storage/' . $item->gambar) }}" 
+                                         alt="{{ $item->nama_ekskul }}" 
+                                         class="card-img-top rounded-top" 
+                                         style="height:220px; object-fit:cover;">
                                 @else
-                                    <div class="d-flex align-items-center justify-content-center"
-                                        style="height: 200px; background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 10px;">
-                                        <i class="fas fa-trophy fa-3x text-white"></i>
-                                    </div>
+                                    <img src="{{ asset('default-ekstrakurikuler.jpg') }}" 
+                                         alt="No Image" 
+                                         class="card-img-top rounded-top" 
+                                         style="height:220px; object-fit:cover;">
                                 @endif
-                                <h5 class="mt-3 fw-bold">{{ $item->nama_ekskul }}</h5>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fw-bold text-primary">{{ $item->nama_ekskul }}</h5>
+                                    <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($item->deskripsi), 120) }}</p>
+                                    <ul class="list-unstyled small text-muted mb-3">
+                                        <li><i class="fas fa-user-tie me-1"></i> Pembina: {{ $item->pembina }}</li>
+                                        <li><i class="fas fa-calendar-alt me-1"></i> Jadwal: {{ $item->jadwal_latihan }}</li>
+                                        <li><i class="fas fa-clock me-1"></i> Tanggal: {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $ekstrakurikuler->links() }}
+                </div>
             @else
-                <div class="text-center">
-                    <i class="fas fa-trophy fa-3x text-muted mb-3"></i>
-                    <h4>Belum ada kegiatan ekstrakurikuler</h4>
+                <div class="card shadow-sm border-0 text-center p-5">
+                    <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                    <h4>Belum ada ekstrakurikuler</h4>
                     <p class="text-muted">Kegiatan ekstrakurikuler akan segera ditambahkan.</p>
                 </div>
             @endif
         </div>
     </section>
 @endsection
+
+@push('styles')
+<style>
+.text-shadow {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.ekstrakurikuler-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.ekstrakurikuler-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card-title {
+    font-size: 1.2rem;
+}
+</style>
+@endpush

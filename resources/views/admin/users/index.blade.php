@@ -13,7 +13,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="search col-12">
-                    <form method="GET" action="{{ route('admin.users') }}" class="d-flex justify-content-end">
+                    <form method="GET" action="{{ route('admin.users.index') }}" class="d-flex justify-content-end">
                         <div class="input-group input-group-sm w-auto">
                             <span class="input-group-text">Cari:</span>
                             <input type="text" class="form-control" name="search" value="{{ $search }}"
@@ -45,7 +45,7 @@
                                         class="btn btn-warning btn-sm" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('admin.users.delete', Crypt::encrypt($user->id_user)) }}"
+                                    <form action="{{ route('admin.users.destroy', Crypt::encrypt($user->id_user)) }}"
                                         method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

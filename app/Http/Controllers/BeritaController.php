@@ -56,7 +56,7 @@ class BeritaController extends Controller
             'id_user' => Auth::id(),
         ]);
 
-        return redirect()->route('admin.berita')->with('success', 'Berita berhasil ditambahkan.');
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan.');
     }
 
     public function editBerita($id)
@@ -89,7 +89,7 @@ class BeritaController extends Controller
 
         $berita->update($validated);
 
-        return redirect()->route('admin.berita')->with('success', 'Berita berhasil diperbarui.');
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui.');
     }
 
     public function destroyBerita($id)
@@ -98,6 +98,6 @@ class BeritaController extends Controller
         $berita = Berita::findOrFail($id);
         $berita->delete();
 
-        return redirect()->route('admin.berita')->with('success', 'Berita berhasil dihapus.');
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil dihapus.');
     }
 }

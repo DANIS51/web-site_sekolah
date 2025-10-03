@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Berita</h5>
                         <h2>{{ $berita_count }}</h2>
-                        <a href="{{ $user->role == 'admin' ? route('admin.berita') : route('operator.berita.index') }}"
+                        <a href="{{ $user->role == 'admin' ? route('admin.berita.index') : route('operator.berita.index') }}"
                             class="btn btn-light btn-sm">Kelola Berita</a>
                     </div>
                 </div>

@@ -30,8 +30,8 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped" id="berita-table">
-                            <thead>
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>No</th>
                                     <th>Judul</th>

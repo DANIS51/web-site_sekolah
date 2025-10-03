@@ -1,108 +1,91 @@
-<<<<<<< HEAD
-/* Tema Publik: Modern & Elegan dengan Gradien dan Animasi */
+/* Tema Publik: Dark Bright Theme with Gradients and Animations */
 
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #64748b;
-    --success-color: #10b981;
-    --info-color: #06b6d4;
-    --warning-color: #f59e0b;
-    --danger-color: #ef4444;
-    --light-bg: #f8fafc;
-    --dark-text: #1e293b;
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --primary-color: #1e40af; /* Dark Blue */
+    --secondary-color: #3b82f6; /* Bright Blue */
+    --success-color: #22c55e; /* Bright Green */
+    --info-color: #0ea5e9; /* Bright Cyan */
+    --warning-color: #facc15; /* Bright Yellow */
+    --danger-color: #ef4444; /* Bright Red */
+    --dark-bg: #1e3a8a; /* Dark Blue */
+    --dark-bg-light: #1e40af; /* Lighter Dark Blue */
+    --light-text: #f1f5f9; /* Light Text */
+    --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+    --gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
 }
 
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--light-bg);
-    color: var(--dark-text);
+    background: var(--dark-bg);
+    color: var(--light-text);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- Animasi Global --- */
+/* --- Global Animation --- */
 * {
     transition: all 0.3s ease;
-=======
-/* Tema Publik: Sederhana & Elegan dengan Warna Terang Sedikit Gelap */
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f9ff; /* Latar belakang terang */
-    color: #1e293b; /* Teks gelap sedikit */
-    line-height: 1.6;
 }
 
-/* --- Warna Utama --- */
-.primary-color {
-    color: #2563eb; /* Biru terang */
-}
-.accent-color {
-    background-color: #60a5fa; /* Aksen biru lebih terang */
-}
-.accent-text {
-    color: #60a5fa;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
-}
-
-/* --- Navigasi --- */
+/* --- Navigation --- */
 .navbar-custom {
-<<<<<<< HEAD
-    background: var(--gradient-primary);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
-=======
-    background: #2563eb; /* Biru terang */
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
+    background: rgba(44, 62, 80, 0.9) !important;
+    background-image: none !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.navbar-nav-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-item {
+        width: 100%;
+    }
+    .nav-link {
+        padding: 10px 15px;
+    }
 }
 
 .navbar-brand {
     font-weight: 700;
-<<<<<<< HEAD
     font-size: 1.5rem;
     color: white !important;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-=======
-    font-size: 1.4rem;
-    color: white !important;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     font-weight: 500;
-<<<<<<< HEAD
     padding: 12px 18px !important;
     transition: all 0.3s ease;
     border-radius: 8px;
     margin: 0 2px;
-=======
-    padding: 10px 15px !important;
-    transition: color 0.3s ease, background-color 0.3s ease;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .nav-link:hover {
     color: white !important;
-<<<<<<< HEAD
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-=======
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 /* --- Hero Section --- */
 .hero-section {
     position: relative;
-<<<<<<< HEAD
-    background: var(--gradient-primary);
+    background: url('/storage/sakola.jpg') no-repeat center center/cover;
     color: white;
     padding: 120px 0 100px;
     text-align: center;
@@ -111,29 +94,13 @@ body {
 
 .hero-section::before {
     content: '';
-=======
-    background: url('/storage/smp.png') no-repeat center center/cover;
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
-}
-
-.hero-section .overlay {
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-<<<<<<< HEAD
-    background: url('/storage/sekolah.jpg') no-repeat center center/cover;
-    opacity: 0.3;
-    z-index: 0;
-=======
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(30, 41, 59, 0.7); /* Dark overlay */
     z-index: 1;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 .hero-section .container {
@@ -141,7 +108,6 @@ body {
     z-index: 2;
 }
 
-<<<<<<< HEAD
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
@@ -182,11 +148,11 @@ body {
 
 /* --- Statistics Section --- */
 .stats-card {
-    background: white;
+    background: var(--dark-bg-light);
     border-radius: 20px;
     padding: 30px 20px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     border: 2px solid transparent;
     position: relative;
@@ -205,14 +171,40 @@ body {
     z-index: -1;
 }
 
+.hero-section {
+    position: relative;
+    width: 100%;                /* Penuh lebar layar */
+    min-height: 100vh;          /* Tinggi 1 layar penuh */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30, 41, 59, 0.6); /* overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
 .stats-card:hover::before {
     left: 0;
 }
 
 .stats-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    border-color: #4facfe;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: #22d3ee;
 }
 
 .stats-icon {
@@ -242,7 +234,7 @@ body {
 .stats-label {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #64748b;
+    color: var(--secondary-color);
     transition: color 0.3s ease;
 }
 
@@ -259,7 +251,7 @@ body {
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--dark-text);
+    color: var(--light-text);
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
@@ -277,26 +269,20 @@ body {
     border-radius: 2px;
 }
 
-.section-subtitle {
-    font-size: 1.2rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
 /* --- Cards --- */
 .modern-card {
-    background: white;
+    background: var(--dark-bg-light);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     overflow: hidden;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #475569;
+    color: var(--light-text);
 }
 
 .modern-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .card-img-top {
@@ -309,14 +295,14 @@ body {
 
 /* --- Quick Access --- */
 .quick-access-card {
-    background: var(--gradient-primary);
-    color: white;
+    background: var(--light-bg);
+    color: var(--dark-text);
     border-radius: 15px;
     padding: 25px 15px;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -326,7 +312,7 @@ body {
 
 .quick-access-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
     color: white;
     text-decoration: none;
 }
@@ -360,55 +346,10 @@ body {
 
 .fade-in-up {
     animation: fadeInUp 0.8s ease-out;
-=======
-.hero-title-ekstra {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
-}
-
-.underline-red {
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: #dc2626;
-    border-radius: 2px;
-    margin: 10px auto 0 auto;
-}
-
-.hero-subtitle-ekstra {
-    font-size: 1.1rem;
-    opacity: 0.95;
-    max-width: 700px;
-    margin: 0 auto 20px auto;
-}
-
-/* --- Extracurricular Cards --- */
-.ekstra-card {
-    max-width: 300px;
-    background: transparent;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ekstra-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
-}
-
-.ekstra-card img {
-    border-radius: 10px;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
 }
 
 /* --- Responsiveness --- */
 @media (max-width: 768px) {
-<<<<<<< HEAD
     .hero-title {
         font-size: 2.8rem;
     }
@@ -438,20 +379,6 @@ body {
         font-size: 1.8rem;
     }
     .stats-number {
-=======
-    .hero-title-ekstra {
-        font-size: 2.2rem;
-    }
-    .hero-section {
-        padding: 50px 0;
-    }
-    .ekstra-card {
-        max-width: 100%;
-    }
-}
-@media (max-width: 576px) {
-    .hero-title-ekstra {
->>>>>>> 6e03421ce05939a6724c87998d21c302ff69da1b
         font-size: 2rem;
     }
 }

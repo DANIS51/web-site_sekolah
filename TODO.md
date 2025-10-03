@@ -1,10 +1,3 @@
--   [x] Fix route name in resources/views/operator/dashboard.blade.php: change 'operator.galeri.createGaleri' to 'operator.galeri.create'
--   [x] Fix route name in resources/views/operator/galeri/index.blade.php: change 'operator.galeri.createGaleri' to 'operator.galeri.create'
--   [x] Fix route name in resources/views/operator/galeri/index.blade.php: change 'operator.galeri.editGaleri' to 'operator.galeri.edit'
--   [x] Fix route name in resources/views/operator/galeri/index.blade.php: change 'operator.galeri.destroyGaleri' to 'operator.galeri.destroy'
--   [x] Fix route name in resources/views/operator/galeri/create.blade.php: change 'operator.galeri.storeGaleri' to 'operator.galeri.store'
--   [x] Fix typo in ekstrakurikuler route: change 'operator.ekstrakurikulera.create' to 'operator.ekstrakurikuler.create'
--   [x] Fix typo in ekstrakurikuler route: change 'operator.ekstrakurikulera.index' to 'operator.ekstrakurikuler.index'
--   [x] Fix merge conflicts in resources/views/layouts/unified.blade.php
--   [x] Fix merge conflicts in resources/views/unified/dashboard.blade.php
--   [x] Test the application to ensure routes work correctly
+-   [x] Update navbar-brand in resources/views/layouts/public.blade.php to use school logo image
+-   [x] Update footer h5 in resources/views/layouts/public.blade.php to use school logo image
+-   [x] Add CSS styling for logo images if needed

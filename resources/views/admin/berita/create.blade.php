@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>Tambah Berita Baru</h2>
-                <a href="{{ route('admin.berita') }}" class="btn btn-secondary btn-sm">
+                <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary btn-sm">
                     <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Berita
                 </a>
             </div>
@@ -82,7 +82,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-check-circle me-2"></i> Simpan Berita
                             </button>
-                            <a href="{{ route('admin.berita') }}" class="btn btn-secondary">
+                            <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary">
                                 <i class="bi bi-x-circle me-2"></i> Batal
                             </a>
                         </div>

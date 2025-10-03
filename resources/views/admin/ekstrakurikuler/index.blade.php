@@ -20,16 +20,13 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="search col-12">
-                    <form method="GET" action="{{ route('admin.ekstrakurikuler') }}" class="d-flex justify-content-end">
+                    <form method="GET" action="{{ route('admin.ekstrakurikuler.index') }}" class="d-flex justify-content-end">
                         <div class="input-group input-group-sm w-auto">
                             <span class="input-group-text">Cari:</span>
-                            <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            <input type="text" class="form-control" name="search" value="{{ request('search') }}"
                                 placeholder="Cari ekstrakurikuler...">
                             <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                         </div>
-                        @if(request('per_page'))
-                            <input type="hidden" name="per_page" value="{{ request('per_page') }}">
-                        @endif
                     </form>
                 </div>
             </div>
@@ -39,42 +36,35 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Ekskul</th>
+                            <th>Nama Ekstrakurikuler</th>
                             <th>Pembina</th>
                             <th>Jadwal Latihan</th>
                             <th>Tanggal</th>
-                            <th>Deskripsi</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($ekstrakurikuler as $index => $ekskul)
+                        @foreach($ekstrakurikuler as $index => $item)
                             <tr>
                                 <td>{{ $ekstrakurikuler->firstItem() + $index }}</td>
+                                <td>{{ $item->nama_ekskul }}</td>
+                                <td>{{ $item->pembina }}</td>
+                                <td>{{ $item->jadwal_latihan }}</td>
+                                <td>{{ $item->tanggal ? \Carbon\Carbon::parse($item->tanggal)->format('d F Y') : '-' }}</td>
                                 <td>
-                                    <strong>{{ $ekskul->nama_ekskul }}</strong>
-                                </td>
-                                <td>{{ $ekskul->pembina }}</td>
-                                <td>
-                                    <span class="badge bg-info">{{ $ekskul->jadwal_latihan }}</span>
-                                </td>
-                                <td>{{ \Carbon\Carbon::parse($ekskul->tanggal)->format('d F Y') }}</td>
-                                <td>{{ Str::limit($ekskul->deskripsi, 50) }}</td>
-                                <td>
-                                    @if ($ekskul->gambar)
-                                        <img src="{{ asset($ekskul->gambar) }}?t={{ time() }}" alt="Gambar Ekskul" class="img-fluid rounded"
-                                            style="max-width: 80px; max-height: 60px;">
+                                    @if($item->gambar)
+                                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_ekskul }}" class="img-fluid rounded" style="max-width: 80px; max-height: 60px;">
                                     @else
                                         <span class="text-muted">Tidak ada gambar</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekskul->id_ekskul) }}"
+                                    <a href="{{ route('admin.ekstrakurikuler.edit', $item->id_ekskul) }}"
                                         class="btn btn-warning btn-sm" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekskul->id_ekskul) }}"
+                                    <form action="{{ route('admin.ekstrakurikuler.destroy', $item->id_ekskul) }}"
                                         method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

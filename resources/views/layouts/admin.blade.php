@@ -200,12 +200,12 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.users*')) active @endif" href="{{ route('admin.users') }}" style="color: white;">
+                    <a class="nav-link @if(request()->routeIs('admin.users*')) active @endif" href="{{ route('admin.users.index') }}" style="color: white;">
                         <i class="bi bi-person-badge me-2"></i> Users
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.guru*')) active @endif" href="{{ route('admin.guru') }}" style="color: white;">
+                    <a class="nav-link @if(request()->routeIs('admin.guru*')) active @endif" href="{{ route('admin.guru.index') }}" style="color: white;">
                         <i class="bi bi-person-square me-2"></i> Guru
                     </a>
                 </li>
@@ -215,17 +215,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.berita*')) active @endif" href="{{ route('admin.berita') }}" style="color: white;">
+                    <a class="nav-link @if(request()->routeIs('admin.berita*')) active @endif" href="{{ route('admin.berita.index') }}" style="color: white;">
                         <i class="bi bi-newspaper me-2"></i> Berita
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.galeri*')) active @endif" href="{{ route('admin.galeri') }}" style="color: white;">
+                    <a class="nav-link @if(request()->routeIs('admin.galeri*')) active @endif" href="{{ route('admin.galeri.index') }}" style="color: white;">
                         <i class="bi bi-images me-2"></i> Galeri
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*')) active @endif" href="{{ route('admin.ekstrakurikuler') }}" style="color: white;">
+                    <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*')) active @endif" href="{{ route('admin.ekstrakurikuler.index') }}" style="color: white;">
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>

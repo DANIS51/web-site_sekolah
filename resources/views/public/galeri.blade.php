@@ -4,12 +4,18 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section d-flex align-items-center justify-content-center position-relative" 
-        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('storage/galeri-hero.jpg') }}') no-repeat center; background-size: cover; height: 400px;">
-        <div class="container text-center text-white">
-            <div class="hero-content px-3 px-md-5 py-4 rounded" 
-                 style="background: rgba(0,0,0,0.35); display: inline-block;">
-                <h1 class="fw-bold display-5 text-shadow"><i class="fas fa-images me-2"></i> Galeri Sekolah</h1>
+    <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" 
+        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+               url('{{ asset('storage/galeri.jpg') }}') no-repeat center; 
+               background-size: cover; 
+               padding: 200px; 
+               margin-top:0;">
+        <div class="container position-relative text-white">
+            <div class="hero-content px-4 py-4 rounded shadow-lg d-inline-block" 
+                 style="background: rgba(0,0,0,0.3);">
+                <h1 class="fw-bold display-5 text-shadow">
+                    <i class="fas fa-images me-2 text-warning"></i> Galeri Sekolah
+                </h1>
                 <p class="lead mb-0 text-shadow">Kumpulan foto dan dokumentasi kegiatan sekolah</p>
             </div>
         </div>
@@ -22,7 +28,7 @@
                 <div class="row g-4">
                     @foreach($galeri as $item)
                         <div class="col-lg-4 col-md-6 d-flex">
-                            <div class="card shadow-sm border-0 h-100 w-100">
+                            <div class="card shadow-sm border-0 h-100 w-100 gallery-card">
                                 @if($item->kategori == 'Foto')
                                     <img src="{{ $item->fileUrl }}" 
                                          alt="{{ $item->judul }}" 
@@ -42,7 +48,9 @@
                                             <i class="fas fa-calendar me-1"></i> {{ $item->tanggal->format('d M Y') }}
                                         </small>
                                     </p>
-                                    <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($item->keterangan), 100) }}</p>
+                                    <p class="card-text flex-grow-1">
+                                        {{ Str::limit(strip_tags($item->keterangan), 100) }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -63,3 +71,18 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+<style>
+.text-shadow {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+.gallery-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+</style>
+@endpush

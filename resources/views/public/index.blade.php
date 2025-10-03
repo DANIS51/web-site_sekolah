@@ -4,44 +4,49 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section d-flex flex-column justify-content-center align-items-center text-center">
-        <div class="container">
-            <h1 class="hero-title">Selamat Datang di Website Sekolah</h1>
-            <p class="hero-subtitle">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
-            <a href="{{ route('public.berita') }}" class="btn-hero">Lihat Berita Terbaru</a>
+    <section class="hero-section text-center text-white d-flex align-items-center" 
+        style="background: url('{{ asset('storage/sma2.webp') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; ">
+        <!-- Overlay -->
+ 
+        <div class="container position-relative z-1" style="padding-top: 25vh;" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="fw-bold display-4 mb-3">Selamat Datang di Website Sekolah Sman 2 Tasikmalaya</h1>
+            <p class="lead mb-4">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
+            <a href="{{ route('public.berita') }}" class="btn btn-warning btn-lg shadow">
+                <i class="fas fa-newspaper me-2"></i> Lihat Berita Terbaru
+            </a>
         </div>
     </section>
 
-    <!-- Statistics -->
-    <section class="py-5">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <div class="row text-center">
-                <div class="col-6 col-md-3 mb-4">
-                    <div class="stats-card stats-card-guru h-100">
-                        <i class="fas fa-chalkboard-teacher stats-icon"></i>
-                        <h2 class="stats-number">{{ $totalGuru }}</h2>
-                        <p class="stats-label">Guru</p>
+    <!-- Statistik -->
+    <section class="py-2">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
+                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2"></i>
+                        <h2 class="fw-bold">{{ $totalGuru }}</h2>
+                        <p class="mb-0">Guru</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <div class="stats-card stats-card-siswa h-100">
-                        <i class="fas fa-users stats-icon"></i>
-                        <h2 class="stats-number">{{ $totalSiswa }}</h2>
-                        <p class="stats-label">Siswa</p>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
+                        <i class="fas fa-users fa-2x text-success mb-2"></i>
+                        <h2 class="fw-bold">{{ $totalSiswa }}</h2>
+                        <p class="mb-0">Siswa</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <div class="stats-card stats-card-galeri h-100">
-                        <i class="fas fa-images stats-icon"></i>
-                        <h2 class="stats-number">{{ $totalGaleri }}</h2>
-                        <p class="stats-label">Galeri</p>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
+                        <i class="fas fa-images fa-2x text-info mb-2"></i>
+                        <h2 class="fw-bold">{{ $totalGaleri }}</h2>
+                        <p class="mb-0">Galeri</p>
                     </div>
                 </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <div class="stats-card stats-card-ekskul h-100">
-                        <i class="fas fa-trophy stats-icon"></i>
-                        <h2 class="stats-number">{{ $totalEkstrakurikuler }}</h2>
-                        <p class="stats-label">Ekstrakurikuler</p>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
+                        <i class="fas fa-trophy fa-2x text-warning mb-2"></i>
+                        <h2 class="fw-bold">{{ $totalEkstrakurikuler }}</h2>
+                        <p class="mb-0">Ekstrakurikuler</p>
                     </div>
                 </div>
             </div>
@@ -50,27 +55,27 @@
 
     <!-- Profil Sekolah -->
     @if($profilSekolah)
-        <section class="py-5 bg-light">
+        <section class="py-2 bg-light">
             <div class="container" data-aos="fade-up" data-aos-duration="1000">
-                <div class="modern-card p-4">
+                <div class="card shadow-lg border-0 rounded-4 p-4">
                     <h2 class="section-title text-primary mb-4"><i class="fas fa-school me-2"></i> Profil Sekolah</h2>
                     <div class="row align-items-center">
-                        <div class="col-md-4 text-center mb-3">
+                        <div class="col-md-4 text-center mb-3" data-aos="fade-right" data-aos-delay="200">
                             @if($profilSekolah->logo_url)
-                                <img src="{{ $profilSekolah->logo_url }}" alt="Logo Sekolah" class="img-fluid mb-3"
-                                    style="max-height:120px;">
+                                <img src="{{ $profilSekolah->logo_url }}" alt="Logo Sekolah"
+                                    class="img-fluid mb-3" style="max-height:120px;">
                             @endif
                             <h5 class="fw-bold">{{ $profilSekolah->nama_sekolah }}</h5>
                             <p class="mb-1"><strong>NPSN:</strong> {{ $profilSekolah->npsn }}</p>
                             <p class="mb-1"><strong>Kepala:</strong> {{ $profilSekolah->kepala_sekolah }}</p>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" data-aos="fade-left" data-aos-delay="300">
                             <p><strong>Alamat:</strong> {{ $profilSekolah->alamat }}</p>
                             <p><strong>Kontak:</strong> {{ $profilSekolah->kontak }}</p>
                             @if($profilSekolah->deskripsi)
                                 <p>{{ Str::limit($profilSekolah->deskripsi, 180) }}</p>
                             @endif
-                            <a href="{{ route('public.profil-sekolah') }}" class="btn btn-primary mt-2">
+                            <a href="{{ route('public.profil-sekolah') }}" class="btn btn-warning mt-2">
                                 Lihat Profil Lengkap <i class="fas fa-arrow-right ms-2"></i>
                             </a>
                         </div>
@@ -82,28 +87,27 @@
 
     <!-- Berita Terbaru -->
     @if($latestBerita->count() > 0)
-        <section class="py-5">
-            <div class="container" data-aos="fade-up" data-aos-duration="1000">
-                <div class="section-header">
-                    <h2 class="section-title text-primary"><i class="fas fa-newspaper me-2"></i> Berita Terbaru</h2>
-                </div>
+        <section class="py-2">
+            <div class="container">
+                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-newspaper me-2"></i> Berita Terbaru</h2>
                 <div class="row">
-                    @foreach($latestBerita as $beritaItem)
-                        <div class="col-md-4 mb-4 d-flex">
-                            <div class="modern-card shadow-sm h-100 w-100 d-flex flex-column">
+                    @foreach($latestBerita as $index => $beritaItem)
+                        <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
+                            <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
                                 @if($beritaItem->gambar)
-                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}" class="card-img-top"
-                                        alt="{{ $beritaItem->judul }}">
+                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}"
+                                        class="card-img-top" alt="{{ $beritaItem->judul }}"
+                                        style="height: 200px; object-fit: cover;">
                                 @endif
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">{{ Str::limit($beritaItem->judul, 50) }}</h5>
+                                    <h5 class="fw-bold">{{ Str::limit($beritaItem->judul, 50) }}</h5>
                                     <p class="text-muted small mb-2">
                                         <i class="fas fa-user me-1"></i> {{ $beritaItem->user->name }} |
                                         <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
                                     </p>
                                     <p class="flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 80) }}</p>
                                     <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}"
-                                        class="btn btn-outline-primary btn-sm mt-auto">
+                                        class="btn btn-outline-warning btn-sm mt-auto">
                                         Baca Selengkapnya
                                     </a>
                                 </div>
@@ -111,8 +115,8 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="text-center mt-3">
-                    <a href="{{ route('public.berita') }}" class="btn btn-primary">Lihat Semua Berita</a>
+                <div class="text-center mt-3" data-aos="zoom-in">
+                    <a href="{{ route('public.berita') }}" class="btn btn-warning">Lihat Semua Berita</a>
                 </div>
             </div>
         </section>
@@ -120,82 +124,89 @@
 
     <!-- Ekstrakurikuler Terbaru -->
     @if($latestEkstrakurikuler->count() > 0)
-        <section class="py-5 bg-light">
-            <div class="container" data-aos="fade-up" data-aos-duration="1000">
-                <div class="section-header">
-                    <h2 class="section-title text-primary"><i class="fas fa-trophy me-2"></i> Ekstrakurikuler Terbaru</h2>
-                </div>
+        <section class="py-2 bg-light">
+            <div class="container">
+                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-trophy me-2"></i> Ekstrakurikuler Terbaru</h2>
                 <div class="row">
-                    @foreach($latestEkstrakurikuler as $ekskul)
-                        <div class="col-md-4 mb-4 d-flex">
-                            <div class="modern-card w-100 h-100 d-flex flex-column text-center p-3 rounded">
+                    @foreach($latestEkstrakurikuler as $index => $ekskul)
+                        <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
+                            <div class="card shadow-sm border-0 rounded-4 w-100 h-100 text-center p-3">
                                 @if($ekskul->gambar)
-                                    <img src="{{ asset('storage/' . $ekskul->gambar) }}?t={{ time() }}" alt="{{ $ekskul->nama_ekskul }}"
+                                    <img src="{{ asset('storage/' . $ekskul->gambar) }}"
+                                        alt="{{ $ekskul->nama_ekskul }}"
                                         class="img-fluid rounded mb-3" style="height: 200px; object-fit: cover;">
                                 @else
                                     <div class="d-flex align-items-center justify-content-center mb-3"
-                                        style="height: 200px; background: var(--danger-color); border-radius: 10px;">
-                                        <i class="fas fa-trophy fa-3x text-white"></i>
+                                        style="height: 200px; background: #f5f5f5; border-radius: 10px;">
+                                        <i class="fas fa-trophy fa-3x text-warning"></i>
                                     </div>
                                 @endif
-                                <h5 class="fw-bold flex-grow-1">{{ $ekskul->nama_ekskul }}</h5>
+                                <h5 class="fw-bold">{{ $ekskul->nama_ekskul }}</h5>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div class="text-center mt-3">
-                    <a href="{{ route('public.ekstrakurikuler') }}" class="btn btn-primary">Lihat Semua Ekstrakurikuler</a>
+                <div class="text-center mt-3" data-aos="zoom-in">
+                    <a href="{{ route('public.ekstrakurikuler') }}" class="btn btn-warning">Lihat Semua Ekstrakurikuler</a>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <!-- Galeri Terbaru -->
+    @if($latestGaleri->count() > 0)
+        <section class="py-2">
+            <div class="container">
+                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-images me-2"></i> Galeri Terbaru</h2>
+                <div class="row">
+                    @foreach($latestGaleri as $index => $galeri)
+                        <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
+                            <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
+                                @if($galeri->file)
+                                    <img src="{{ asset('storage/' . $galeri->file) }}"
+                                        class="card-img-top" alt="{{ $galeri->judul }}"
+                                        style="height: 200px; object-fit: cover;">
+                                @endif
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="fw-bold">{{ Str::limit($galeri->judul, 50) }}</h5>
+                                    @if($galeri->keterangan)
+                                        <p class="flex-grow-1">{{ Str::limit(strip_tags($galeri->keterangan), 80) }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-3" data-aos="zoom-in">
+                    <a href="{{ route('public.galeri') }}" class="btn btn-warning">Lihat Semua Galeri</a>
                 </div>
             </div>
         </section>
     @endif
 
     <!-- Akses Cepat -->
-    <section class="py-5" style="background: var(--light-bg);">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+    <section class="py-2">
+        <div class="container" data-aos="fade-up">
             <h2 class="section-title text-primary text-center mb-4"><i class="fas fa-th-large me-2"></i> Akses Cepat</h2>
-            <div class="row text-center g-3">
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.guru') }}" class="quick-access-card w-100">
-                        <i class="fas fa-chalkboard-teacher quick-access-icon"></i>
-                        <div class="quick-access-title">Guru</div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.siswa') }}" class="quick-access-card w-100"
-                        style="background: var(--success-color);">
-                        <i class="fas fa-users quick-access-icon"></i>
-                        <div class="quick-access-title">Siswa</div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.galeri') }}" class="quick-access-card w-100"
-                        style="background: var(--info-color);">
-                        <i class="fas fa-images quick-access-icon"></i>
-                        <div class="quick-access-title">Galeri</div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.ekstrakurikuler') }}" class="quick-access-card w-100"
-                        style="background: var(--warning-color);">
-                        <i class="fas fa-trophy quick-access-icon"></i>
-                        <div class="quick-access-title">Ekstrakurikuler</div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.berita') }}" class="quick-access-card w-100"
-                        style="background: var(--secondary-color);">
-                        <i class="fas fa-newspaper quick-access-icon"></i>
-                        <div class="quick-access-title">Berita</div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-2 mb-3 d-flex">
-                    <a href="{{ route('public.profil-sekolah') }}" class="quick-access-card w-100"
-                        style="background: var(--dark-text);">
-                        <i class="fas fa-info-circle quick-access-icon"></i>
-                        <div class="quick-access-title">Profil</div>
-                    </a>
-                </div>
+            <div class="row g-3 text-center">
+                @php $aksesCepat = [
+                    ['route' => 'public.guru', 'icon' => 'chalkboard-teacher', 'label' => 'Guru', 'color' => 'text-primary'],
+                    ['route' => 'public.siswa', 'icon' => 'users', 'label' => 'Siswa', 'color' => 'text-success'],
+                    ['route' => 'public.galeri', 'icon' => 'images', 'label' => 'Galeri', 'color' => 'text-info'],
+                    ['route' => 'public.ekstrakurikuler', 'icon' => 'trophy', 'label' => 'Ekskul', 'color' => 'text-warning'],
+                    ['route' => 'public.berita', 'icon' => 'newspaper', 'label' => 'Berita', 'color' => 'text-secondary'],
+                    ['route' => 'public.profil-sekolah', 'icon' => 'info-circle', 'label' => 'Profil', 'color' => 'text-dark'],
+                ]; @endphp
+                @foreach($aksesCepat as $i => $menu)
+                    <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="{{ $i * 150 }}">
+                        <a href="{{ route($menu['route']) }}" class="card h-100 shadow-sm border-0 rounded-4 text-decoration-none text-dark">
+                            <div class="card-body">
+                                <i class="fas fa-{{ $menu['icon'] }} fa-2x mb-2 {{ $menu['color'] }}"></i>
+                                <div class="fw-bold">{{ $menu['label'] }}</div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

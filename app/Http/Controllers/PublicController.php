@@ -25,6 +25,7 @@ class PublicController extends Controller
         $totalEkstrakurikuler = Ekstrakurikuler::count();
         $profilSekolah = ProfilSekolah::first();
         $latestEkstrakurikuler = Ekstrakurikuler::latest()->take(3)->get();
+        $latestGaleri = Galeri::orderBy('tanggal', 'desc')->take(6)->get();
         return view('public.index', compact(
             'latestBerita',
             'totalGuru',
@@ -32,7 +33,8 @@ class PublicController extends Controller
             'totalGaleri',
             'totalEkstrakurikuler',
             'profilSekolah',
-            'latestEkstrakurikuler'
+            'latestEkstrakurikuler',
+            'latestGaleri'
         ));
     }
 
@@ -84,16 +86,6 @@ class PublicController extends Controller
         $siswa = Siswa::latest()->paginate(12);
 
         return view('public.siswa', compact('siswa'));
-    }
-
-    /**
-     * Display all ekstrakurikuler (extracurricular)
-     */
-    public function ekstrakurikuler()
-    {
-        $ekstrakurikuler = Ekstrakurikuler::latest()->paginate(12);
-
-        return view('public.ekstrakurikuler', compact('ekstrakurikuler'));
     }
 
     /**

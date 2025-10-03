@@ -3,50 +3,55 @@
 @section('title', $berita->judul . ' - Website Sekolah')
 
 @section('content')
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container" >
-            <h1 class="hero-title">{{ $berita->judul }}</h1>
-            <p class="hero-subtitle">
-                <i class="fas fa-user me-1"></i> {{ $berita->user->username }} |
+<div class="container py-5">
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+        <!-- Judul Berita -->
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-dark" style="font-size: 1.75rem;">
+                {{ $berita->judul }}
+            </h2>
+            <div class="d-flex justify-content-center align-items-center text-muted small mt-2">
+                <i class="fas fa-user me-1"></i> {{ $berita->user->username }}
+                <span class="mx-2">|</span>
                 <i class="fas fa-calendar me-1"></i> {{ $berita->created_at->format('d F Y') }}
-            </p>
+            </div>
+            <hr class="mx-auto mt-3" 
+                style="width: 80px; height: 3px; background-color: #0d6efd; opacity: 1; border: none; border-radius: 2px;">
         </div>
-    </section>
-    
-    <!-- News Detail Section -->
-    <section class="py-5">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <div class="section-card">
-                @if($berita->gambar)
-                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid mb-4 rounded">
-                @endif
 
-                <div class="news-content">
-                    <div class="mb-4">
-                        {!! nl2br(e($berita->isi)) !!}
-                    </div>
+        <!-- Gambar Utama -->
+        @if($berita->gambar)
+            <div class="text-center mb-4">
+                <img src="{{ asset('storage/' . $berita->gambar) }}" 
+                     alt="{{ $berita->judul }}" 
+                     class="img-fluid rounded shadow-sm" 
+                     style="max-height: 400px; object-fit: cover;">
+            </div>
+        @endif
 
-                    <hr>
+        <!-- Isi Berita -->
+        <div class="mb-4" style="line-height: 1.7; font-size: 1rem; color: #333;">
+            {!! nl2br(e($berita->isi)) !!}
+        </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6><i class="fas fa-user me-2"></i>Penulis</h6>
-                            <p>{{ $berita->user->username }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h6><i class="fas fa-calendar me-2"></i>Tanggal</h6>
-                            <p>{{ $berita->created_at->format('d F Y H:i') }}</p>
-                        </div>
-                    </div>
-                </div>
+        <hr>
 
-                <div class="text-center mt-4">
-                    <a href="{{ route('public.berita') }}" class="btn btn-custom">
-                        <i class="fas fa-arrow-left me-2"></i> Kembali ke Berita
-                    </a>
-                </div>
+        <!-- Info Penulis -->
+        <div class="row text-muted small">
+            <div class="col-md-6 mb-2">
+                <strong><i class="fas fa-user me-2"></i>Penulis:</strong> {{ $berita->user->username }}
+            </div>
+            <div class="col-md-6 mb-2">
+                <strong><i class="fas fa-calendar me-2"></i>Tanggal:</strong> {{ $berita->created_at->format('d F Y H:i') }}
             </div>
         </div>
-    </section>
+
+        <!-- Tombol Kembali -->
+        <div class="text-center mt-4">
+            <a href="{{ route('public.berita') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i> Kembali ke Berita
+            </a>
+        </div>
+    </div>
+</div>
 @endsection

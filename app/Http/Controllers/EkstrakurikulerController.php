@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Ekstrakurikuler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -33,11 +32,13 @@ class EkstrakurikulerController extends Controller
         return view('admin.ekstrakurikuler.index', compact('ekstrakurikuler', 'search'));
     }
 
-    public function createEkstrakurikuler(){
+    public function createEkstrakurikuler()
+    {
         return view('admin.ekstrakurikuler.create');
     }
 
-    public function storeEkstrakurikuler(Request $request){
+    public function storeEkstrakurikuler(Request $request)
+    {
         $validated = $request->validate([
             'nama_ekskul' => 'required|string|max:40',
             'deskripsi' => 'required|string',
@@ -46,10 +47,12 @@ class EkstrakurikulerController extends Controller
             'tanggal' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
         $filePath = null;
         if ($request->hasFile('gambar')) {
             $filePath = $request->file('gambar')->store('ekstrakurikuler', 'public');
         }
+
         Ekstrakurikuler::create([
             'nama_ekskul' => $validated['nama_ekskul'],
             'deskripsi' => $validated['deskripsi'],
@@ -58,7 +61,8 @@ class EkstrakurikulerController extends Controller
             'tanggal' => $validated['tanggal'],
             'gambar' => $filePath,
         ]);
-        return redirect()->route('admin.ekstrakurikuler')->with('success', 'Ekstrakurikuler berhasil ditambahkan.');
+
+        return redirect()->route('admin.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil ditambahkan.');
     }
 
     public function editEkstrakurikuler($id)
@@ -83,30 +87,27 @@ class EkstrakurikulerController extends Controller
         $data = $validated;
 
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
             if ($ekstrakurikuler->gambar && Storage::disk('public')->exists($ekstrakurikuler->gambar)) {
                 Storage::disk('public')->delete($ekstrakurikuler->gambar);
             }
-            // Simpan gambar baru
             $data['gambar'] = $request->file('gambar')->store('ekstrakurikuler', 'public');
         }
 
         $ekstrakurikuler->update($data);
 
-        return redirect()->route('admin.ekstrakurikuler')->with('success', 'Ekstrakurikuler berhasil diupdate.');
+        return redirect()->route('admin.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil diupdate.');
     }
 
     public function destroyEkstrakurikuler($id)
     {
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
-        // Hapus gambar jika ada
         if ($ekstrakurikuler->gambar && Storage::disk('public')->exists($ekstrakurikuler->gambar)) {
             Storage::disk('public')->delete($ekstrakurikuler->gambar);
         }
 
         $ekstrakurikuler->delete();
 
-        return redirect()->route('admin.ekstrakurikuler')->with('success', 'Ekstrakurikuler berhasil dihapus.');
+        return redirect()->route('admin.ekstrakurikuler.index')->with('success', 'Ekstrakurikuler berhasil dihapus.');
     }
 }

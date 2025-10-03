@@ -184,21 +184,21 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.berita*') || request()->routeIs('operator.berita*')) active @endif"
-                        href="{{ Auth::user()->role == 'admin' ? route('admin.berita') : route('operator.berita.index') }}"
+                        href="{{ Auth::user()->role == 'admin' ? route('admin.berita.index') : route('operator.berita.index') }}"
                         style="color: white;">
                         <i class="bi bi-newspaper me-2"></i> Berita
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.galeri*') || request()->routeIs('operator.galeri*')) active @endif"
-                        href="{{ Auth::user()->role == 'admin' ? route('admin.galeri') : route('operator.galeri.index') }}"
+                        href="{{ Auth::user()->role == 'admin' ? route('admin.galeri.index') : route('operator.galeri.index') }}"
                         style="color: white;">
                         <i class="bi bi-images me-2"></i> Galeri
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*') || request()->routeIs('operator.ekstrakurikuler*')) active @endif"
-                        href="{{ Auth::user()->role == 'admin' ? route('admin.ekstrakurikuler') : route('operator.ekstrakurikuler.index') }}"
+                        href="{{ Auth::user()->role == 'admin' ? route('admin.ekstrakurikuler.index') : route('operator.ekstrakurikuler.index') }}"
                         style="color: white;">
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>

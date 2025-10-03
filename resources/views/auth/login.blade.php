@@ -5,55 +5,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Sistem Sekolah</title>
+
+  <!-- Bootstrap -->
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+  <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    body{
-      background:url('{{ asset('storage/kelas.jpg') }}') no-repeat center center fixed;
-      background-size: cover;
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
     :root {
-      --primary-color: #2c3e50;
-      /* Elegant dark blue-gray */
-      --secondary-color: #7f8c8d;
-      /* Muted gray */
-      --success-color: #27ae60;
-      /* Soft green */
-      --info-color: #3498db;
-      /* Light blue */
-      --warning-color: #f39c12;
-      /* Warm orange */
-      --light-bg: #ecf0f1;
-      /* Light gray background */
-      --dark-text: #2c3e50;
-      /* Dark text */
-      --accent-color: #e74c3c;
-      /* Red accent for highlights */
+      --secondary-color: #475569;
+      --light-bg: rgba(255, 255, 255, 0.08);
+      --accent-color: #f59e0b; /* warna kuning */
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 15px;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      background: transparent;
+      border-bottom: none;
+    }
+
+    .card-header h4 {
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: #f1f5f9;
+    }
+
+    .input-group-text {
+      background: transparent;
+      color: var(--accent-color); /* ikon sama warna dengan SMA 2 Tasikmalaya */
+      border: none;
+      font-size: 1.1rem;
+    }
+
+    .form-control {
+      border: none;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      outline: none !important;
+      box-shadow: none !important;
     }
 
     .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
+      background: var(--accent-color);
+      border: none;
+      padding: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      transition: 0.3s;
     }
 
     .btn-primary:hover {
-      background-color: var(--secondary-color);
-      border-color: var(--secondary-color);
+      background: #d97706;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .text-secondary {
+      color: #cbd5e1 !important;
+      font-size: 0.9rem;
+    }
+
+    .text-secondary:hover {
+      color: var(--accent-color) !important;
+    }
+
+    .alert {
+      border-radius: 0.75rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 
 <body>
   <div class="login-wrapper" data-aos="zoom-in" data-aos-duration="800">
-    <div class="card login-card">
+    <div class="card login-card p-4">
       <div class="card-header text-center">
-        <div class="logo mb-2">
-          <img src="{{ asset('storage/smp.png') }}" alt="Logo Sekolah" style="height: 60px; width: auto;">
+        <div class="logo mb-3">
+          <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah"
+            style="height: 70px; width: auto;">
         </div>
-        <h4>Login Sistem Sekolah</h4>
+        <h4>Login Sistem <br> <span class="text-warning">SMA 2 Tasikmalaya</span></h4>
       </div>
       <div class="card-body">
 
@@ -88,7 +156,7 @@
             @enderror
           </div>
 
-          <div class="mb-3">
+          <div class="mb-4">
             <label for="password" class="form-label">Password</label>
             <div class="input-group">
               <span class="input-group-text"><i class="bi bi-lock"></i></span>
@@ -97,7 +165,7 @@
           </div>
 
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Masuk</button>
           </div>
 
           <div class="text-center mt-3">
@@ -108,11 +176,12 @@
     </div>
   </div>
 
+  <!-- JS -->
   <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

@@ -4,13 +4,17 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section" style="background: url('{{ asset('storage/ber.jpeg') }}') no-repeat center; background-size: cover; padding: 200px;">
-        <div class="container text-white">
-            <h1 class="hero-title">
-                <i class="fas fa-newspaper me-2"></i>
-                Berita Sekolah
+    <section class="hero-section d-flex align-items-center justify-content-center text-center text-white"
+             style="background: url('{{ asset('storage/berita.jpg') }}') no-repeat center; 
+                    background-size: cover; 
+                    min-height: 300px; 
+                    position: relative; padding: 200px;">
+        <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative">
+            <h1 class="hero-title fw-bold display-5 mb-3">
+                <i class="fas fa-newspaper me-2 text-warning"></i> Berita Sekolah
             </h1>
-            <p class="hero-subtitle">Kumpulan berita dan informasi terbaru dari sekolah</p>
+            <p class="hero-subtitle lead">Kumpulan berita dan informasi terbaru dari sekolah</p>
         </div>
     </section>
 
@@ -21,20 +25,20 @@
                 <div class="row">
                     @foreach($berita as $beritaItem)
                         <div class="col-lg-4 col-md-6 mb-4 d-flex">
-                            <div class="news-card shadow-sm rounded h-100 w-100 d-flex flex-column">
+                            <div class="card news-card shadow-sm border-0 rounded-4 h-100 w-100 d-flex flex-column">
                                 @if($beritaItem->gambar)
                                     <img src="{{ asset('storage/' . $beritaItem->gambar) }}" 
                                          alt="{{ $beritaItem->judul }}" 
-                                         class="news-image rounded-top" 
+                                         class="card-img-top rounded-top-4" 
                                          style="height:200px; object-fit:cover; width:100%;">
                                 @endif
-                                <div class="news-content p-3 d-flex flex-column flex-grow-1">
-                                    <h5 class="news-title fw-bold">{{ Str::limit($beritaItem->judul, 60) }}</h5>
-                                    <p class="news-meta small text-muted mb-2">
+                                <div class="card-body d-flex flex-column flex-grow-1">
+                                    <h5 class="card-title fw-bold">{{ Str::limit($beritaItem->judul, 60) }}</h5>
+                                    <p class="card-subtitle small text-muted mb-2">
                                         <i class="fas fa-user me-1"></i> {{ $beritaItem->user->username }} |
                                         <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
                                     </p>
-                                    <p class="flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 120) }}</p>
+                                    <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 120) }}</p>
                                     <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}" 
                                        class="btn btn-outline-primary btn-sm mt-auto align-self-start">
                                         Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
@@ -59,3 +63,20 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+<style>
+    .hero-section {
+        padding: 120px 0;
+    }
+    .news-card:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .card-title {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+</style>
+@endpush

@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Ekstrakurikuler extends Model
 {
+    use HasFactory;
+
     protected $table = 'db_profil_sekolah_ekstrakurikuler';
     protected $primaryKey = 'id_ekskul';
 
@@ -23,24 +25,13 @@ class Ekstrakurikuler extends Model
         'tanggal' => 'date',
     ];
 
-    /**
-     * Get the full URL for gambar
-     */
-    public function getGambarUrlAttribute()
-    {
-        return $this->gambar ? asset($this->gambar) : null;
-    }
-
-    /**
-     * Delete associated files when model is deleted
-     */
-    protected static function boot()
+    public static function boot()
     {
         parent::boot();
 
         static::deleting(function ($ekstrakurikuler) {
-            if ($ekstrakurikuler->gambar && file_exists(public_path($ekstrakurikuler->gambar))) {
-                unlink(public_path($ekstrakurikuler->gambar));
+            if ($ekstrakurikuler->gambar && file_exists(public_path('storage/' . $ekstrakurikuler->gambar))) {
+                unlink(public_path('storage/' . $ekstrakurikuler->gambar));
             }
         });
     }
