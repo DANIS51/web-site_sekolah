@@ -10,19 +10,17 @@
         }
     </style>
     <!-- Hero Section -->
-    <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" 
-        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-               url('{{ asset('storage/galeri.jpg') }}') no-repeat center; 
-               background-size: cover; 
-               padding: 200px; 
-               margin-top:0;">
+    <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                   url('{{ asset('storage/galeri.jpg') }}') no-repeat center;
+                   background-size: cover;
+                   padding: 120px 20px;
+                   margin-top:0;">
         <div class="container position-relative text-white">
-            <div class="hero-content px-4 py-4 rounded shadow-lg d-inline-block" 
-                 style="background: rgba(0,0,0,0.3);">
-                <h1 class="fw-bold display-5 text-shadow">
+            <div class="hero-content px-4 py-4 rounded shadow-lg d-inline-block" style="background: rgba(0,0,0,0.3);">
+                <h1 class="fw-bold display-4 display-md-5 text-shadow">
                     <i class="fas fa-images me-2 text-warning"></i> Galeri Sekolah
                 </h1>
-                <p class="lead mb-0 text-shadow">Kumpulan foto dan dokumentasi kegiatan sekolah</p>
+                <p class="lead mb-0 text-shadow fs-5 fs-md-6">Kumpulan foto dan dokumentasi kegiatan sekolah</p>
             </div>
         </div>
     </section>
@@ -36,10 +34,8 @@
                         <div class="col-lg-4 col-md-6 d-flex">
                             <div class="card shadow-sm border-0 h-100 w-100 gallery-card">
                                 @if($item->kategori == 'Foto')
-                                    <img src="{{ $item->fileUrl }}" 
-                                         alt="{{ $item->judul }}" 
-                                         class="card-img-top rounded-top" 
-                                         style="height: 220px; object-fit: cover;">
+                                    <img src="{{ $item->fileUrl }}" alt="{{ $item->judul }}" class="card-img-top rounded-top"
+                                        style="height: 220px; object-fit: cover;">
                                 @else
                                     <video class="card-img-top rounded-top" style="height: 220px; object-fit: cover;" controls>
                                         <source src="{{ $item->fileUrl }}" type="{{ $item->mime_type }}">
@@ -79,16 +75,18 @@
 @endsection
 
 @push('styles')
-<style>
-.text-shadow {
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-}
-.gallery-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.gallery-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-}
-</style>
+    <style>
+        .text-shadow {
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 @endpush

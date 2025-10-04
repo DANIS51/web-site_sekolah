@@ -10,17 +10,16 @@
         }
     </style>
     <!-- Hero Section -->
-    <section class="hero-section d-flex align-items-center justify-content-center text-center text-white"
-             style="background: url('{{ asset('storage/berita.jpg') }}') no-repeat center; 
-                    background-size: cover; 
-                    min-height: 300px; 
-                    position: relative; padding: 200px;">
+    <section class="hero-section d-flex align-items-center justify-content-center text-center text-white" style="background: url('{{ asset('storage/berita.jpg') }}') no-repeat center;
+                        background-size: cover;
+                        min-height: 300px;
+                        position: relative; padding: 120px 20px;">
         <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative">
-            <h1 class="hero-title fw-bold display-5 mb-3">
+            <h1 class="hero-title fw-bold display-4 display-md-5 mb-3">
                 <i class="fas fa-newspaper me-2 text-warning"></i> Berita Sekolah
             </h1>
-            <p class="hero-subtitle lead">Kumpulan berita dan informasi terbaru dari sekolah</p>
+            <p class="hero-subtitle lead fs-5 fs-md-6">Kumpulan berita dan informasi terbaru dari sekolah</p>
         </div>
     </section>
 
@@ -33,10 +32,8 @@
                         <div class="col-lg-4 col-md-6 mb-4 d-flex">
                             <div class="card news-card shadow-sm border-0 rounded-4 h-100 w-100 d-flex flex-column">
                                 @if($beritaItem->gambar)
-                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}" 
-                                         alt="{{ $beritaItem->judul }}" 
-                                         class="card-img-top rounded-top-4" 
-                                         style="height:200px; object-fit:cover; width:100%;">
+                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}" alt="{{ $beritaItem->judul }}"
+                                        class="card-img-top rounded-top-4" style="height:200px; object-fit:cover; width:100%;">
                                 @endif
                                 <div class="card-body d-flex flex-column flex-grow-1">
                                     <h5 class="card-title fw-bold">{{ Str::limit($beritaItem->judul, 60) }}</h5>
@@ -45,8 +42,8 @@
                                         <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
                                     </p>
                                     <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 120) }}</p>
-                                    <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}" 
-                                       class="btn btn-outline-primary btn-sm mt-auto align-self-start">
+                                    <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}"
+                                        class="btn btn-outline-primary btn-sm mt-auto align-self-start">
                                         Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
                                     </a>
                                 </div>
@@ -71,18 +68,20 @@
 @endsection
 
 @push('styles')
-<style>
-    .hero-section {
-        padding: 120px 0;
-    }
-    .news-card:hover {
-        transform: translateY(-5px);
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .card-title {
-        font-size: 1.1rem;
-        line-height: 1.4;
-    }
-</style>
+    <style>
+        .hero-section {
+            padding: 120px 0;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+    </style>
 @endpush

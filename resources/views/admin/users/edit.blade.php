@@ -46,7 +46,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update User</button>
-            <a href="{{ route('admin.users') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </div>

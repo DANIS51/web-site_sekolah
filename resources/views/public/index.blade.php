@@ -11,12 +11,12 @@
     </style>
     <!-- Hero Section -->
     <section class="hero-section text-center text-white d-flex align-items-center" 
-        style="background: url('{{ asset('storage/sma2.webp') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; ">
+        style="background: url('{{ asset('storage/sma2.webp') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; padding: 120px 20px;">
         <!-- Overlay -->
  
-        <div class="container position-relative z-1" style="padding-top: 25vh;" data-aos="zoom-in" data-aos-duration="1200">
-            <h1 class="fw-bold display-4 mb-3">Selamat Datang di Website Sekolah Sman 2 Tasikmalaya</h1>
-            <p class="lead mb-4">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
+        <div class="container position-relative z-1" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="fw-bold display-4 display-md-5 mb-3">Selamat Datang di Website Sekolah Sman 2 Tasikmalaya</h1>
+            <p class="lead fs-5 fs-md-6 mb-4">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
             <a href="{{ route('public.berita') }}" class="btn btn-warning btn-lg shadow">
                 <i class="fas fa-newspaper me-2"></i> Lihat Berita Terbaru
             </a>

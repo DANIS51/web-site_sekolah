@@ -133,71 +133,88 @@
                 font-size: 16px;
             }
         }
+
         .card-header {
             background-color: white;
-            border:none;
+            border: none;
             font-weight: 500;
             border-radius: 8px;
             padding: 6px 14px;
         }
-        .card-header .btn-primary:hover{
-             background: linear-gradient(135deg, #3757d6, #19389e);
+
+        .card-header .btn-primary:hover {
+            background: linear-gradient(135deg, #3757d6, #19389e);
         }
+
         .table {
             border-collapse: separate;
             border-spacing: 0 8px;
             margin-bottom: 0;
         }
 
-        .table thead{
+        .table thead {
             background-color: #f1f3f7;
         }
 
-        .table thead th{
+        .table thead th {
             font-size: 16px;
             font-weight: 600;
-            color:#555;
+            color: #555;
             text-transform: uppercase;
             border: none;
-            padding: 12px ;
+            padding: 12px;
             text-align: center;
         }
-        .table tbody tr{
+
+        .table tbody tr {
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease-in-out;
         }
-        .table tbody tr:hover{
+
+        .table tbody tr:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             background-color: #f9fbff
         }
 
-        .table td{
+        .table td {
             padding: 12px;
             vertical-align: middle;
             border-top: none;
         }
-        .btn-danger{
+
+        .btn-danger {
             background-color: #e74a3b;
-            border:none;
+            border: none;
         }
-        .btn-danger:hover{
+
+        .btn-danger:hover {
             background-color: #c0392b;
             border-color: #c0392b;
         }
-        .table td{
+
+        .table td {
             text-align: center;
         }
-        .card{
+
+        .card {
             border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .search .form-control{
 
-            width: 400px !important;
+        .search .form-control {
+            width: 100%;
+            max-width: 400px;
             height: 45px !important;
+        }
+
+        @media (max-width: 576px) {
+            .search .form-control {
+                max-width: 100%;
+                height: 40px !important;
+            }
         }
     </style>
 </head>
@@ -210,8 +227,8 @@
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px; width: auto;"
-                        class="me-2">
+                    <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah"
+                        style="height: 40px; width: auto;" class="me-2">
                     <h5 class="mb-0">Sistem Sekolah</h5>
                 </div>
                 <button class="btn btn-link text-white d-md-none p-0"

@@ -18,8 +18,8 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f8fafc;
+      background: white;
+      color: black;
     }
 
     /* Navbar */
