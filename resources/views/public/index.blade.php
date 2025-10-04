@@ -58,68 +58,91 @@
             </div>
         </div>
     </section>
+ 
+        <!-- Sambutan Kepala Sekolah -->
+       <section class="py-5 bg-light">
+    <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <div class="row g-0 align-items-center">
+                <!-- Foto Kepala Sekolah -->
+                <div class="col-md-4 bg-opacity-10 text-center p-4" data-aos="fade-right" data-aos-delay="200">
+                    <img src="{{ asset('storage/kepalasekolah.webp') }}" 
+                         alt="Foto Kepala Sekolah" 
+                         class="img-fluid rounded-circle shadow-sm mb-3" 
+                         style="width: 200px; height: 200px; object-fit: cover;">
+                    <h5 class="fw-bold mt-2 text-black mb-0">Kepala Sekolah</h5>
+                    <p class="text-muted small mb-0">SMA Negeri 2  Tasikmalaya </p>
+                </div>
 
-    <!-- Profil Sekolah -->
-    @if($profilSekolah)
-        <section class="py-2">
-            <div class="container" data-aos="fade-up" data-aos-duration="1000">
-                <div class="card shadow-lg border-0 rounded-4 p-4">
-                    <h2 class="section-title text-primary mb-4"><i class="fas fa-school me-2"></i> Profil Sekolah</h2>
-                    <div class="row align-items-center">
-                        <div class="col-md-4 text-center mb-3" data-aos="fade-right" data-aos-delay="200">
-                            @if($profilSekolah->logo_url)
-                                <img src="{{ $profilSekolah->logo_url }}" alt="Logo Sekolah"
-                                    class="img-fluid mb-3" style="max-height:120px;">
-                            @endif
-                            <h5 class="fw-bold">{{ $profilSekolah->nama_sekolah }}</h5>
-                            <p class="mb-1"><strong>NPSN:</strong> {{ $profilSekolah->npsn }}</p>
-                            <p class="mb-1"><strong>Kepala:</strong> {{ $profilSekolah->kepala_sekolah }}</p>
-                        </div>
-                        <div class="col-md-8" data-aos="fade-left" data-aos-delay="300">
-                            <p><strong>Alamat:</strong> {{ $profilSekolah->alamat }}</p>
-                            <p><strong>Kontak:</strong> {{ $profilSekolah->kontak }}</p>
-                            @if($profilSekolah->deskripsi)
-                                <p>{{ Str::limit($profilSekolah->deskripsi, 180) }}</p>
-                            @endif
-                            <a href="{{ route('public.profil-sekolah') }}" class="btn btn-warning mt-2">
-                                Lihat Profil Lengkap <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
+                <!-- Isi Sambutan -->
+                <div class="col-md-8 p-5" data-aos="fade-left" data-aos-delay="300">
+                    <h2 class="fw-bold text-black mb-4 border-bottom pb-2">
+                        Sambutan Kepala Sekolah
+                    </h2>
+                    <p class="lh-lg" style="text-align: justify;">
+                        Sebagai institusi pendidikan unggulan di Tasikmalaya, SMA Negeri 2 Tasikmalaya berkomitmen untuk terus berkembang dan beradaptasi dengan kemajuan teknologi informasi. Dengan dukungan tenaga pendidik yang profesional dan fasilitas yang memadai, kami siap memberikan layanan pendidikan yang berkualitas dan relevan dengan kebutuhan zaman.
+                    </p>
+                    <p class="lh-lg" style="text-align: justify;">
+                        Melalui website ini, kami berharap dapat memberikan informasi yang cepat, akurat, dan transparan kepada seluruh siswa, orang tua, dan masyarakat luas. Kami juga terbuka terhadap masukan dan saran demi peningkatan mutu layanan pendidikan di SMA Negeri 2 Tasikmalaya. <strong>Bersama Kita Membangun Generasi Emas yang Berkarakter dan Berprestasi.</strong>
+                    </p>
                 </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </div>
+</section>
+
 
     <!-- Berita Terbaru -->
     @if($latestBerita->count() > 0)
         <section class="py-2">
             <div class="container">
-                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-newspaper me-2"></i> Berita Terbaru</h2>
-                <div class="row">
-                    @foreach($latestBerita as $index => $beritaItem)
-                        <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
-                            <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
-                                @if($beritaItem->gambar)
-                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}"
-                                        class="card-img-top" alt="{{ $beritaItem->judul }}"
-                                        style="height: 200px; object-fit: cover;">
-                                @endif
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="fw-bold">{{ Str::limit($beritaItem->judul, 50) }}</h5>
-                                    <p class="text-muted small mb-2">
-                                        <i class="fas fa-user me-1"></i> {{ $beritaItem->user->name }} |
-                                        <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
-                                    </p>
-                                    <p class="flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 80) }}</p>
-                                    <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}"
-                                        class="btn btn-outline-warning btn-sm mt-auto">
-                                        Baca Selengkapnya
-                                    </a>
+                <h2 class="section-title text-black mb-4" style="font-size: 40px; font-size: ;"  data-aos="fade-up"> Berita Terbaru</h2>
+                @php $chunks = $latestBerita->chunk(3); @endphp
+                <div id="berita-carousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
+                    <ol class="carousel-indicators">
+                        @foreach($chunks as $index => $chunk)
+                            <li data-bs-target="#berita-carousel" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                        @endforeach
+                    </ol>
+                    <div class="carousel-inner">
+                        @foreach($chunks as $index => $chunk)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <div class="row">
+                                    @foreach($chunk as $beritaItem)
+                                        <div class="col-md-4 mb-4 d-flex">
+                                            <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
+                                                @if($beritaItem->gambar)
+                                                    <img src="{{ asset('storage/' . $beritaItem->gambar) }}"
+                                                        class="card-img-top" alt="{{ $beritaItem->judul }}"
+                                                        style="height: 250px; object-fit: cover;">
+                                                @endif
+                                                <div class="card-body d-flex flex-column">
+                                                    <h5 class="fw-bold">{{ Str::limit($beritaItem->judul, 50) }}</h5>
+                                                    <p class="text-muted small mb-2">
+                                                        <i class="fas fa-user me-1"></i> {{ $beritaItem->user->name }} |
+                                                        <i class="fas fa-calendar me-1"></i> {{ $beritaItem->created_at->format('d M Y') }}
+                                                    </p>
+                                                    <p class="flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 80) }}</p>
+                                                    <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}"
+                                                        class="btn btn-outline-warning btn-sm mt-auto">
+                                                        Baca Selengkapnya
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#berita-carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#berita-carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
                 <div class="text-center mt-3" data-aos="zoom-in">
                     <a href="{{ route('public.berita') }}" class="btn btn-warning">Lihat Semua Berita</a>
@@ -132,7 +155,7 @@
     @if($latestEkstrakurikuler->count() > 0)
         <section class="py-2">
             <div class="container">
-                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-trophy me-2"></i> Ekstrakurikuler Terbaru</h2>
+                <h2 class="section-title text-black mb-4" data-aos="fade-up"></i> Ekstrakurikuler Terbaru</h2>
                 <div class="row">
                     @foreach($latestEkstrakurikuler as $index => $ekskul)
                         <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
@@ -143,7 +166,7 @@
                                         class="img-fluid rounded mb-3" style="height: 200px; object-fit: cover;">
                                 @else
                                     <div class="d-flex align-items-center justify-content-center mb-3"
-                                        style="height: 200px; background: #f5f5f5; border-radius: 10px;">
+                                        style="height: 300px; background: #f5f5f5; border-radius: 10px;">
                                         <i class="fas fa-trophy fa-3x text-warning"></i>
                                     </div>
                                 @endif
@@ -163,7 +186,7 @@
     @if($latestGaleri->count() > 0)
         <section class="py-2">
             <div class="container">
-                <h2 class="section-title text-primary mb-4" data-aos="fade-up"><i class="fas fa-images me-2"></i> Galeri Terbaru</h2>
+                <h2 class="section-title text-black mb-4" data-aos="fade-up"> Galeri Terbaru</h2>
                 <div class="row">
                     @foreach($latestGaleri as $index => $galeri)
                         <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
@@ -200,7 +223,7 @@
     <!-- Akses Cepat -->
     <section class="py-2">
         <div class="container" data-aos="fade-up">
-            <h2 class="section-title text-primary text-center mb-4"><i class="fas fa-th-large me-2"></i> Akses Cepat</h2>
+            <h2 class="section-title text-black text-center mb-4"><i class="fas fa-th-large me-2"></i> Akses Cepat</h2>
             <div class="row g-3 text-center">
                 @php $aksesCepat = [
                     ['route' => 'public.guru', 'icon' => 'chalkboard-teacher', 'label' => 'Guru', 'color' => 'text-primary'],

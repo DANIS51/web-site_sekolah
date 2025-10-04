@@ -15,6 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  @yield('styles')
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -93,19 +95,19 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto" style="font-size: 20px;">
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.index') ? 'active' : '' }}"
-              href="{{ route('public.index') }}"><i class="fas fa-home me-1"></i>Beranda</a></li>
+              href="{{ route('public.index') }}"> Beranda</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.berita*') ? 'active' : '' }}"
-              href="{{ route('public.berita') }}"><i class="fas fa-newspaper me-1"></i>Berita</a></li>
+              href="{{ route('public.berita') }}"> Berita</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.guru') ? 'active' : '' }}"
-              href="{{ route('public.guru') }}"><i class="fas fa-chalkboard-teacher me-1"></i>Guru</a></li>
+              href="{{ route('public.guru') }}"> </i>Guru</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.galeri') ? 'active' : '' }}"
-              href="{{ route('public.galeri') }}"><i class="fas fa-images me-1"></i>Galeri</a></li>
+              href="{{ route('public.galeri') }}"> </i>Galeri</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.ekstrakurikuler') ? 'active' : '' }}"
-              href="{{ route('public.ekstrakurikuler') }}"><i class="fas fa-trophy me-1"></i>Ekstrakurikuler</a></li>
+              href="{{ route('public.ekstrakurikuler') }}">Ekstrakurikuler</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.profil-sekolah') ? 'active' : '' }}"
-              href="{{ route('public.profil-sekolah') }}"><i class="fas fa-info-circle me-1"></i>Profil</a></li>
+              href="{{ route('public.profil-sekolah') }}"> Profile Sekolah</a></li>
         </ul>
       </div>
     </div>
@@ -144,7 +146,7 @@
             <li><a href="{{ route('public.galeri') }}" class="text-white-50 text-decoration-none">Galeri</a></li>
             <li><a href="{{ route('public.ekstrakurikuler') }}"
                 class="text-white-50 text-decoration-none">Ekstrakurikuler</a></li>
-            <li><a href="{{ route('public.profil-sekolah') }}" class="text-white-50 text-decoration-none">Profil</a>
+            <li><a href="{{ route('public.profil-sekolah') }}" class="text-white-50 text-decoration-none">Profil Sekolah?</a>
             </li>
           </ul>
         </div>

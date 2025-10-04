@@ -81,12 +81,12 @@ class PublicController extends Controller
     /**
      * Display all siswa (students)
      */
-    public function siswa()
-    {
-        $siswa = Siswa::latest()->paginate(12);
+    // public function siswa()
+    // {
+    //     $siswa = Siswa::latest()->paginate(12);
 
-        return view('public.siswa', compact('siswa'));
-    }
+    //     return view('public.siswa', compact('siswa'));
+    // }
 
     /**
      * Display profil sekolah (school profile)
