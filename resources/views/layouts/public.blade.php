@@ -88,8 +88,9 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('public.index') }}">
-        <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px;">
+      <a class="navbar-brand d-flex" href="{{ route('public.index') }}">
+        <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px; margin-right: 10px;">
+        <h1  style="font-size: 1.5rem; margin-top: 10px;">Sman 2 Tasikmalaya</h1>
       </a>
       <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="fas fa-bars"></i>
