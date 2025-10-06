@@ -3,18 +3,6 @@
 @section('title', 'Kelola Data Profil Sekolah')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Kelola Data Profil Sekolah</h2>
-                <a href="{{ route('operator.profil_sekolah.create') }}" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-2"></i>Tambah Profil Sekolah Baru
-                </a>
-            </div>
-        </div>
-    </div>
-
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -22,28 +10,26 @@
         </div>
     @endif
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Profil Sekolah</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <form method="GET" action="{{ route('operator.profil_sekolah.index') }}" class="d-flex justify-content-end">
-                                <div class="input-group input-group-sm w-auto">
-                                    <span class="input-group-text">Cari:</span>
-                                    <input type="text" class="form-control" name="search" value="{{ $search }}"
-                                        placeholder="Cari nama sekolah, kepala sekolah, atau NPSN...">
-                                    <button type="submit" class="btn btn-outline-secondary">Cari</button>
-                                </div>
-                                @if(request('per_page'))
-                                    <input type="hidden" name="per_page" value="{{ request('per_page') }}">
-                                @endif
-                            </form>
-                        </div>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Data Profil Sekolah</h5>
+            <div class="d-flex align-items-center">
+                <form method="GET" action="{{ route('operator.profil_sekolah.index') }}" class="d-flex me-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            placeholder="Cari nama sekolah, kepala sekolah, atau NPSN...">
+                        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                        @if(request('per_page'))
+                            <input type="hidden" name="per_page" value="{{ request('per_page') }}">
+                        @endif
                     </div>
+                </form>
+                <a href="{{ route('operator.profil_sekolah.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Tambah Profil Sekolah
+                </a>
+            </div>
+        </div>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped" id="profil-sekolah-table">
@@ -108,11 +94,6 @@
                             </tbody>
                         </table>
                     </div>
-
-                    
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 @endsection

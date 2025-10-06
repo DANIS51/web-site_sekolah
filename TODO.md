@@ -1,14 +1,11 @@
-- [x] Update card-header in siswa.blade.php to include search form aligned with title and button
-- [x] Remove the search row from card-body in siswa.blade.php
-- [x] Update card-header in guru/index.blade.php to include search form aligned with title and button
-- [x] Remove the search row from card-body in guru/index.blade.php
-- [ ] Update card-header in berita/index.blade.php to include search form aligned with title and button
-- [ ] Remove the search row from card-body in berita/index.blade.php
-- [ ] Update card-header in galeri/index.blade.php to include search form aligned with title and button
-- [ ] Remove the search row from card-body in galeri/index.blade.php
-- [ ] Update card-header in users/index.blade.php to include search form aligned with title and button
-- [ ] Remove the search row from card-body in users/index.blade.php
-- [ ] Update card-header in ekstrakurikuler/index.blade.php to include search form aligned with title and button
-- [ ] Remove the search row from card-body in ekstrakurikuler/index.blade.php
-- [ ] Update card-header in profil_sekolah/index.blade.php to include search form aligned with title and button
-- [ ] Remove the search row from card-body in profil_sekolah/index.blade.php
+# TODO: Create Database Seeders
+
+- [x] Create UserSeeder.php with sample users
+- [x] Create SiswaSeeder.php with sample students
+- [ ] Create GuruSeeder.php with sample teachers
+- [ ] Create BeritaSeeder.php with sample news
+- [ ] Create GaleriSeeder.php with sample gallery items
+- [ ] Create EkstrakurikulerSeeder.php with sample extracurricular activities
+- [ ] Create ProfilSekolahSeeder.php with sample school profile
+- [ ] Update DatabaseSeeder.php to call all seeders
+- [ ] Test the seeders by running php artisan db:seed

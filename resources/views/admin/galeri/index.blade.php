@@ -13,27 +13,24 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Data Galeri</h5>
-            <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus me-1"></i> Tambah Galeri
-            </a>
-        </div>
-        <div class="card-body">
-            <div class="row mb-3">
-                <div class="search col-12">
-                    <form method="GET" action="{{ route('admin.galeri.index') }}" class="d-flex justify-content-end">
-                        <div class="input-group input-group-sm w-auto">
-                            <span class="input-group-text">Cari:</span>
-                            <input type="text" class="form-control" name="search" value="{{ $search }}"
-                                placeholder="Cari galeri...">
-                            <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
-                        </div>
+            <div class="d-flex align-items-center">
+                <form method="GET" action="{{ route('admin.galeri.index') }}" class="d-flex me-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search }}"
+                            placeholder="Cari galeri...">
+                        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                         @if(request('per_page'))
                             <input type="hidden" name="per_page" value="{{ request('per_page') }}">
                         @endif
-                    </form>
-                </div>
+                    </div>
+                </form>
+                <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Tambah Galeri
+                </a>
             </div>
-
+        </div>
+        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="galeri-table">
                     <thead>

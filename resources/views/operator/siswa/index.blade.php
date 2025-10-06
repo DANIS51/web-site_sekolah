@@ -3,18 +3,6 @@
 @section('title', 'Kelola Data Siswa')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Kelola Data Siswa</h2>
-                <a href="{{ route('operator.siswa.create') }}" class="btn btn-primary">
-                    <i class="bi bi-person-plus me-2"></i>Tambah Siswa Baru
-                </a>
-            </div>
-        </div>
-    </div>
-
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -22,12 +10,23 @@
         </div>
     @endif
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Siswa</h6>
-                </div>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Data Siswa</h5>
+            <div class="d-flex align-items-center">
+                <form method="GET" action="{{ route('operator.siswa.index') }}" class="d-flex me-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text">Cari:</span>
+                        <input type="text" class="form-control" name="search" value="{{ $search ?? '' }}"
+                            placeholder="Cari siswa...">
+                        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+                <a href="{{ route('operator.siswa.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Tambah Siswa
+                </a>
+            </div>
+        </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped" id="siswa-table">
@@ -90,7 +89,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 @endsection
