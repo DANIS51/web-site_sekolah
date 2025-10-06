@@ -11,13 +11,13 @@
     </style>
     <!-- Hero Section -->
     <section class="hero-section text-center text-white d-flex align-items-center" 
-        style="background: url('{{ asset('storage/sma2.webp') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; padding: 120px 20px;">
+        style="background: url('{{ asset('storage/smkhd.jpg') }}') no-repeat center; background-size: cover; min-height: 90vh; position: relative; margin-bottom: 30px; padding: 120px 20px;">
         <!-- Overlay -->
  
         <div class="container position-relative z-1" data-aos="zoom-in" data-aos-duration="1200">
             <h1 class="fw-bold display-4 display-md-5 mb-3">Selamat Datang di Website Sekolah Sman 2 Tasikmalaya</h1>
             <p class="lead fs-5 fs-md-6 mb-4">Informasi terpadu untuk siswa, guru, berita, dan kegiatan sekolah</p>
-            <a href="{{ route('public.berita') }}" class="btn btn-warning btn-lg shadow">
+            <a href="{{ route('public.berita') }}" class="btn btn-primary btn-lg shadow">
                 <i class="fas fa-newspaper me-2"></i> Lihat Berita Terbaru
             </a>
         </div>
@@ -29,21 +29,21 @@
             <div class="row text-center g-4">
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2 text-warning"></i>
+                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2 text-primary"></i>
                         <h2 class="fw-bold">{{ $totalGuru }}</h2>
                         <p class="mb-0">Guru</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-users fa-2x text-success mb-2 text-warning"></i>
+                        <i class="fas fa-users fa-2x text-success mb-2 text-primary"></i>
                         <h2 class="fw-bold">{{ $totalSiswa }}</h2>
                         <p class="mb-0">Siswa</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-images fa-2x text-info mb-2 text-warning"></i>
+                        <i class="fas fa-images fa-2x text-info mb-2 text-primary"></i>
                         <h2 class="fw-bold">{{ $totalGaleri }}</h2>
                         <p class="mb-0">Galeri</p>
                     </div>
@@ -124,7 +124,7 @@
                                                     </p>
                                                     <p class="flex-grow-1">{{ Str::limit(strip_tags($beritaItem->isi), 80) }}</p>
                                                     <a href="{{ route('public.berita.show', $beritaItem->id_berita) }}"
-                                                        class="btn btn-outline-warning btn-sm mt-auto">
+                                                        class="btn btn-outline-primary btn-sm mt-auto">
                                                         Baca Selengkapnya
                                                     </a>
                                                 </div>
@@ -145,7 +145,7 @@
                     </button>
                 </div>
                 <div class="text-center mt-3" data-aos="zoom-in">
-                    <a href="{{ route('public.berita') }}" class="btn btn-warning">Lihat Semua Berita</a>
+                    <a href="{{ route('public.berita') }}" class="btn btn-primary">Lihat Semua Berita</a>
                 </div>
             </div>
         </section>
@@ -176,7 +176,7 @@
                     @endforeach
                 </div>
                 <div class="text-center mt-3" data-aos="zoom-in">
-                    <a href="{{ route('public.ekstrakurikuler') }}" class="btn btn-warning">Lihat Semua Ekstrakurikuler</a>
+                    <a href="{{ route('public.ekstrakurikuler') }}" class="btn btn-primary">Lihat Semua Ekstrakurikuler</a>
                 </div>
             </div>
         </section>
@@ -210,7 +210,7 @@
             </div>
 
             <div class="text-center mt-3" data-aos="zoom-in">
-                <a href="{{ route('public.galeri') }}" class="btn btn-warning mb-5">Lihat Semua Galeri</a>
+                <a href="{{ route('public.galeri') }}" class="btn btn-primary mb-5">Lihat Semua Galeri</a>
             </div>
             <h2 class="section-title text-black mb-4" data-aos="fade-up">Vidio Terbaru</h2>
 
@@ -237,7 +237,7 @@
             </div>
 
             <div class="text-center mt-3" data-aos="zoom-in">
-                <a href="{{ route('public.galeri') }}" class="btn btn-warning">Lihat Semua Galeri</a>
+                <a href="{{ route('public.galeri') }}" class="btn btn-primary">Lihat Semua Galeri</a>
             </div>
         </div>
     </section>

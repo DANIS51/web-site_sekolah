@@ -18,7 +18,7 @@
         <div class="container position-relative text-white">
             <div class="hero-content px-4 py-4 rounded shadow-lg d-inline-block" style="background: rgba(0,0,0,0.3);">
                 <h1 class="fw-bold display-4 display-md-5 text-shadow">
-                    <i class="fas fa-images me-2 text-warning"></i> Galeri Sekolah
+                    <i class="fas fa-images me-2 text-primary"></i> Galeri Sekolah
                 </h1>
                 <p class="lead mb-0 text-shadow fs-5 fs-md-6">Kumpulan foto dan dokumentasi kegiatan sekolah</p>
             </div>

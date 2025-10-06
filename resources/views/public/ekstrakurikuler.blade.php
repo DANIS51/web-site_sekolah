@@ -16,7 +16,7 @@
                    min-height: 60vh; padding: 40px 20px;">
         <div class="container position-relative text-white">
             <h1 class="fw-bold display-4 display-md-5 mb-3 text-shadow">
-                <i class="fas fa-users me-2 text-warning"></i> Ekstrakurikuler
+                <i class="fas fa-users me-2 text-primary"></i> Ekstrakurikuler
             </h1>
             <p class="lead text-shadow fs-5 fs-md-6">Berbagai kegiatan seru dan bermanfaat bagi siswa</p>
         </div>

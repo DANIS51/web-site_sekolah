@@ -17,7 +17,7 @@
         <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative">
             <h1 class="hero-title fw-bold display-4 display-md-5 mb-3">
-                <i class="fas fa-newspaper me-2 text-warning"></i> Berita Sekolah
+                <i class="fas fa-newspaper me-2 text-primary"></i> Berita Sekolah
             </h1>
             <p class="hero-subtitle lead fs-5 fs-md-6">Kumpulan berita dan informasi terbaru dari sekolah</p>
         </div>

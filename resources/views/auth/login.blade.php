@@ -28,7 +28,7 @@
     :root {
       --secondary-color: #475569;
       --light-bg: rgba(255, 255, 255, 0.08);
-      --accent-color: #f59e0b; /* warna kuning */
+      --accent-color: #1B0BF5FF; /* warna kuning */
     }
 
     .login-wrapper {
@@ -92,7 +92,7 @@
     }
 
     .btn-primary:hover {
-      background: #d97706;
+      background: #00FF15FF;
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     }
@@ -118,11 +118,11 @@
     <div class="card login-card p-4">
       <div class="card-header text-center">
         <div class="logo mb-3">
-          <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah"
+          <img src="{{ asset('storage/smk.gif') }}" alt="Logo Sekolah"
             style="height: 70px; width: auto;">
         </div>
-        <h4>Login Sistem <br> <span class="text-warning">SMA 2 Tasikmalaya</span></h4>
-      </div>
+        
+       </div>
       <div class="card-body">
 
         @if ($errors->any())

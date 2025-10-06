@@ -46,7 +46,7 @@
 
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active {
-      color: #ffdd57 !important;
+      color: #002FFFFF !important;
     }
 
     /* Footer */
@@ -89,8 +89,8 @@
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex" href="{{ route('public.index') }}">
-        <img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 40px; margin-right: 10px;">
-        <h1  style="font-size: 1.5rem; margin-top: 10px;">Sman 2 Tasikmalaya</h1>
+        <img src="{{ asset('storage/smk.gif') }}" alt="Logo Sekolah" style="height: 40px; margin-right: 10px;">
+        <h1  style="font-size: 1.5rem; margin-top: 10px;">Sman 100 Tasikmalaya</h1>
       </a>
       <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="fas fa-bars"></i>
@@ -125,7 +125,7 @@
       <div class="row">
         <!-- About -->
         <div class="col-lg-4 col-md-6 mb-4">
-          <h5><img src="{{ asset('storage/logo-sekolah/sma2.png') }}" alt="Logo Sekolah" style="height: 50px;"
+          <h5><img src="{{ asset('storage/smk.gif') }}" alt="Logo Sekolah" style="height: 50px;"
               class="me-2">Website Sekolah</h5>
           <p class="text-white-50">Portal informasi sekolah, berita terbaru, profil guru, galeri, dan ekstrakurikuler.
           </p>
@@ -166,7 +166,7 @@
         <!-- Info -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5>Tentang</h5>
-          <p class="mb-1"><strong>SMP Negeri 1</strong></p>
+          <p class="mb-1"><strong>SMA Negeri 100</strong></p>
           <p class="small mb-1">NPSN: 12345678</p>
           <p class="small">Terakreditasi A</p>
           <div class="mt-2">
