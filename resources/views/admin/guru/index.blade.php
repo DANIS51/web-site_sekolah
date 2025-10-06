@@ -11,15 +11,15 @@
     @endif
 
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Data Guru</h5>
-            <div class="d-flex align-items-center flex-wrap mt-2 mt-md-0">
+            <div class="d-flex align-items-center">
                 <form method="GET" action="{{ route('admin.guru.index') }}" class="d-flex me-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">Cari:</span>
                         <input type="text" class="form-control" name="search" value="{{ $search }}"
                             placeholder="Cari...">
-                        <button type="submit" class="btn btn-outline-secondary">Cari</button>
+                        <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
                 <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm">

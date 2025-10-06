@@ -29,21 +29,21 @@
             <div class="row text-center g-4">
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2"></i>
+                        <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2 text-warning"></i>
                         <h2 class="fw-bold">{{ $totalGuru }}</h2>
                         <p class="mb-0">Guru</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-users fa-2x text-success mb-2"></i>
+                        <i class="fas fa-users fa-2x text-success mb-2 text-warning"></i>
                         <h2 class="fw-bold">{{ $totalSiswa }}</h2>
                         <p class="mb-0">Siswa</p>
                     </div>
                 </div>
                 <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-3">
-                        <i class="fas fa-images fa-2x text-info mb-2"></i>
+                        <i class="fas fa-images fa-2x text-info mb-2 text-warning"></i>
                         <h2 class="fw-bold">{{ $totalGaleri }}</h2>
                         <p class="mb-0">Galeri</p>
                     </div>
@@ -184,25 +184,19 @@
 
     <!-- Galeri Terbaru -->
     @if($latestGaleri->count() > 0)
-        <section class="py-2">
-            <div class="container">
-                <h2 class="section-title text-black mb-4" data-aos="fade-up"> Galeri Terbaru</h2>
-                <div class="row">
-                    @foreach($latestGaleri as $index => $galeri)
+    <section class="py-2">
+        <div class="container">
+            <h2 class="section-title text-black mb-4" data-aos="fade-up">Foto Terbaru</h2>
+
+            <!-- Menampilkan Foto -->
+            <div class="row">
+                @foreach($latestGaleri as $index => $galeri)
+                    @if($galeri->file && !str_starts_with($galeri->mime_type, 'video/'))
                         <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
                             <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
-                                @if($galeri->file)
-                                    @if(str_starts_with($galeri->mime_type, 'video/'))
-                                        <video class="card-img-top" style="height: 200px; object-fit: cover;" controls>
-                                            <source src="{{ asset('storage/' . $galeri->file) }}" type="{{ $galeri->mime_type }}">
-                                            Browser tidak mendukung video.
-                                        </video>
-                                    @else
-                                        <img src="{{ asset('storage/' . $galeri->file) }}"
-                                            class="card-img-top" alt="{{ $galeri->judul }}"
-                                            style="height: 200px; object-fit: cover;">
-                                    @endif
-                                @endif
+                                <img src="{{ asset('storage/' . $galeri->file) }}"
+                                     class="card-img-top" alt="{{ $galeri->judul }}"
+                                     style="height: 200px; object-fit: cover;">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="fw-bold">{{ Str::limit($galeri->judul, 50) }}</h5>
                                     @if($galeri->keterangan)
@@ -211,14 +205,46 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <div class="text-center mt-3" data-aos="zoom-in">
-                    <a href="{{ route('public.galeri') }}" class="btn btn-warning">Lihat Semua Galeri</a>
-                </div>
+                    @endif
+                @endforeach
             </div>
-        </section>
-    @endif
+
+            <div class="text-center mt-3" data-aos="zoom-in">
+                <a href="{{ route('public.galeri') }}" class="btn btn-warning mb-5">Lihat Semua Galeri</a>
+            </div>
+            <h2 class="section-title text-black mb-4" data-aos="fade-up">Vidio Terbaru</h2>
+
+            <!-- Menampilkan Video -->
+            <div class="row mt-4">
+                @foreach($latestGaleri as $index => $galeri)
+                    @if($galeri->file && str_starts_with($galeri->mime_type, 'video/'))
+                        <div class="col-md-4 mb-4 d-flex" data-aos="fade-up" data-aos-delay="{{ $index * 200 }}">
+                            <div class="card shadow-sm border-0 rounded-4 h-100 w-100 overflow-hidden">
+                                <video class="card-img-top" style="height: 200px; object-fit: cover;" controls>
+                                    <source src="{{ asset('storage/' . $galeri->file) }}" type="{{ $galeri->mime_type }}">
+                                    Browser tidak mendukung video.
+                                </video>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="fw-bold">{{ Str::limit($galeri->judul, 50) }}</h5>
+                                    @if($galeri->keterangan)
+                                        <p class="flex-grow-1">{{ Str::limit(strip_tags($galeri->keterangan), 80) }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+
+            <div class="text-center mt-3" data-aos="zoom-in">
+                <a href="{{ route('public.galeri') }}" class="btn btn-warning">Lihat Semua Galeri</a>
+            </div>
+        </div>
+    </section>
+@endif
+
+
+    
 
     <!-- Akses Cepat -->
     <section class="py-2">

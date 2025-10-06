@@ -96,7 +96,7 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto" style="font-size: 20px;">
+        <ul class="navbar-nav ms-auto" style="font-size: 1rem;">
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.index') ? 'active' : '' }}"
               href="{{ route('public.index') }}"> Beranda</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.berita*') ? 'active' : '' }}"
@@ -130,10 +130,10 @@
           <p class="text-white-50">Portal informasi sekolah, berita terbaru, profil guru, galeri, dan ekstrakurikuler.
           </p>
           <div class="d-flex">
-            <a href="https://www.instagram.com/sman2tasikmalaya/" class="text-white me-3"><i
+            <a href="https://www.instagram.com/officialsmkypc/" class="text-white me-3"><i
                 class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@smandatas" class="text-white me-3"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@sman2tasikmalaya" class="text-white"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@smkypc" class="text-white me-3"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/results?search_query=smk+ypc" class="text-white"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
 
