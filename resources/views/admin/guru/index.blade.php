@@ -13,24 +13,21 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
             <h5 class="card-title mb-0">Data Guru</h5>
-            <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm mt-2 mt-md-0">
-                <i class="fas fa-plus me-1"></i> Tambah Guru
-            </a>
-        </div>
-        <div class="card-body">
-        <div class="row mb-3">
-            <div class="col-12">
-                <form method="GET" action="{{ route('admin.guru.index') }}" class="d-flex justify-content-end">
-                    <div class="input-group input-group-sm w-auto">
+            <div class="d-flex align-items-center flex-wrap mt-2 mt-md-0">
+                <form method="GET" action="{{ route('admin.guru.index') }}" class="d-flex me-2">
+                    <div class="input-group input-group-sm">
                         <span class="input-group-text">Cari:</span>
                         <input type="text" class="form-control" name="search" value="{{ $search }}"
                             placeholder="Cari...">
                         <button type="submit" class="btn btn-outline-secondary">Cari</button>
                     </div>
                 </form>
+                <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Tambah Guru
+                </a>
             </div>
         </div>
-
+        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="guru-table">
                     <thead>

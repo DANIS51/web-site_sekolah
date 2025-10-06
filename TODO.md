@@ -1,2 +1,14 @@
-- [x] Modify Berita Terbaru section in resources/views/public/index.blade.php to use Bootstrap carousel
-- [x] Test the carousel functionality by running the site
+- [x] Update card-header in siswa.blade.php to include search form aligned with title and button
+- [x] Remove the search row from card-body in siswa.blade.php
+- [x] Update card-header in guru/index.blade.php to include search form aligned with title and button
+- [x] Remove the search row from card-body in guru/index.blade.php
+- [ ] Update card-header in berita/index.blade.php to include search form aligned with title and button
+- [ ] Remove the search row from card-body in berita/index.blade.php
+- [ ] Update card-header in galeri/index.blade.php to include search form aligned with title and button
+- [ ] Remove the search row from card-body in galeri/index.blade.php
+- [ ] Update card-header in users/index.blade.php to include search form aligned with title and button
+- [ ] Remove the search row from card-body in users/index.blade.php
+- [ ] Update card-header in ekstrakurikuler/index.blade.php to include search form aligned with title and button
+- [ ] Remove the search row from card-body in ekstrakurikuler/index.blade.php
+- [ ] Update card-header in profil_sekolah/index.blade.php to include search form aligned with title and button
+- [ ] Remove the search row from card-body in profil_sekolah/index.blade.php
