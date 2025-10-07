@@ -297,4 +297,3 @@
         @endif
     </div>
 </div>
-@endsection

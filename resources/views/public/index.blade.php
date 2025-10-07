@@ -58,6 +58,9 @@
                 <div class="col-12 col-md-5 mb-3 mb-md-0" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 shadow-sm border-0 rounded-4 p-4 mx-auto" style="min-width: 270px; max-width: 500px; min-height: 220px; font-size: 1.3rem;color:white">
                         <i class="fas fa-chalkboard-teacher text-primary mb-3" style="font-size: 3.5rem;"></i>
+
+
+                        
                         <h2 class="fw-bold text-black" style="font-size: 2.8rem;">{{ $totalGuru }}</h2>
                         <p class="mb-0 text-black" style="font-size: 1.3rem;">Guru</p>
                     </div>

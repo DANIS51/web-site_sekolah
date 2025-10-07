@@ -2,7 +2,7 @@
 @extends('layouts.public')
 
 {{-- Atur judul halaman untuk data guru --}}
-@section('title', 'Guru - Website Sekolah')
+@section('title', 'Siswa - Website Sekolah')
 
 {{-- Bagian konten utama halaman --}}
 @section('content')
@@ -23,28 +23,28 @@
         <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
         <div class="container position-relative">
             <h1 class="hero-title fw-bold display-4 display-md-5 mb-3">
-                <i class="fas fa-chalkboard-teacher me-2 text-primary"></i> Data Guru
+                <i class="fas fa-chalkboard-teacher me-2 text-primary"></i> Data Siswa
             </h1>
-            <p class="hero-subtitle lead fs-5 fs-md-6">Daftar tenaga pendidik dan kependidikan di sekolah</p>
+            <p class="hero-subtitle lead fs-5 fs-md-6">Daftar Siswa di sekolah</p>
         </div>
     </section>
 
-    {{-- Bagian daftar guru --}}
+    {{-- Bagian daftar siswa --}}
     <section class="py-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            {{-- Periksa apakah ada data guru --}}
-            @if($guru->count() > 0)
+            {{-- Periksa apakah ada data siswa --}}
+            @if($siswa->count() > 0)
                 <div class="row">
-                    {{-- Loop untuk menampilkan setiap guru --}}
-                    @foreach($guru as $guruItem)
+                    {{-- Loop untuk menampilkan setiap siswa --}}
+                    @foreach($siswa as $siswaItem)
                         {{-- Card untuk setiap guru --}}
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex">
                             <div class="card person-card text-center shadow-sm border-0 rounded-4 h-100 w-100">
                                 <div class="card-body p-4 d-flex flex-column align-items-center">
                                     {{-- Tampilkan foto guru jika ada --}}
-                                    @if($guruItem->foto)
-                                        <img src="{{ asset('storage/' . $guruItem->foto) }}"
-                                             alt="{{ $guruItem->nama_guru }}"
+                                    @if($siswaItem->foto)
+                                        <img src="{{ asset('storage/' . $siswaItem->foto) }}"
+                                             alt="{{ $siswaItem->nama_siswa }}"
                                              class="person-image rounded-circle shadow-sm mb-3"
                                              style="width: 120px; height: 120px; object-fit: cover;">
                                     @else
@@ -53,12 +53,10 @@
                                              style="width: 120px; height: 120px; background: linear-gradient(135deg,#0d6efd,#0dcaf0);">
                                             <i class="fas fa-user fa-2x text-white"></i>
                                         </div>
-                                    @endif+
-                                    <h5 class="card-title fw-semibold mb-1" style="font-size: 16px;">{{ $guruItem->nama_guru }}</h5>
-                                    {{-- Tampilkan mata pelajaran jika ada --}}
-                                    @if($guruItem->mapel)
-                                        <p class="card-text text-muted small mb-0">{{ $guruItem->mapel }}</p>
                                     @endif
+                                    <h5 class="card-title fw-semibold mb-1" style="font-size: 16px;">{{ $siswaItem->nama_siswa }}</h5>
+                                    {{-- Tampilkan mata pelajaran jika ada --}}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -67,7 +65,7 @@
 
                 <!-- Bagian pagination -->
                 <div class="d-flex justify-content-center mt-4">
-                    {{ $guru->links() }}
+                    {{ $siswa->links() }}
                 </div>
             @else
                 {{-- Pesan jika tidak ada data guru --}}

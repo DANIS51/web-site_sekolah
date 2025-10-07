@@ -117,6 +117,8 @@
               href="{{ route('public.berita') }}"> Berita</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.guru') ? 'active' : '' }}"
               href="{{ route('public.guru') }}"> </i>Guru</a></li>
+          <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.siswa') ? 'active' : '' }}"
+              href="{{ route('public.siswa') }}"> </i>Siswa</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.galeri') ? 'active' : '' }}"
               href="{{ route('public.galeri') }}"> </i>Galeri</a></li>
           <li class="nav-item"><a class="nav-link {{ request()->routeIs('public.ekstrakurikuler') ? 'active' : '' }}"

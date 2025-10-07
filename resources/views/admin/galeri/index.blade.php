@@ -30,7 +30,7 @@
                 </form>
                 {{-- Tombol untuk menambah galeri baru --}}
                 <a href="{{ route('admin.galeri.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fas fa-plus me-1"></i> Tambah Galeri
+                    <i class="fas fa-plus me-1"></i> Tambah Galerix
                 </a>
             </div>
         </div>
