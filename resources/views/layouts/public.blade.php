@@ -1,42 +1,49 @@
+<!-- DOCTYPE dan tag html untuk layout publik -->
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Bagian head -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'Website Sekolah')</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  {{-- Yield untuk gaya tambahan --}}
   @yield('styles')
 
   <style>
+    /* Gaya untuk body layout publik */
     body {
       font-family: 'Poppins', sans-serif;
       background: white;
       color: black;
     }
 
-    /* Navbar */
+    /* Gaya navbar kustom */
     .navbar-custom {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       padding: 10px 0;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
 
+    /* Brand navbar */
     .navbar-brand {
       color: #fff !important;
       font-weight: 700;
       font-size: 1.2rem;
     }
 
+    /* Link navigasi */
     .navbar-nav .nav-link {
       color: #f1f5f9 !important;
       font-weight: 500;
@@ -44,34 +51,40 @@
       transition: all 0.3s ease;
     }
 
+    /* Hover dan active untuk nav link */
     .navbar-nav .nav-link:hover,
     .navbar-nav .nav-link.active {
       color: #002FFFFF !important;
     }
 
-    /* Footer */
+    /* Gaya footer */
     footer {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       font-size: 0.9rem;
     }
 
+    /* H5 di footer */
     footer h5 {
       font-weight: 600;
       color: #fff;
     }
 
+    /* Link di footer */
     footer a {
       transition: 0.3s;
     }
 
+    /* Hover link footer */
     footer a:hover {
       color: #ffdd57 !important;
     }
 
+    /* Ikon fab di footer */
     footer .fab {
       transition: transform 0.3s;
     }
 
+    /* Hover fab */
     footer .fab:hover {
       transform: scale(1.2);
       color: #ffdd57 !important;
@@ -84,13 +97,14 @@
   </style>
 </head>
 
+<!-- Bagian body -->
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex" href="{{ route('public.index') }}">
         <img src="{{ asset('storage/smk.gif') }}" alt="Logo Sekolah" style="height: 40px; margin-right: 10px;">
-        <h1  style="font-size: 1.5rem; margin-top: 10px;">Sman 100 Tasikmalaya</h1>
+        <h1  style="font-size: 1.5rem; margin-top: 10px;">SMA YPC</h1>
       </a>
       <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <i class="fas fa-bars"></i>
@@ -114,8 +128,9 @@
     </div>
   </nav>
 
-  <!-- Main -->
+  <!-- Main content -->
   <main style="margin-top: 60px;">
+    {{-- Yield untuk konten halaman --}}
     @yield('content')
   </main>
 
@@ -123,7 +138,7 @@
   <footer class="text-white py-5 mt-5">
     <div class="container">
       <div class="row">
-        <!-- About -->
+        <!-- Bagian tentang -->
         <div class="col-lg-4 col-md-6 mb-4">
           <h5><img src="{{ asset('storage/smk.gif') }}" alt="Logo Sekolah" style="height: 50px;"
               class="me-2">Website Sekolah</h5>
@@ -137,7 +152,7 @@
           </div>
         </div>
 
-        <!-- Links -->
+        <!-- Bagian link cepat -->
         <div class="col-lg-2 col-md-6 mb-4">
           <h5>Link Cepat</h5>
           <ul class="list-unstyled">
@@ -152,21 +167,21 @@
           </ul>
         </div>
 
-        <!-- Contact -->
+        <!-- Bagian kontak -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5>Kontak</h5>
           <ul class="list-unstyled text-white-50">
             <li><i class="fas fa-map-marker-alt me-2"></i>JL. R.E. MARTADINATA NO.261, Panyingkiran, Kec. Indihiang,
               Kota Tasikmalaya, Jawa Barat, 46151</li>
             <li><i class="fas fa-phone me-2"></i>(0265) 331331</li>
-            <li><i class="fas fa-envelope me-2"></i>info@smandatas.sch.id</li>
+            <li><i class="fas fa-envelope me-2"></i>info@smaypc.sch.id</li>
           </ul>
         </div>
 
-        <!-- Info -->
+        <!-- Bagian info -->
         <div class="col-lg-3 col-md-6 mb-4">
           <h5>Tentang</h5>
-          <p class="mb-1"><strong>SMA Negeri 100</strong></p>
+          <p class="mb-1"><strong>SMA YPC</strong></p>
           <p class="small mb-1">NPSN: 12345678</p>
           <p class="small">Terakreditasi A</p>
           <div class="mt-2">
@@ -177,7 +192,7 @@
         </div>
       </div>
 
-      <hr style="border-color: rgba(255,255,255,0.1);">
+      <hr style="border-color: rgba(255,255,245,0.1);">
 
       <div class="d-flex justify-content-between align-items-center">
         <p class="mb-0 small">&copy; {{ date('Y') }} Website Sekolah. All rights reserved.</p>
@@ -185,8 +200,11 @@
       </div>
     </div>
   </footer>
+
+  <!-- Script AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Inisialisasi library AOS untuk animasi
     AOS.init();
   </script>
   <!-- Bootstrap JS -->

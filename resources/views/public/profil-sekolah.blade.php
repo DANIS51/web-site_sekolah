@@ -1,9 +1,13 @@
+{{-- Perluas template layout publik --}}
 @extends('layouts.public')
 
+{{-- Atur judul halaman untuk SEO dan tab browser --}}
 @section('title', 'Profil Sekolah - Website Sekolah')
 
+{{-- Gaya CSS kustom untuk halaman profil --}}
 @section('styles')
 <style>
+    /* Variabel root CSS untuk tema */
     :root {
         --primary-color: #0d47a1;  /* Biru elegan */
         --secondary-color: #1565c0;
@@ -15,13 +19,14 @@
         --text-muted: #b0bec5;
     }
 
+    /* Gaya body untuk tema gelap */
     body {
         background-color: var(--dark-bg);
         color: var(--text-light);
         font-family: "Poppins", "Segoe UI", sans-serif;
     }
 
-    /* Header Profil */
+    /* Gaya header halaman */
     .page-header {
         background: var(--secondary-color);
         color: #fff;
@@ -42,7 +47,7 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    /* Card Umum */
+    /* Gaya card umum */
     .profile-card {
         background-color: var(--card-bg);
         border: none;
@@ -107,7 +112,7 @@
         color: var(--text-muted);
     }
 
-    /* Konten Scroll */
+    /* Gaya konten scroll */
     .content {
         padding: 1.5rem;
         color: var(--text-light);
@@ -116,7 +121,7 @@
         overflow-y: auto;
     }
 
-    /* Feature Card */
+    /* Gaya card fitur */
     .feature-card {
         background-color: var(--card-bg);
         border-radius: 14px;
@@ -147,7 +152,7 @@
         margin-bottom: 1.5rem;
     }
 
-    /* No Data */
+    /* Gaya card tidak ada data */
     .no-data-card {
         background-color: var(--card-bg);
         color: var(--text-light);
@@ -165,11 +170,17 @@
 </style>
 @endsection
 
+{{-- Bagian konten utama halaman --}}
 @section('content')
+<!-- Kontainer halaman profil -->
 <div class="profile-page">
+    {{-- Kontainer utama dengan padding dan animasi --}}
     <div class="container py-5" data-aos="fade-up" data-aos-duration="1000">
+        {{-- Periksa apakah data profil ada --}}
         @if($profilSekolah)
+            <!-- Bagian header halaman -->
             <div class="page-header">
+                {{-- Tampilkan logo sekolah jika tersedia --}}
                 @if($profilSekolah->logo_url)
                     <img src="{{ $profilSekolah->logo_url }}" class="school-logo" alt="Logo {{ $profilSekolah->nama_sekolah }}">
                 @endif
@@ -177,23 +188,29 @@
                 <p class="mb-0 fs-5">Mewujudkan Generasi Unggul dan Berkarakter</p>
             </div>
 
+            {{-- Baris untuk informasi sekolah dan foto --}}
             <div class="row justify-content-center mb-4">
+                {{-- Card informasi sekolah --}}
                 <div class="col-lg-8 mb-4">
                     <div class="profile-card">
                         <div class="profile-card-header"><i class="fas fa-info-circle"></i> Informasi Sekolah</div>
                         <div class="p-3">
+                            {{-- Item info untuk kepala sekolah --}}
                             <div class="info-item">
                                 <div class="info-icon"><i class="fas fa-user-tie"></i></div>
                                 <div><h5>Kepala Sekolah</h5><p>{{ $profilSekolah->kepala_sekolah }}</p></div>
                             </div>
+                            {{-- Item info untuk alamat --}}
                             <div class="info-item">
                                 <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div><h5>Alamat</h5><p>{{ $profilSekolah->alamat }}</p></div>
                             </div>
+                            {{-- Item info untuk kontak --}}
                             <div class="info-item">
                                 <div class="info-icon"><i class="fas fa-phone"></i></div>
                                 <div><h5>Kontak</h5><p>{{ $profilSekolah->kontak }}</p></div>
                             </div>
+                            {{-- Item info untuk NPSN --}}
                             <div class="info-item">
                                 <div class="info-icon"><i class="fas fa-id-card"></i></div>
                                 <div><h5>NPSN</h5><p>{{ $profilSekolah->npsn }}</p></div>
@@ -202,6 +219,7 @@
                     </div>
                 </div>
 
+                {{-- Card foto sekolah jika tersedia --}}
                 @if($profilSekolah->foto_url)
                     <div class="col-lg-4 mb-4">
                         <div class="profile-card h-100">
@@ -214,7 +232,9 @@
                 @endif
             </div>
 
+            {{-- Baris untuk deskripsi dan visi misi --}}
             <div class="row mb-5">
+                {{-- Card deskripsi sekolah --}}
                 @if($profilSekolah->deskripsi)
                     <div class="col-lg-6 mb-4">
                         <div class="profile-card h-100">
@@ -224,6 +244,7 @@
                     </div>
                 @endif
 
+                {{-- Card visi dan misi --}}
                 @if($profilSekolah->visi_misi)
                     <div class="col-lg-6 mb-4">
                         <div class="profile-card h-100">
@@ -234,10 +255,12 @@
                 @endif
             </div>
 
+            {{-- Baris untuk fasilitas unggulan --}}
             <div class="row mb-5">
                 <div class="col-12">
                     <h2 class="section-title">Fasilitas Unggulan</h2>
                 </div>
+                {{-- Card fasilitas 1 --}}
                 <div class="col-md-4 mb-3 d-flex">
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fas fa-futbol"></i></div>
@@ -245,6 +268,7 @@
                         <p>Ekskul olahraga berprestasi dengan lapangan yang representatif.</p>
                     </div>
                 </div>
+                {{-- Card fasilitas 2 --}}
                 <div class="col-md-4 mb-3 d-flex">
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
@@ -252,6 +276,7 @@
                         <p>Mendukung pembelajaran sains dan teknologi modern.</p>
                     </div>
                 </div>
+                {{-- Card fasilitas 3 --}}
                 <div class="col-md-4 mb-3 d-flex">
                     <div class="feature-card">
                         <div class="feature-icon"><i class="fas fa-book-open"></i></div>
@@ -262,6 +287,7 @@
             </div>
 
         @else
+            {{-- Card tidak ada data --}}
             <div class="no-data-card">
                 <div class="no-data-icon"><i class="fas fa-school"></i></div>
                 <h4>Profil sekolah belum tersedia</h4>

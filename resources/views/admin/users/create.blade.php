@@ -41,8 +41,7 @@
                     <option value="">Pilih Role</option>
                     <option value="admin">Admin</option>
                     <option value="operator">Operator</option>
-                    <option value="user">User</option>
-                </select>
+                 </select>
                 @error('role')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

@@ -1,15 +1,22 @@
+<!-- DOCTYPE dan tag html untuk layout admin -->
 <!DOCTYPE html>
 <html lang="id">
 
+<!-- Bagian head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard Admin - Sistem Sekolah')</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
+        /* Variabel root untuk tema admin */
         :root {
             --primary-color: #2c3e50;
             /* Elegant dark blue-gray */
@@ -29,6 +36,7 @@
             /* Red accent for highlights */
         }
 
+        /* Gaya sidebar */
         .sidebar {
             position: fixed;
             top: 0;
@@ -40,10 +48,12 @@
             z-index: 1000;
         }
 
+        /* Sidebar hidden */
         .sidebar.hidden {
             transform: translateX(-100%);
         }
 
+        /* Gaya content */
         .content {
             margin-left: 250px;
             padding: 20px;
@@ -51,27 +61,31 @@
             min-height: 100vh;
         }
 
+        /* Content expanded */
         .content.expanded {
             margin-left: 0;
         }
 
+        /* Nav link di sidebar */
         .sidebar .nav-link {
             color: rgba(255, 255, 255, .85);
             padding: 12px 20px;
             border-radius: 0;
         }
 
+        /* Hover nav link */
         .sidebar .nav-link:hover {
             color: #fff;
             background-color: rgba(255, 255, 255, .1);
         }
 
+        /* Active nav link */
         .sidebar .nav-link.active {
             background-color: rgba(255, 255, 255, .15);
             color: #fff;
         }
 
-        /* Toggle button styles */
+        /* Gaya toggle button */
         #sidebarToggleLabel {
             display: none;
             position: fixed;
@@ -87,14 +101,17 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Checked toggle */
         #sidebarToggle:checked~.sidebar {
             transform: translateX(0);
         }
 
+        /* Toggle label checked */
         #sidebarToggle:checked+#sidebarToggleLabel {
             display: none;
         }
 
+        /* Media query untuk mobile */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -119,6 +136,7 @@
             }
         }
 
+        /* Media query untuk small screen */
         @media (max-width: 576px) {
             .content {
                 padding: 10px;
@@ -134,6 +152,7 @@
             }
         }
 
+        /* Card header */
         .card-header {
             background-color: white;
             border: none;
@@ -142,20 +161,24 @@
             padding: 6px 14px;
         }
 
+        /* Hover btn primary di card header */
         .card-header .btn-primary:hover {
             background: linear-gradient(135deg, #3757d6, #19389e);
         }
 
+        /* Table */
         .table {
             border-collapse: separate;
             border-spacing: 0 8px;
             margin-bottom: 0;
         }
 
+        /* Table thead */
         .table thead {
             background-color: #f1f3f7;
         }
 
+        /* Table th */
         .table thead th {
             font-size: 16px;
             font-weight: 600;
@@ -166,50 +189,59 @@
             text-align: center;
         }
 
+        /* Table tbody tr */
         .table tbody tr {
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease-in-out;
         }
 
+        /* Hover table tr */
         .table tbody tr:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             background-color: #f9fbff
         }
 
+        /* Table td */
         .table td {
             padding: 12px;
             vertical-align: middle;
             border-top: none;
         }
 
+        /* Btn danger */
         .btn-danger {
             background-color: #e74a3b;
             border: none;
         }
 
+        /* Hover btn danger */
         .btn-danger:hover {
             background-color: #c0392b;
             border-color: #c0392b;
         }
 
+        /* Table td center */
         .table td {
             text-align: center;
         }
 
+        /* Card */
         .card {
             border: none;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Search form control */
         .search .form-control {
             width: 100%;
             max-width: 400px;
             height: 45px !important;
         }
 
+        /* Media query for small screen search */
         @media (max-width: 576px) {
             .search .form-control {
                 max-width: 100%;
@@ -219,10 +251,14 @@
     </style>
 </head>
 
+<!-- Bagian body -->
 <body>
+    <!-- Input toggle sidebar -->
     <input type="checkbox" id="sidebarToggle" style="display: none;">
+    <!-- Label toggle -->
     <label for="sidebarToggle" id="sidebarToggleLabel" aria-label="Toggle Sidebar">☰</label>
 
+    <!-- Sidebar -->
     <div class="sidebar" style="background: var(--primary-color); color: white;">
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -238,48 +274,56 @@
             </div>
             <hr class="my-3" style="border-color: rgba(255,255,255,0.3);">
             <ul class="nav flex-column">
+                {{-- Menu dashboard --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.dashboard')) active @endif"
                         href="{{ route('admin.dashboard') }}" style="color: white;">
                         <i class="bi bi-house-door me-2"></i> Dashboard
                     </a>
                 </li>
+                {{-- Menu users --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.users*')) active @endif"
                         href="{{ route('admin.users.index') }}" style="color: white;">
                         <i class="bi bi-person-badge me-2"></i> Users
                     </a>
                 </li>
+                {{-- Menu guru --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.guru*')) active @endif"
                         href="{{ route('admin.guru.index') }}" style="color: white;">
                         <i class="bi bi-person-square me-2"></i> Guru
                     </a>
                 </li>
+                {{-- Menu siswa --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.siswa*')) active @endif"
                         href="{{ route('admin.siswa.index') }}" style="color: white;">
                         <i class="bi bi-person me-2"></i> Siswa
                     </a>
                 </li>
+                {{-- Menu berita --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.berita*')) active @endif"
                         href="{{ route('admin.berita.index') }}" style="color: white;">
                         <i class="bi bi-newspaper me-2"></i> Berita
                     </a>
                 </li>
+                {{-- Menu galeri --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.galeri*')) active @endif"
                         href="{{ route('admin.galeri.index') }}" style="color: white;">
                         <i class="bi bi-images me-2"></i> Galeri
                     </a>
                 </li>
+                {{-- Menu ekstrakurikuler --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.ekstrakurikuler*')) active @endif"
                         href="{{ route('admin.ekstrakurikuler.index') }}" style="color: white;">
                         <i class="bi bi-trophy me-2"></i> Ekstrakurikuler
                     </a>
                 </li>
+                {{-- Menu profil sekolah --}}
                 <li class="nav-item">
                     <a class="nav-link @if(request()->routeIs('admin.profil_sekolah*')) active @endif"
                         href="{{ route('admin.profil_sekolah.index') }}" style="color: white;">
@@ -289,11 +333,14 @@
             </ul>
             <hr class="my-3" style="border-color: rgba(255,255,255,0.3);">
             <div class="mt-3">
+                {{-- Link profile --}}
                 <a href="{{ route('admin.profile') }}" class="nav-link d-flex align-items-center mb-2"
                     style="color: white;">
                     <i class="bi bi-person-circle me-2"></i> Profile
                 </a>
+                <!-- Form logout -->
                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    {{-- CSRF token --}}
                     @csrf
                     <button type="submit" class="nav-link d-flex align-items-center border-0 bg-transparent p-0"
                         style="color: white;" onclick="return confirm('Apakah Anda yakin ingin logout?')">
@@ -304,10 +351,13 @@
         </div>
     </div>
 
+    <!-- Content area -->
     <div class="content">
+        {{-- Yield content --}}
         @yield('content')
     </div>
 
+    <!-- Bootstrap JS -->
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>

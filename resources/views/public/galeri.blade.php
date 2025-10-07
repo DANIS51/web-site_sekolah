@@ -1,15 +1,19 @@
+{{-- Perluas template layout publik --}}
 @extends('layouts.public')
 
+{{-- Atur judul halaman untuk galeri --}}
 @section('title', 'Galeri - Website Sekolah')
 
+{{-- Bagian konten utama halaman --}}
 @section('content')
     <style>
+        /* Gaya inline untuk mengubah background dan warna teks body */
         body {
             background: white !important;
             color: black !important;
         }
     </style>
-    <!-- Hero Section -->
+    <!-- Bagian hero untuk halaman galeri -->
     <section class="hero-section d-flex align-items-center justify-content-center text-center position-relative" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                    url('{{ asset('storage/galeri.jpg') }}') no-repeat center;
                    background-size: cover;
@@ -25,14 +29,18 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    {{-- Bagian galeri --}}
     <section class="py-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            {{-- Periksa apakah ada data galeri --}}
             @if($galeri->count() > 0)
                 <div class="row g-4">
+                    {{-- Loop untuk menampilkan setiap item galeri --}}
                     @foreach($galeri as $item)
+                        {{-- Card untuk setiap item galeri --}}
                         <div class="col-lg-4 col-md-6 d-flex">
                             <div class="card shadow-sm border-0 h-100 w-100 gallery-card">
+                                {{-- Periksa kategori untuk menampilkan gambar atau video --}}
                                 @if($item->kategori == 'Foto')
                                     <img src="{{ $item->fileUrl }}" alt="{{ $item->judul }}" class="card-img-top rounded-top"
                                         style="height: 220px; object-fit: cover;">
@@ -59,11 +67,12 @@
                     @endforeach
                 </div>
 
-                <!-- Pagination -->
+                <!-- Bagian pagination -->
                 <div class="d-flex justify-content-center mt-4">
                     {{ $galeri->links() }}
                 </div>
             @else
+                {{-- Pesan jika tidak ada galeri --}}
                 <div class="card shadow-sm border-0 text-center p-5">
                     <i class="fas fa-images fa-3x text-muted mb-3"></i>
                     <h4>Belum ada foto atau video galeri</h4>
@@ -74,16 +83,20 @@
     </section>
 @endsection
 
+{{-- Push gaya tambahan ke stack styles --}}
 @push('styles')
     <style>
+        /* Gaya untuk efek text shadow */
         .text-shadow {
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
         }
 
+        /* Gaya untuk card galeri */
         .gallery-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Efek hover untuk card galeri */
         .gallery-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);

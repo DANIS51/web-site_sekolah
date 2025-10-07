@@ -1,7 +1,10 @@
+{{-- Perluas template layout operator --}}
 @extends('layouts.operator')
 
+{{-- Atur judul halaman untuk dashboard operator --}}
 @section('title', 'Dashboard Operator')
 
+{{-- Bagian konten utama halaman --}}
 @section('content')
     <div class="container-fluid">
         <div class="row mb-4">
@@ -14,6 +17,7 @@
 
         <!-- Statistics Cards -->
         <div class="row mb-4">
+            {{-- Card untuk total siswa --}}
             <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -31,6 +35,7 @@
                 </div>
             </div>
 
+            {{-- Card untuk total berita --}}
             <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
@@ -48,6 +53,7 @@
                 </div>
             </div>
 
+            {{-- Card untuk total galeri --}}
             <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
@@ -65,6 +71,7 @@
                 </div>
             </div>
 
+            {{-- Card untuk total ekstrakurikuler --}}
             <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
@@ -82,6 +89,7 @@
                 </div>
             </div>
 
+            {{-- Card untuk total profil sekolah --}}
             <div class="col-xl-2 col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card border-left-secondary shadow h-100 py-2">
                     <div class="card-body">
@@ -109,21 +117,25 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            {{-- Tombol aksi cepat untuk tambah siswa --}}
                             <div class="col-md-3 mb-3">
                                 <a href="{{ route('operator.siswa.create') }}" class="btn btn-primary btn-sm btn-block">
                                     <i class="bi bi-person-plus me-2"></i>Tambah Siswa
                                 </a>
                             </div>
+                            {{-- Tombol aksi cepat untuk tambah berita --}}
                             <div class="col-md-3 mb-3">
                                 <a href="{{ route('operator.berita.create') }}" class="btn btn-success btn-sm btn-block">
                                     <i class="bi bi-plus-circle me-2"></i>Tambah Berita
                                 </a>
                             </div>
+                            {{-- Tombol aksi cepat untuk tambah galeri --}}
                             <div class="col-md-3 mb-3">
                                 <a href="{{ route('operator.galeri.create') }}" class="btn btn-info btn-sm btn-block">
                                     <i class="bi bi-images me-2"></i>Tambah Galeri
                                 </a>
                             </div>
+                            {{-- Tombol aksi cepat untuk tambah ekstrakurikuler --}}
                             <div class="col-md-3 mb-3">
                                 <a href="{{ route('operator.ekstrakurikuler.create') }}"
                                     class="btn btn-warning btn-sm btn-block">
@@ -145,19 +157,24 @@
                     </div>
                     <div class="card-body">
                         <div class="list-group list-group-flush">
+                            {{-- Link navigasi ke kelola siswa --}}
                             <a href="{{ route('operator.siswa.index') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-people me-2"></i> Kelola Data Siswa
                             </a>
+                            {{-- Link navigasi ke kelola berita --}}
                             <a href="{{ route('operator.berita.index') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-newspaper me-2"></i> Kelola Berita
                             </a>
+                            {{-- Link navigasi ke kelola galeri --}}
                             <a href="{{ route('operator.galeri.index') }}" class="list-group-item list-group-item-action">
                                 <i class="bi bi-images me-2"></i> Kelola Galeri
                             </a>
+                            {{-- Link navigasi ke kelola ekstrakurikuler --}}
                             <a href="{{ route('operator.ekstrakurikuler.index') }}"
                                 class="list-group-item list-group-item-action">
                                 <i class="bi bi-trophy me-2"></i> Kelola Ekstrakurikuler
                             </a>
+                                {{-- Link navigasi ke kelola profil sekolah --}}
                                 <a href="{{ route('operator.profil_sekolah.index') }}"
                                     class="list-group-item list-group-item-action">
                                     <i class="bi bi-building me-2"></i> Kelola Profil Sekolah

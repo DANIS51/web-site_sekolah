@@ -1,10 +1,11 @@
-/* Reset */
+/* Reset semua elemen untuk konsistensi */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Gaya untuk body halaman login */
 body {
   min-height: 100vh;
   display: flex;
@@ -15,27 +16,32 @@ body {
   padding: 20px;
 }
 
+/* Wrapper untuk kontainer login */
 .login-wrapper {
   width: 100%;
   max-width: 400px;
 }
 
+/* Card untuk form login */
 .login-card {
   border: none;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* Header dari card login */
 .card-header {
   background: none;
   border-bottom: none;
 }
 
+/* Ikon logo */
 .logo i {
   font-size: 3rem;
   color: #4f46e5;
 }
 
+/* Judul di header card */
 .card-header h4 {
   font-weight: 600;
   font-size: 22px;
@@ -43,15 +49,18 @@ body {
   color: #333;
 }
 
+/* Kontrol form input */
 .form-control {
   border-radius: 6px;
   font-size: 15px;
 }
 
+/* Teks di grup input */
 .input-group-text {
   background-color: #f8f9fa;
 }
 
+/* Tombol primary */
 .btn-primary {
   background-color: #4f46e5;
   border: none;
@@ -60,15 +69,18 @@ body {
   font-weight: 500;
 }
 
+/* Efek hover untuk tombol primary */
 .btn-primary:hover {
   background-color: #4338ca;
 }
 
+/* Link teks secondary */
 a.text-secondary {
   font-size: 14px;
   text-decoration: none;
 }
 
+/* Efek hover untuk link */
 a.text-secondary:hover {
   text-decoration: underline;
 }

@@ -1,8 +1,12 @@
+{{-- Perluas template layout admin --}}
 @extends('layouts.admin')
 
+{{-- Atur judul halaman untuk data guru --}}
 @section('title', 'Data Guru')
 
+{{-- Bagian konten utama halaman --}}
 @section('content')
+    {{-- Periksa apakah ada pesan sukses dari session --}}
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -10,10 +14,12 @@
         </div>
     @endif
 
+    <!-- Card untuk menampilkan data guru -->
     <div class="card">
          <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Data Guru</h5>
             <div class="d-flex align-items-center">
+                <!-- Form untuk pencarian guru -->
                 <form method="GET" action="{{ route('admin.guru.index') }}" class="d-flex me-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">Cari:</span>
@@ -22,6 +28,7 @@
                         <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
+                <!-- Tombol untuk menambah guru baru -->
                 <a href="{{ route('admin.guru.create') }}" class="btn btn-primary btn-sm">
                     <i class="fas fa-plus me-1"></i> Tambah Guru
                 </a>
@@ -29,6 +36,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <!-- Tabel untuk menampilkan daftar guru -->
                 <table class="table table-bordered table-striped" id="guru-table">
                     <thead>
                         <tr>
@@ -41,10 +49,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{-- Loop untuk menampilkan setiap data guru --}}
                         @foreach($gurus as $index => $guru)
                             <tr>
                                 <td>{{ $gurus->firstItem() + $index }}</td>
                                 <td>
+                                    {{-- Tampilkan foto guru jika ada --}}
                                     @if($guru->foto)
                                         <img src="{{ asset('storage/' . $guru->foto) }}" alt="Foto Guru" class="img-fluid rounded" style="max-width: 50px; max-height: 50px;">
                                     @else
@@ -55,13 +65,17 @@
                                 <td>{{ $guru->nip }}</td>
                                 <td>{{ $guru->mapel }}</td>
                                 <td>
+                                    <!-- Tombol untuk edit guru -->
                                     <a href="{{ route('admin.guru.edit', Crypt::encrypt($guru->id_guru)) }}" class="btn btn-warning btn-sm"
                                         title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
+                                    <!-- Form untuk menghapus guru -->
                                     <form action="{{ route('admin.guru.destroy', Crypt::encrypt($guru->id_guru)) }}" method="POST"
                                         class="d-inline">
+                                        {{-- Token CSRF untuk keamanan --}}
                                         @csrf
+                                        {{-- Method untuk delete --}}
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" title="Hapus"
                                             onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
