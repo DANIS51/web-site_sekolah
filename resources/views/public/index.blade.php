@@ -29,7 +29,7 @@
             position: absolute;
             inset: 0;
             z-index: 0;
-            background: url('{{ asset('storage/smkhd.jpg') }}') no-repeat center;
+            background: url('{{ asset('storage/fotosmk.jpg') }}') no-repeat center;
             background-size: cover;
             filter: blur(8px) brightness(0.7);
         }
